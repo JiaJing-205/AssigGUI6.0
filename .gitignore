@@ -2,3 +2,19 @@
 /AssignmentGUI5.0/build/
 /AssignmentGUI5.0/dist/
 /nbproject/private/
+build.xml
+# NetBeans specific files
+nbproject/
+build/
+dist/
+nbbuild/
+.idea/
+
+# User-specific files
+*.swp
+*.swo
+*.bak
+
+# OS-specific files
+.DS_Store
+Thumbs.db
