@@ -38,26 +38,18 @@
                     <tr>
                         <td>
                             <div class="form-control">
-                                <input type="text" id="lid" name="id" maxlength="20" value="${id}" required>
                                 <label>
-                                    <span style="transition-delay:0ms">I</span>
-                                    <span style="transition-delay:50ms">D</span>
+                                    ID : 
                                 </label>
+                                <input type="text" id="lid" name="id" maxlength="20" value="${id}" required>
                             </div>
                         </td>
                         <td>
                             <div class="form-control">
-                                <input type="password" id="lpwd" name="pwd" maxlength="100" value="${pwd}" required>
                                 <label>
-                                    <span style="transition-delay:0ms">P</span> 
-                                    <span style="transition-delay:50ms">a</span>
-                                    <span style="transition-delay:100ms">s</span>
-                                    <span style="transition-delay:150ms">s</span>
-                                    <span style="transition-delay:200ms">w</span>
-                                    <span style="transition-delay:250ms">o</span>
-                                    <span style="transition-delay:300ms">r</span>
-                                    <span style="transition-delay:350ms">d</span>
+                                    Password :
                                 </label>
+                                <input type="password" id="lpwd" name="pwd" maxlength="100" value="${pwd}" required>
                             </div>
                         </td>
                     </tr>

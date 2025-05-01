@@ -195,7 +195,7 @@ form input[type="submit"]:hover {
     width: 100%;
 }
 
-button {
+content.button {
     display: inline-block;
     background-color: white;
     color: #04484f;
@@ -210,7 +210,7 @@ button {
     transition: background-color 0.2s, color 0.2s;
 }
 
-button:hover {
+content.button:hover {
     background-color: #04484f;
     color: white;
 }
