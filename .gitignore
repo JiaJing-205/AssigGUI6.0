@@ -18,3 +18,4 @@ nbbuild/
 # OS-specific files
 .DS_Store
 Thumbs.db
+/nbproject
