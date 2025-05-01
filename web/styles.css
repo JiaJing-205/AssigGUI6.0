@@ -194,3 +194,23 @@ form input[type="submit"]:hover {
     font-size: 20px;
     width: 100%;
 }
+
+button {
+    display: inline-block;
+    background-color: white;
+    color: #04484f;
+    text-decoration: none;
+    border: 2px solid #04484f;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 200px;          /* fixed length */
+    text-align: center;
+    border-radius: 0;      /* no rounded corners */
+    transition: background-color 0.2s, color 0.2s;
+}
+
+button:hover {
+    background-color: #04484f;
+    color: white;
+}

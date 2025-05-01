@@ -28,13 +28,6 @@
             <a href="event.jsp">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout.jsp">Checkout</a>
-            <!-- This part is for if I am an admin or a staff 
-            if Admin :
-            <a href="Product Details">Order products</a>
-            <a href="Staff">Checkout</a>
-            if Staff :
-            <a href="Product Details">Product Details</a>
-            -->
         </div>
 
         <div class="content">

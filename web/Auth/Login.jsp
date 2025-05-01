@@ -5,25 +5,25 @@
         <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <link rel="stylesheet" href="../styles.css" />
     </head>
     <body>
+        <!-- Top Navbar -->
         <div id="navbar">
-            <div>
-            </div>
-
+            <div></div>
             <div class="search-container">
                 <input type="text" placeholder="Search..." />
                 <button type="submit">Search</button>
             </div>
-
             <div>
-                <a class="login-btn" href="./Auth/Login.jsp">Login</a>
+                <a class="login-btn" href="#">Logout</a>
             </div>
         </div>
 
+        <!-- Sidebar -->
         <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logo.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
+            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width="230" alt="logo" style="padding:0;margin:0;"/></a>
             <a href="home.jsp">Home</a>
             <a href="products.jsp">Products</a>
             <a href="event.jsp">Events</a>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="content">
-            <h3>Login</h3>
+            <div class="bar">Login</div>
             <form method="post" action="LoginServlet">
                 <table>
                     <tr>
@@ -70,8 +70,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <button type="submit" class="button-login">Login</button>
-                            <a href="ResetPassword.jsp" class="resetpassword">Reset Password</a>
+                            <br>
+                            <button type="submit">Login</button>
+                            <a href="ResetPassword.jsp">Reset Password</a>
                         </td>
                     </tr>
                 </table>
