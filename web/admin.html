@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Admin interface</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Welcome admin</div>
+        <h1>Own self</h1>
+        <form action="viewPersonalInfo.jsp" method="get">
+            <input type="hidden" name="userID" value="JPin" />
+            <input type="submit" value="View personal info" />
+        </form>
+        <form action="getUserServlet" method="get">
+            <input type="hidden" name="id" value="JPin" />
+            <input type="submit" value="Edit personal info" />
+        </form>
+        
+        <h1>User management</h1>
+        <a href="viewUser.jsp">Manage all user</a><br>
+        
+        <h1>Item management</h1>
+        <a href="viewItemServlet">Manage all item</a><br>  
+        
+        <h1>Report</h1>
+        <a href="report.jsp">Enter Report Page</a><br>
+
+    </body>
+</html>

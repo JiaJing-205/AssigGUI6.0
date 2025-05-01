@@ -1,0 +1,50 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="domain.*" %>
+<%@ page import="da.*" %>
+<%@ page import="item.*" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Item</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<%
+    // Get the item object from the request attribute
+    Item i = (Item)request.getAttribute("editItem");
+    if (i != null) {
+%>
+        <h3>Edit Item</h3>
+        <form method="post" action="editItemServlet">
+        <p>ID: <input type="text" name="id" value="<%= i.getID() %>" readonly /></p>
+        <p>Name: <input type="text" name="name" value="<%= i.getName() %>" /></p>
+        <p>Category: <select name="category" value="<%= i.getCategory() %>">
+                    <option value = "Badminton">Badminton</option>
+                    <option value = "Table Tennis">Table Tennis</option>
+                    <option value = "General">General</option>
+        </select></p>         
+        <p>Price: <input type="text" name="price" value="<%= i.getPrice() %>" /></p>
+        <p>Stock: <input type="text" name="stock" value="<%= i.getStock() %>" /></p>
+        <input type="submit" value="Update">
+    </form>
+<%
+    } else {
+        out.println("<p>Item not found!</p>");
+    }
+%>
+
+<%
+    // Show any error message if it exists
+    String error = (String) request.getAttribute("error");
+    if (error != null) {
+%>
+    <p style="color:red;"><%= error %></p>
+<%
+    }
+%>
+    <a href="staff.html">Return</a><br>
+
+    </body>
+</html>

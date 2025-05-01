@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Add New Item</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h3>New Item Details</h3>
+        <form method="post" action="addItemServlet" >
+
+            <p><label>ID</label>
+                <input type="text" name="id" size="10" /></p>
+            <p><label>Name</label>
+                <input type="text" name="name" size="40" /></p>
+
+            <p><label>Category</label>
+                <select name="category">
+                    <option value = "Badminton">Badminton</option>
+                    <option value = "Table Tennis">Table Tennis</option>
+                    <option value = "Basketball">Basketball</option>
+                    <option value = "General">General</option>
+                </select></p>
+                
+            <p><label>Price (RM)</label>
+                <input type="text" name="price" size="1" /></p>
+    
+            <p><label>Stock</label>
+                <input type="text" name="stock" size="1" /></p>
+                        
+            <p><input type="submit" value="Submit" />
+                <input type="reset" value="Reset" /></p>
+        </form>
+
+         <a href="viewItemServlet">Return</a><br>
+
+    </body>
+</html>

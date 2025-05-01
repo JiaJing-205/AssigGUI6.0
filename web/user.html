@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>User Dashboard</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- Top Navbar -->
+        <div id="navbar">
+            <div></div>
+            <div class="search-container">
+                <input type="text" placeholder="Search..." />
+                <button type="submit">Search</button>
+            </div>
+            <div>
+                <a class="login-btn" href="#">Logout</a>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width="230" alt="logo" style="padding:0;margin:0;"/></a>
+            <a href="home.jsp">Home</a>
+            <a href="products.jsp">Products</a>
+            <a href="event.jsp">Events</a>
+            <a href="cart.jsp">Cart</a>
+            <a href="checkout.jsp">Checkout</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="bar">Welcome user</div>
+            <a href="viewPersonalInfo.jsp">View personal info</a><br>
+            <a href="editPersonalInfo.jsp">Edit personal info</a><br>
+
+            <div class="bar">Order</div>
+            <a href="itemOrderServlet">Order Now!</a><br>
+
+            <form action="viewPaymentServlet" method="get">
+                <input type="hidden" name="userID" value="JPin" />
+                <input type="submit" value="View My Payments" />
+            </form>
+        </div>
+    </body>
+</html>
