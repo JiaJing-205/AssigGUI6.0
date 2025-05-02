@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ResetPasswordRequestServlet")
+
 public class ResetPasswordRequestServlet extends HttpServlet {
     
     @Override
