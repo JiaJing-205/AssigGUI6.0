@@ -13,7 +13,7 @@ public class OrderDA {
     private String host = "jdbc:derby://localhost:1527/Assignment";
     private String user = "nbuser";
     private String password = "nbuser";
-    private String tableName = "Order";
+    private String tableName = "OrderInfo";
     private Connection conn;
     private PreparedStatement stmt;
 
