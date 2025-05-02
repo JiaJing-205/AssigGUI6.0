@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    
+    <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+    </welcome-file-list>
+    
     <!-- Cart Servlets -->
     <servlet>
         <servlet-name>AddToCartServlet</servlet-name>
@@ -183,14 +188,6 @@
         <servlet-name>ProfileServlet</servlet-name>
         <servlet-class>Auth.ProfileServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>GotoLoginServlet</servlet-name>
-        <servlet-class>Auth.GotoLoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GotoSignupServlet</servlet-name>
-        <servlet-class>Auth.GotoSignupServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -367,14 +364,6 @@
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
         <url-pattern>/ProfileServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GotoLoginServlet</servlet-name>
-        <url-pattern>/GotoLoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>GotoSignupServlet</servlet-name>
-        <url-pattern>/GotoSignupServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
