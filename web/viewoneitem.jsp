@@ -78,7 +78,7 @@
             </tr>
         </table>
     <% } %>
-    <a href="home.jsp">Return</a><br>
+    <a href="products.jsp">Return</a><br>
         </div>
 </body>
 </html>

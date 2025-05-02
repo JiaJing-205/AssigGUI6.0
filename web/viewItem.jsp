@@ -100,7 +100,7 @@
                 <% } %>
             </table>
             <% }%>
-            <a href="staff.html">Return</a><br>
+            <a href="Auth/viewPersonalInfo">Return</a><br>
 
             </body>
             </html>
