@@ -70,6 +70,7 @@
                         <td>
                             <form action="AddToCartServlet" method="post" style="display:inline;">
                                 <input type="hidden" name="itemId" value="<%= r.getItemID()%>" />
+                                Quantity :
                                 <input class="quantity" type="number" name="quantity" value="1" min="1" />
                                 <input type="submit" value="Add to cart" />
                             </form>
