@@ -79,13 +79,8 @@ public class reportDA {
     }
         
     public List<Report> getTop3ItemByMonth(int month) throws SQLException {
-        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales " +
-            "FROM Item i " +
-            "INNER JOIN OrderInfo o ON i.itemID = o.itemID " +
-            "INNER JOIN Payment p ON o.paymentID = p.paymentID " +
-            "WHERE MONTH(p.paymentDate) = ? " +
-            "GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory " +
-            "FETCH FIRST 3 ROWS ONLY";
+        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales FROM Item INNER JOIN OrderInfo o ON i.itemID = o.itemID INNER JOIN Payment p ON o.paymentID = p.paymentID WHERE MONTH(p.paymentDate) = ? GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory order by itemID DESC";
+
 
         List<Report> reportList = new ArrayList<>();
         stmt = conn.prepareStatement(query);
@@ -105,13 +100,12 @@ public class reportDA {
         return reportList;
     }
     public List<Report> getTop3Item() throws SQLException {
-        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales " +
-            "FROM Item i " +
-            "INNER JOIN OrderInfo o ON i.itemID = o.itemID " +
-            "INNER JOIN Payment p ON o.paymentID = p.paymentID " +
-            //"WHERE Payment(p.paymentStatus) = 'paid' " +
-            "GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory " +
-            "FETCH FIRST 3 ROWS ONLY";
+        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales\n" +
+"            FROM Item i " +
+"            INNER JOIN OrderInfo o ON i.itemID = o.itemID " +
+"            INNER JOIN Payment p ON o.paymentID = p.paymentID " +
+"            GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory " +
+"            order by total_sold FETCH FIRST 3 ROWS ONLY";
 
         List<Report> reportList = new ArrayList<>();
         stmt = conn.prepareStatement(query);
@@ -130,18 +124,16 @@ public class reportDA {
         return reportList;
     }
     
-     public List<Report> getLast3ItemByMonth(int month) throws SQLException {
-        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales " +
-            "FROM Item i " +
-            "INNER JOIN OrderInfo o ON i.itemID = o.itemID " +
-            "INNER JOIN Payment p ON o.paymentID = p.paymentID " +
-            "WHERE MONTH(p.paymentDate) = ? " +
-            "GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory " +
-            "FETCH FIRST 3 ROWS ONLY";
+    public List<Report> getLast3Item() throws SQLException {
+        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales\n" +
+"            FROM Item i " +
+"            INNER JOIN OrderInfo o ON i.itemID = o.itemID " +
+"            INNER JOIN Payment p ON o.paymentID = p.paymentID " +
+"            GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory " +
+"            order by total_sold DESC FETCH FIRST 3 ROWS ONLY";
 
         List<Report> reportList = new ArrayList<>();
         stmt = conn.prepareStatement(query);
-        stmt.setInt(1, month);
 
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {
@@ -156,17 +148,13 @@ public class reportDA {
         }
         return reportList;
     }
-
-     public List<Report> getLast3Item() throws SQLException {
-        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales " +
-            "FROM Item i " +
-            "INNER JOIN OrderInfo o ON i.itemID = o.itemID " +
-            "INNER JOIN Payment p ON o.paymentID = p.paymentID " +
-            "GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory " +
-            "FETCH FIRST 3 ROWS ONLY";
+         
+     public List<Report> getLast3ItemByMonth(int month) throws SQLException {
+        String query = "SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, SUM(o.quantity) AS total_sold, (SUM(o.quantity) * i.itemPrice) AS total_sales FROM Item INNER JOIN OrderInfo o ON i.itemID = o.itemID INNER JOIN Payment p ON o.paymentID = p.paymentID WHERE MONTH(p.paymentDate) = ? GROUP BY i.itemID, i.itemName, i.itemPrice, i.itemCategory order by itemID";
 
         List<Report> reportList = new ArrayList<>();
         stmt = conn.prepareStatement(query);
+        stmt.setInt(1, month);
 
         ResultSet rs = stmt.executeQuery();
         while (rs.next()) {

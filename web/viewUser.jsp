@@ -73,15 +73,15 @@
     </head>
     <body>
         <div class="header-container">
-            <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
+            <a class="button" href="ProfileServlet">Return</a>
             <div class="button-group">
-                <form  action="/Assignment_Login/user/viewUserServlet">
+                <form  action="viewUserServlet">
                     <input class="button" type="submit" value="Display user" />
                 </form>
-                <form action="/Assignment_Login/staff/viewStaffServlet">
+                <form action="viewStaffServlet">
                     <input class="button" type="submit" value="Display staff" />
                 </form>
-                <form action="/Assignment_Login/admin/viewAdminServlet">
+                <form action="viewAdminServlet">
                     <input class="button" type="submit" value="Display admin" />
                 </form>
             </div>
