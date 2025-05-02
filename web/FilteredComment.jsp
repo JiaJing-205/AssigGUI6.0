@@ -178,77 +178,104 @@
                 color: white;
             }
         </style>
-    </style>
-</head>
-<body>
-
-    <h1>
-        <c:choose>
-            <c:when test="${param.type eq 'asc'}">Comments: Lowest to Highest Rating</c:when>
-            <c:when test="${param.type eq 'desc'}">Comments: Highest to Lowest Rating</c:when>
-            <c:when test="${param.type eq 'star5'}">★★★★★ (5 Star Ratings)</c:when>
-            <c:when test="${param.type eq 'star4'}">★★★★ (4 Star Ratings)</c:when>
-            <c:when test="${param.type eq 'star3'}">★★★ (3 Star Ratings)</c:when>
-            <c:when test="${param.type eq 'star2'}">★★ (2 Star Ratings)</c:when>
-            <c:when test="${param.type eq 'star1'}">★ (1 Star Ratings)</c:when>
-            <c:otherwise>All Comments</c:otherwise>
-        </c:choose>
-    </h1>
-
-        <div class="filter-container">
-            <div class="filter-dropdown">
-                <button class="filter-button ${not empty param.type ? 'active-filter' : ''}">
-                    Filter Comments ▼
-                </button>
-
-                <div class="dropdown-content">
-                    <div class="dropdown-header">Sort Order</div>
-                    <a href="filter-comments?type=asc" class="${param.type eq 'asc' ? 'active-filter' : ''}">↑ Lowest to Highest</a>
-                    <a href="filter-comments?type=desc" class="${param.type eq 'desc' ? 'active-filter' : ''}">↓ Highest to Lowest</a>
-
-                    <div class="dropdown-header">Filter by Rating</div>
-                    <a href="filter-comments?type=star5" class="${param.type eq 'star5' ? 'active-filter' : ''}">★★★★★ (5 Stars)</a>
-                    <a href="filter-comments?type=star4" class="${param.type eq 'star4' ? 'active-filter' : ''}">★★★★ (4 Stars)</a>
-                    <a href="filter-comments?type=star3" class="${param.type eq 'star3' ? 'active-filter' : ''}">★★★ (3 Stars)</a>
-                    <a href="filter-comments?type=star2" class="${param.type eq 'star2' ? 'active-filter' : ''}">★★ (2 Stars)</a>
-                    <a href="filter-comments?type=star1" class="${param.type eq 'star1' ? 'active-filter' : ''}">★ (1 Star)</a>
-                </div>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div id="navbar">
+            <div>
             </div>
 
-            <a href="${pageContext.request.contextPath}/view-comments" class="refresh">
-                🌐 Show All Comments
-            </a>
+            <div class="search-container"><form action="searchItemPublicServlet" method="get" style="text-align:center; margin-bottom:20px;">
+                    <input type="text" name="search" placeholder="Search item by name" required />
+                    <input type="submit" value="Search" />
+                </form>
+            </div>
+
+            <div>
+                <a class="login-btn" href="Auth/Login.jsp">Login</a>
+            </div>
         </div>
 
-    <c:choose>
-        <c:when test="${not empty comments}">
-            <c:forEach items="${comments}" var="comment">
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="username">${comment.username}</span>
-                        <span class="rating">
-                            <span class="stars">
-                                <c:forEach begin="1" end="${comment.rating}">★</c:forEach>
-                                <c:forEach begin="${comment.rating + 1}" end="5">☆</c:forEach>
-                                </span>
-                                (${comment.rating}/5)
-                        </span>
-                    </div>
-                    <p>${comment.comment}</p>
-                    <div class="comment-date">
-                        <fmt:formatDate value="${comment.createdAt}" pattern="MMMM dd, yyyy 'at' hh:mm a"/>
+        <div class="sidebar">
+            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
+            <a href="home.jsp">Home</a>
+            <a href="products.jsp">Products</a>
+            <a href="events">Events</a>
+            <a href="cart.jsp">Cart</a>
+            <a href="checkout/checkout.jsp">Checkout</a>
+            <a href="DisplayCmment.jsp">Comments</a>
+        </div>
+
+        <div class="content">
+
+            <h1>
+                <c:choose>
+                    <c:when test="${param.type eq 'asc'}">Comments: Lowest to Highest Rating</c:when>
+                    <c:when test="${param.type eq 'desc'}">Comments: Highest to Lowest Rating</c:when>
+                    <c:when test="${param.type eq 'star5'}">★★★★★ (5 Star Ratings)</c:when>
+                    <c:when test="${param.type eq 'star4'}">★★★★ (4 Star Ratings)</c:when>
+                    <c:when test="${param.type eq 'star3'}">★★★ (3 Star Ratings)</c:when>
+                    <c:when test="${param.type eq 'star2'}">★★ (2 Star Ratings)</c:when>
+                    <c:when test="${param.type eq 'star1'}">★ (1 Star Ratings)</c:when>
+                    <c:otherwise>All Comments</c:otherwise>
+                </c:choose>
+            </h1>
+
+            <div class="filter-container">
+                <div class="filter-dropdown">
+                    <button class="filter-button ${not empty param.type ? 'active-filter' : ''}">
+                        Filter Comments ▼
+                    </button>
+
+                    <div class="dropdown-content">
+                        <div class="dropdown-header">Sort Order</div>
+                        <a href="filter-comments?type=asc" class="${param.type eq 'asc' ? 'active-filter' : ''}">↑ Lowest to Highest</a>
+                        <a href="filter-comments?type=desc" class="${param.type eq 'desc' ? 'active-filter' : ''}">↓ Highest to Lowest</a>
+
+                        <div class="dropdown-header">Filter by Rating</div>
+                        <a href="filter-comments?type=star5" class="${param.type eq 'star5' ? 'active-filter' : ''}">★★★★★ (5 Stars)</a>
+                        <a href="filter-comments?type=star4" class="${param.type eq 'star4' ? 'active-filter' : ''}">★★★★ (4 Stars)</a>
+                        <a href="filter-comments?type=star3" class="${param.type eq 'star3' ? 'active-filter' : ''}">★★★ (3 Stars)</a>
+                        <a href="filter-comments?type=star2" class="${param.type eq 'star2' ? 'active-filter' : ''}">★★ (2 Stars)</a>
+                        <a href="filter-comments?type=star1" class="${param.type eq 'star1' ? 'active-filter' : ''}">★ (1 Star)</a>
                     </div>
                 </div>
-            </c:forEach>
-        </c:when>
-        <c:otherwise>
-            <div class="empty-message">
-                <p>No comments found matching your filter.</p>
-                <c:if test="${empty comments}">
-                    <p class="debug-info">Debug: The 'comments' attribute is null or empty</p>
-                </c:if>
+
+                <a href="${pageContext.request.contextPath}/view-comments" class="refresh">
+                    🌐 Show All Comments
+                </a>
             </div>
-        </c:otherwise>
-    </c:choose>
-</body>
+
+            <c:choose>
+                <c:when test="${not empty comments}">
+                    <c:forEach items="${comments}" var="comment">
+                        <div class="comment">
+                            <div class="comment-header">
+                                <span class="username">${comment.username}</span>
+                                <span class="rating">
+                                    <span class="stars">
+                                        <c:forEach begin="1" end="${comment.rating}">★</c:forEach>
+                                        <c:forEach begin="${comment.rating + 1}" end="5">☆</c:forEach>
+                                        </span>
+                                        (${comment.rating}/5)
+                                </span>
+                            </div>
+                            <p>${comment.comment}</p>
+                            <div class="comment-date">
+                                <fmt:formatDate value="${comment.createdAt}" pattern="MMMM dd, yyyy 'at' hh:mm a"/>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <div class="empty-message">
+                        <p>No comments found matching your filter.</p>
+                        <c:if test="${empty comments}">
+                            <p class="debug-info">Debug: The 'comments' attribute is null or empty</p>
+                        </c:if>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </body>
 </html>
