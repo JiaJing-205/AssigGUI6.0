@@ -7,8 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Checkout Page</title>
-        <link rel="stylesheet" href="checkout.css">
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="../styles.css" />
         <%!
             Cart cart = new Cart();
 
@@ -30,101 +29,100 @@
                 </form>
             </div>
             <div>
-                <a class="login-btn" href="/Auth/AuthCheckServlet">Login</a>
+                <a class="login-btn" href="../Auth/AuthCheckServlet">Login</a>
             </div>
         </div>
 
         <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="home.jsp">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="event.jsp">Events</a>
-            <a href="cart.jsp">Cart</a>
+            <a href="../home.jsp"><img src="../Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
+            <a href="../home.jsp">Home</a>
+            <a href="../products.jsp">Products</a>
+            <a href="../event.jsp">Events</a>
+            <a href="../cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
-<a href="DisplayCmment.jsp">Comments</a>
+            <a href="../DisplayComment.jsp">Comments</a>
         </div>
 
+        <!-- ... Existing imports and HTML start ... -->
         <div class="content">
             <div class="container">
-                <header class="checkout-header">
+
+                <header class="checkout-header info">
                     <h1>Checkout</h1>
                 </header>
 
-                <div class="checkout-grid">
-                    <div class="left-column">
-                        <section class="cart-items">
+                <div class="checkout-grid" style="display: flex; gap: 30px; padding: 20px;">
+                    <!-- Left Column -->
+                    <div class="left-column" style="flex: 2;">
+
+                        <section class="cart-items info">
                             <h2>Your Items</h2>
                             <%
                                 cart = cart.generateCart();
-
                                 for (int i = 0; i < cart.getCartItems().size(); i++) {
-                                    out.println("<div class=\"cart-item\">"
-                                            + "<div class=\"item-details\">"
-                                            + "<h3 class=\"item-name\">" + cart.getCartItems().get(i).getName() + "</h3>"
-                                            + "<div class=\"item-quantity\"> Quantity: " + cart.getCartItems().get(i).getQuantity() + "</div>"
-                                            + "<div class=\"item-price\">$" + String.format("%.2f", (cart.getCartItems().get(i).getQuantity() * cart.getCartItems().get(i).getPrice())) + "</div>"
-                                            + "</div>"
-                                            + "</div>");
-                                }
                             %>
-                            <a href="../cart.jsp"><button class="checkout-btn">Edit Items</button></a>
+                            <div class="cart-item" style="margin-bottom: 10px;">
+                                <div class="item-details">
+                                    <h3 class="item-name"><%= cart.getCartItems().get(i).getName()%></h3>
+                                    <div class="form-control">Quantity: <%= cart.getCartItems().get(i).getQuantity()%></div>
+                                    <div class="form-control">Price: RM<%= String.format("%.2f", (cart.getCartItems().get(i).getQuantity() * cart.getCartItems().get(i).getPrice()))%></div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <a href="../cart.jsp">Edit Items</a>
                         </section>
 
-                        <section class="customer-info">
-                            <h2 class="section-title">Shipping Information</h2>
+                        <section class="customer-info info">
+                            <h2>Shipping Information</h2>
                             <form action="../CheckoutServlet" method="POST">
-                                <div class="form-row">
-                                    <%
-                                        //Get userId
-                                        Cookie[] userIdCookies = request.getCookies();
-                                        String userId = "";
-                                        if (userIdCookies != null) {
-                                            for (Cookie cookie : userIdCookies) {
-                                                if (cookie.getName().equals("userId")) {
-                                                    userId = cookie.getValue();
-                                                }
+                                <%
+                                    Cookie[] userIdCookies = request.getCookies();
+                                    String userId = "";
+                                    if (userIdCookies != null) {
+                                        for (Cookie cookie : userIdCookies) {
+                                            if (cookie.getName().equals("userId")) {
+                                                userId = cookie.getValue();
                                             }
-                                        } else {
-                                            userId = null;
                                         }
+                                    } else {
+                                        userId = null;
+                                    }
 
-                                        if (userId == null || userId.equals("")) {
-                                            out.println("<div class=\"form-group\">"
-                                                    + "<label for=\"first-name\">First Name</label>"
-                                                    + "<input type=\"text\" id=\"first-name\" name=\"firstName\" required>"
-                                                    + "</div>"
-                                                    + "<div class=\"form-group\">"
-                                                    + "<label for=\"last-name\">Last Name</label>"
-                                                    + "<input type=\"text\" id=\"last-name\" name=\"lastName\" required>"
-                                                    + "</div>");
-                                        } else {
-                                            user = userDA.retrieveRecord(userId);
-                                            out.println("<div class=\"form-group\">"
-                                                    + "<label for=\"first-name\">Name</label>"
-                                                    + "<input type=\"text\" id=\"name\" name=\"name\" value=\"" + user.getName() + "\" readonly=\"readonly\">"
-                                                    + "</div>");
-                                        }
-
-                                    %>
+                                    if (userId == null || userId.equals("")) {
+                                %>
+                                <div class="form-control">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" name="firstName" required>
                                 </div>
+                                <div class="form-control">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" name="lastName" required>
+                                </div>
+                                <% } else {
+                                    user = userDA.retrieveRecord(userId);
+                                %>
+                                <div class="form-control">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" value="<%= user.getName()%>" readonly>
+                                </div>
+                                <% } %>
 
-                                <div class="form-group">
+                                <div class="form-control">
                                     <label for="address">Address</label>
                                     <input type="text" id="address" name="address" required>
                                 </div>
 
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="city">City</label>
-                                        <input type="text" id="city" name="city" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="zip">ZIP Code</label>
-                                        <input type="text" id="zip" name="zip" required>
-                                    </div>
+                                <div class="form-control">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" required>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-control">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" name="zip" required>
+                                </div>
+
+                                <div class="form-control">
                                     <label for="state">State</label>
                                     <select id="state" name="state" required>
                                         <option value="">Select State</option>
@@ -144,6 +142,7 @@
                                         <option value="Kuala Lumpur">Kuala Lumpur</option>
                                         <option value="Putrajaya">Putrajaya</option>
                                     </select>
+                                    </select>
                                 </div>
 
                                 <button type="submit" class="checkout-btn">Confirm Order</button>
@@ -151,39 +150,36 @@
                         </section>
                     </div>
 
-                    <div class="right-column">
-                        <section class="checkout-summary">
+                    <!-- Right Column -->
+                    <div class="right-column" style="flex: 1;">
+                        <section class="checkout-summary info">
                             <h2 class="summary-title">Order Summary</h2>
+                            <%
+                                subtotal = 0.0;
+                                for (int i = 0; i < cart.getCartItems().size(); i++) {
+                                    subtotal += cart.getCartItems().get(i).getPrice() * cart.getCartItems().get(i).getQuantity();
+                                }
 
-                            <div class="summary-row">
-                                <%                                subtotal = 0.0;
+                                if (subtotal <= 0.0) {
+                                    shippingFee = 0.0;
+                                    shippingFeeTax = shippingFee * 0.06;
+                                }
+                            %>
 
-                                    for (int i = 0; i < cart.getCartItems().size(); i++) {
-                                        subtotal += (cart.getCartItems().get(i).getPrice() * cart.getCartItems().get(i).getQuantity());
-                                    }
-
-                                    //If no item, set no shipping fee
-                                    if (subtotal <= 0.0) {
-                                        shippingFee = 0.0;
-                                        shippingFeeTax = shippingFee * 0.06;
-                                    }
-                                %>
-                                <span>Subtotal</span>
+                            <div class="form-control">
+                                <label>Subtotal:</label>
                                 <span>RM<%= String.format("%.2f", subtotal)%></span>
                             </div>
-
-                            <div class="summary-row">
-                                <span>Shipping</span>
+                            <div class="form-control">
+                                <label>Shipping:</label>
                                 <span>RM<%= String.format("%.2f", shippingFee)%></span>
                             </div>
-
-                            <div class="summary-row">
-                                <span>Shipping Fee SST (6%)</span>
+                            <div class="form-control">
+                                <label>Shipping Fee SST (6%):</label>
                                 <span>RM<%= String.format("%.2f", shippingFeeTax)%></span>
                             </div>
-
-                            <div class="summary-total summary-row">
-                                <span>Total</span>
+                            <div class="form-control" style="font-weight:bold;">
+                                <label>Total:</label>
                                 <span>RM<%= String.format("%.2f", (subtotal + shippingFee + shippingFeeTax))%></span>
                             </div>
                         </section>
@@ -191,5 +187,6 @@
                 </div>
             </div>
         </div>
+
     </body>
 </html>
