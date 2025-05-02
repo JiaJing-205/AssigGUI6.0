@@ -3,7 +3,7 @@ package domain;
 import cart.Cart;
 import cart.CartItem;
 import da.OrderDA;
-import item.Item;
+import item.*;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -18,7 +18,9 @@ public class Order implements Serializable {
     private int quantity = 0;
     private double price = 0;
     private String orderDate = "";
-
+    private String itemName;
+    private String itemCategory;
+    private Item item;
     //Added by Yizhe
     private static int orderIDCount = 1;
 
@@ -36,6 +38,25 @@ public class Order implements Serializable {
     }
 
     // GETTER & SETTER
+    public String getItemID() {
+        return itemID;
+    }
+
+public String getItemName() {
+    return itemName;
+}
+
+public void setItemName(String itemName) {
+    this.itemName = itemName;
+}
+
+public String getItemCategory() {
+    return itemCategory;
+}
+
+public void setItemCategory(String itemCategory) {
+    this.itemCategory = itemCategory;
+}
     public String getOrderID() {
         return orderID;
     }
@@ -50,10 +71,6 @@ public class Order implements Serializable {
 
     public void setPaymentID(String paymentID) {
         this.paymentID = paymentID;
-    }
-
-    public String getItemID() {
-        return itemID;
     }
 
     public void setItemID(String itemID) {
@@ -105,9 +122,13 @@ public class Order implements Serializable {
             while (orderRs.next()) {
                 dbOrderCount++;
             }
-            orderIDCount = dbOrderCount + 1;
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+        
+        //Initialize count
+        if (dbOrderCount != 0) {
+            orderIDCount = dbOrderCount;
         }
         
         if (orderIDCount < 10) {
@@ -117,6 +138,7 @@ public class Order implements Serializable {
         } else {
             orderID = "O" + orderIDCount;
         }
+        orderIDCount++;
 
         Order order = new Order();
         order.setOrderID(orderID);

@@ -1,7 +1,7 @@
 package da;
 
-import domain.Order;
-import domain.Payment;
+import domain.*;
+import item.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -85,7 +85,7 @@ public class PaymentDA {
         }
 
     }
-
+    
     //Added by Yizhe
     public ResultSet getRecordResultSet() {
         String getRecordStr = "SELECT * FROM " + tableName;
@@ -103,7 +103,7 @@ public class PaymentDA {
 
     public void updateProfileRecord(Payment payment) {
         try {
-            String insertSQL = "UPDATE " + tableName + " SET paymentMethod=?, paymentStatus=?, WHERE paymentID=?";
+            String insertSQL = "UPDATE " + tableName + " SET paymentMethod=?, paymentStatus=? WHERE paymentID=?";
             stmt = conn.prepareStatement(insertSQL);
             stmt.setString(1, payment.getPaymentMethod());
             stmt.setString(2, payment.getPaymentStatus());
@@ -126,55 +126,58 @@ public class PaymentDA {
         }
     }
 
-    public List<Payment> getUserPayment(String userID) throws SQLException {
-        List<Payment> payments = new ArrayList<>();
-        String sql = "SELECT * FROM Payment p LEFT JOIN Orders o ON p.payment_id = o.payment_id WHERE p.user_id = ?";
+public List<Payment> getUserPayment(String userID) throws SQLException {
+    List<Payment> payments = new ArrayList<>();
 
-        PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setString(1, userID);
-        ResultSet rs = stmt.executeQuery();
+    String sql = "SELECT " +
+    "p.paymentID, p.userID, p.totalPrice, p.paymentMethod, p.paymentStatus, p.paymentDate, " +
+    "o.orderID, o.itemID, o.quantity, o.price, o.orderDate, " +
+    "i.itemName, i.itemCategory " +
+    "FROM Payment p " +
+    "JOIN OrderInfo o ON p.paymentID = o.paymentID " +
+    "JOIN Item i ON o.itemID = i.itemID " +
+    "WHERE p.userID = ?";
 
-        Map<String, Payment> paymentMap = new HashMap<>();
+    PreparedStatement stmt = conn.prepareStatement(sql);
+    stmt.setString(1, userID);
+    ResultSet rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            String paymentID = rs.getString("paymentID");
-            Payment payment = paymentMap.get(paymentID);
+    Map<String, Payment> paymentMap = new HashMap<>();
 
-            if (payment == null) {
-                payment = new Payment(
-                        paymentID,
-                        rs.getString("userID"),
-                        rs.getDouble("totalPrice"),
-                        rs.getString("paymentMethod"),
-                        rs.getString("paymentStatus"),
-                        rs.getString("paymentDate")
-                );
-                paymentMap.put(paymentID, payment);
-            }
+    while (rs.next()) {
+        String paymentID = rs.getString("paymentID");
+        Payment payment = paymentMap.get(paymentID);
 
-            Order order = new Order(
-                    rs.getString("orderID"),
+        if (payment == null) {
+            payment = new Payment(
                     paymentID,
-                    rs.getString("itemID"),
-                    rs.getInt("quantity"),
-                    rs.getDouble("price"),
-                    rs.getString("orderDate")
+                    rs.getString("userID"),
+                    rs.getDouble("totalPrice"),
+                    rs.getString("paymentMethod"),
+                    rs.getString("paymentStatus"),
+                    rs.getString("paymentDate")
             );
-            payment.getOrders().add(order);
+            paymentMap.put(paymentID, payment);
         }
 
-        payments.addAll(paymentMap.values());
-        return payments;
+        Order order = new Order(
+                rs.getString("orderID"),
+                paymentID,
+                rs.getString("itemID"),
+                rs.getInt("quantity"),
+                rs.getDouble("price"),
+                rs.getString("orderDate")
+        );
+
+        // Set itemName and itemCategory directly from the ResultSet
+        order.setItemName(rs.getString("itemName"));
+        order.setItemCategory(rs.getString("itemCategory"));
+
+        payment.getOrders().add(order);
     }
 
-    public boolean updatePaymentStatus(String paymentID, String paymentMethod) throws SQLException {
-        String updateSQL = "UPDATE Payment SET paymentStatus = 'Paid', paymentMethod = ? WHERE paymentID = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(updateSQL)) {
-            stmt.setString(1, paymentMethod);
-            stmt.setString(2, paymentID);
+    payments.addAll(paymentMap.values());
+    return payments;
+}
 
-            int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
-        }
-    }
 }
