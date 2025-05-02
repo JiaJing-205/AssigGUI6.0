@@ -27,8 +27,36 @@
             <a href="events">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
+<<<<<<< Updated upstream
             <a href="DisplayComment.jsp">Comments</a>
         </div>
+=======
+<a href="DisplayComment.jsp">Comments</a>
+        </div>
+        <div class = "content">
+            <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
+            <h3>New Item Details</h3>
+            <form method="post" action="addItemServlet">
+                <p>ID: 
+                    <input type="text" name="id" value="<%= request.getAttribute("id") != null ? request.getAttribute("id") : ""%>" />
+                    <br>
+                    <span style="color:red;">
+                        <%= request.getAttribute("error") != null ? request.getAttribute("error") : ""%>
+                    </span>
+                </p>
+                <p>Name: <input type="text" name="name" value="<%= request.getAttribute("name") != null ? request.getAttribute("name") : ""%>" /></p>
+                <p>Category: 
+                    <select name="category">
+                        <option value="Badminton" <%= "Badminton".equals(request.getAttribute("category")) ? "selected" : ""%>>Badminton</option>
+                        <option value="Table Tennis" <%= "Table Tennis".equals(request.getAttribute("category")) ? "selected" : ""%>>Table Tennis</option>
+                        <option value="General" <%= "General".equals(request.getAttribute("category")) ? "selected" : ""%>>General</option>
+                    </select>
+                </p>
+                <p>Price: <input type="text" name="price" value="<%= request.getAttribute("price") != null ? request.getAttribute("price") : ""%>" /></p>
+                <p>Stock: <input type="text" name="stock" value="<%= request.getAttribute("stock") != null ? request.getAttribute("stock") : ""%>" /></p>
+                <input type="submit" value="Add Item">
+            </form>
+>>>>>>> Stashed changes
 
         <div class="content">
             <div class="container">

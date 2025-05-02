@@ -3,11 +3,13 @@ package Auth;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@WebServlet("/AuthCheckServlet")
 public class AuthCheckServlet extends HttpServlet {
 
     @Override
@@ -20,7 +22,7 @@ public class AuthCheckServlet extends HttpServlet {
         if (isAuthenticated) {
             response.sendRedirect("ProfileServlet");
         } else {
-            response.sendRedirect("Auth/Login.jsp");
+            response.sendRedirect("./Auth/Login.jsp");
         }
     }
     
