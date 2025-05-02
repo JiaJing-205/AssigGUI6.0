@@ -114,6 +114,7 @@
                                     <option value="Johor">Johor</option>
                                     <option value="Pahang">Pahang</option>
                                     <option value="Sarawak">Sarawak</option>
+                                    <option value="Selangor">Selangor</option>
                                     <option value="Labuan">Labuan</option>
                                     <option value="Kuala Lumpur">Kuala Lumpur</option>
                                     <option value="Putrajaya">Putrajaya</option>
