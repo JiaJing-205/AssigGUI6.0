@@ -113,7 +113,7 @@ public class ItemDA {
     }
     
     public List<Item> getRecordSearchName(String name) throws SQLException {
-        String queryStr = "SELECT * FROM Item WHERE itemID = ?";
+        String queryStr = "SELECT * FROM Item WHERE itemName LIKE '%?%'";
         List<Item> itemList = new ArrayList<>();
 
         try {
