@@ -144,7 +144,7 @@
     </div>
 
     <div style="text-align:center;">
-        <a href="user.html">Back to Home</a>
+        <a href="profile.jsp">Back to Home</a>
     </div>
 
     <script>

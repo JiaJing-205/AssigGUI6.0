@@ -69,125 +69,100 @@
                 height: 40px;
                 padding: 0 0 0 0;
             }
-        </style><link rel="stylesheet" href="styles.css" />
+        </style>
     </head>
     <body>
-        <div id="navbar">
-            <div></div>
-            <div class="search-container">
-                <form action="searchItemServletPublic" method="get" style="text-align:center; margin-bottom:20px;">
-                    <input type="text" name="search" placeholder="Search item by name" required />
-                    <input type="submit" value="Search" />
+        <div class="header-container">
+            <a class="button" href="ProfileServlet">Return</a>
+            <div class="button-group">
+                <form  action="viewUserServlet">
+                    <input class="button" type="submit" value="Display user" />
+                </form>
+                <form action="viewStaffServlet">
+                    <input class="button" type="submit" value="Display staff" />
+                </form>
+                <form action="viewAdminServlet">
+                    <input class="button" type="submit" value="Display admin" />
                 </form>
             </div>
-            <div>
-                <a class="login-btn" href="/Auth/AuthCheckServlet">Login</a>
-            </div>
-        </div>
-
-        <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="home.jsp">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="event.jsp">Events</a>
-            <a href="cart.jsp">Cart</a>
-            <a href="checkout/checkout.jsp">Checkout</a>
-            <a href="DisplayComment.jsp">Comments</a>
         </div>
 
         <div class="content">
-            <div class="header-container">
-                <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
-                <div class="button-group">
-                    <form  action="/Assignment_Login/user/viewUserServlet">
-                        <input class="button" type="submit" value="Display user" />
-                    </form>
-                    <form action="/Assignment_Login/staff/viewStaffServlet">
-                        <input class="button" type="submit" value="Display staff" />
-                    </form>
-                    <form action="/Assignment_Login/admin/viewAdminServlet">
-                        <input class="button" type="submit" value="Display admin" />
-                    </form>
-                </div>
-            </div>
+            <h2 style="text-align:center;">All <%= request.getAttribute("userRole") != null ? request.getAttribute("userRole") : "Users"%></h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Birthday</th>
+                    <th>Password</th>
+                    <th>Create Date</th>
+                    <th colspan="2">Options</th>
+                </tr>
+                <%
+                    List<User> userList = (List<User>) request.getAttribute("allUsers");
+                    if (userList != null && !userList.isEmpty()) {
+                        for (User u : userList) {
+                %>
+                <tr>
+                    <td><%= u.getId()%></td>
+                    <td><%= u.getName()%></td>
+                    <td><%= u.getEmail()%></td>
+                    <td><%= u.getPhone()%></td>
+                    <td><%= u.getHbd()%></td>
+                    <td><%= u.getPwd()%></td>
+                    <td><%= u.getCreateDate()%></td>
+                    <td style="padding: 1px 0 6px 0;">
+                        <form action="../user/getUserServlet" method="get" style="display:inline;">
+                            <input type="hidden" name="id" value="<%= u.getId()%>" />
+                            <input type="submit" class="button-small" value="Edit" />
+                        </form>
+                    </td>
+                    <td style="padding: 1px 0 6px 0;">
+                        <%
+                            Cookie[] cookies = request.getCookies();
+                            String userId = null;
 
-            <div class="content">
-                <h2 style="text-align:center;">All <%= request.getAttribute("userRole") != null ? request.getAttribute("userRole") : "Users"%></h2>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Birthday</th>
-                        <th>Password</th>
-                        <th>Create Date</th>
-                        <th colspan="2">Options</th>
-                    </tr>
-                    <%
-                        List<User> userList = (List<User>) request.getAttribute("allUsers");
-                        if (userList != null && !userList.isEmpty()) {
-                            for (User u : userList) {
-                    %>
-                    <tr>
-                        <td><%= u.getId()%></td>
-                        <td><%= u.getName()%></td>
-                        <td><%= u.getEmail()%></td>
-                        <td><%= u.getPhone()%></td>
-                        <td><%= u.getHbd()%></td>
-                        <td><%= u.getPwd()%></td>
-                        <td><%= u.getCreateDate()%></td>
-                        <td style="padding: 1px 0 6px 0;">
-                            <form action="../user/getUserServlet" method="get" style="display:inline;">
-                                <input type="hidden" name="id" value="<%= u.getId()%>" />
-                                <input type="submit" class="button-small" value="Edit" />
-                            </form>
-                        </td>
-                        <td style="padding: 1px 0 6px 0;">
-                            <%
-                                Cookie[] cookies = request.getCookies();
-                                String userId = null;
-
-                                if (cookies != null) {
-                                    for (Cookie cookie : cookies) {
-                                        if ("userId".equals(cookie.getName())) {
-                                            userId = cookie.getValue();
-                                            break;
-                                        }
+                            if (cookies != null) {
+                                for (Cookie cookie : cookies) {
+                                    if ("userId".equals(cookie.getName())) {
+                                        userId = cookie.getValue();
+                                        break;
                                     }
                                 }
-                                if (userId != null) {
-                                    if (!userId.equals(u.getId())) {
-                            %>
-                            <form action="../user/deleteUserServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                <input type="hidden" name="id" value="<%= u.getId()%>" />
+                            }
+                            if (userId != null) {
+                                if (!userId.equals(u.getId())) {
+                        %>
+                        <form action="../user/deleteUserServlet" method="post" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                            <input type="hidden" name="id" value="<%= u.getId()%>" />
 
-                                <input type="submit" class="button-small" value="Delete" />
-                            </form>
-                            <%
-                                    }
+                            <input type="submit" class="button-small" value="Delete" />
+                        </form>
+                        <%
                                 }
-                            %>
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    } else {
-                    %>
-                    <tr>
-                        <td colspan="9" style="color: red; text-align: center;">
-                            No records
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    %>
-                </table>
-                <br>
-                <form action="../addUser.jsp">
-                    <input class="button" type="submit" value="Add" style="width: 100px"/>
-                </form>
-            </div>
+                            }
+                        %>
+                    </td>
+                </tr>
+                <%
+                    }
+                } else {
+                %>
+                <tr>
+                    <td colspan="9" style="color: red; text-align: center;">
+                        No records
+                    </td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
+            <br>
+            <form action="../addUser.jsp">
+                <input class="button" type="submit" value="Add" style="width: 100px"/>
+            </form>
         </div>
     </body>
 </html>

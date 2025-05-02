@@ -112,31 +112,30 @@ public class ItemDA {
         return itemList;
     }
     
-    //for search with name
-    public Item getRecordSearchName(String name) throws SQLException {
-        String queryStr = "SELECT * FROM Item WHERE LOWER(itemName) LIKE LOWER?";
-        Item itemFind = new Item();
+    public List<Item> getRecordSearchName(String code) throws SQLException {
+        String queryStr = "SELECT * FROM Item WHERE itemName = ?";
+        List<Item> itemList = new ArrayList<>();
 
         try {
             stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, "%" + name.toLowerCase() + "%'");
+            stmt.setString(1, code);
             ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            Item itemDet = new Item(
+            Item programme = new Item(
                 rs.getString("itemID"),
                 rs.getString("itemName"),
                 rs.getString("itemCategory"),
                 rs.getFloat("itemPrice"),
                 rs.getInt("stock")
             );
-            itemFind = itemDet;
+            itemList.add(programme);
         }
 
     } catch (SQLException ex) {
         throw ex;
     }
-        return itemFind;
+        return itemList;
     }
         
     public List<Item> getAllRecordStock() throws SQLException {
@@ -205,6 +204,31 @@ public class ItemDA {
         }
         return null;
     }
+        
+public Item retrieveRecordByID(String itemID) throws SQLException {
+    String queryStr = "SELECT * FROM Item WHERE itemID = ?";
+    Item item = null;
+
+    try {
+        stmt = conn.prepareStatement(queryStr);
+        stmt.setString(1, itemID);
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            item = new Item(
+                rs.getString("itemID"),
+                rs.getString("itemName"),
+                rs.getString("itemCategory"),
+                rs.getDouble("itemPrice"),
+                rs.getInt("stock")
+            );
+        }
+    } catch (SQLException ex) {
+        throw ex;
+    }
+
+    return item;
+}
         
     private void shutDown() throws SQLException{
         if (conn != null) {
