@@ -1,9 +1,10 @@
 <%@ page import="item.Item" %>
+<%@ page import="item.ItemDA" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Item List</title>
+    <title>Product List</title>
     <link rel="stylesheet" href="styles.css" />
     <style>
         table {
@@ -21,25 +22,31 @@
         }
         h2 {
             text-align: center;
-            margin-top: 40px;
         }
         input.quantity {
             width: 50px;
-            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<h2>Available Items</h2>
-<form action="ProductsDiplayServlet" method="get">
-    <input type="submit" value="Load Items" class="load-button" />
-</form>
+<h2>Product Catalog</h2>
+
 <%
-    List<Item> itemList = (List<Item>) request.getAttribute("allItems");
-    if (itemList == null || itemList.isEmpty()) {
+    List<Item> allItems = null;
+    try {
+        ItemDA itDA = new ItemDA();
+        allItems = itDA.getAllRecord();
+    } catch (Exception e) {
+        out.println("<p style='color:red; text-align:center;'>Unable to load items.</p>");
+        e.printStackTrace();
+    }
 %>
-    <p style="text-align:center;">No items available.</p>
+
+<%
+    if (allItems == null || allItems.isEmpty()) {
+%>
+    <p style="text-align:center;">No items found.</p>
 <%
     } else {
 %>
@@ -52,8 +59,7 @@
             <th>Action</th>
         </tr>
         <%
-            for (Item item : itemList) {
-                int maxStock = item.retrieveStockFromRecord(item.getID());
+            for (Item item : allItems) {
         %>
         <tr>
             <td><%= item.getName() %></td>
@@ -62,12 +68,12 @@
             <td>
                 <form action="AddToCartServlet" method="post" style="display:inline;">
                     <input type="hidden" name="itemId" value="<%= item.getID() %>" />
-                    <input class="quantity" type="number" name="quantity" value="1" min="1" max="<%= item.retrieveStockFromRecord(item.getID()) %>" />
-                    <input type="submit" value="Add to Cart" />
-                </form>
+                    <input class="quantity" type="number" name="quantity" value="1"
+                           min="1" max="<%= item.getStock() %>" />
             </td>
             <td>
-                    
+                    <input type="submit" value="Add to Cart" />
+                </form>
             </td>
         </tr>
         <%
