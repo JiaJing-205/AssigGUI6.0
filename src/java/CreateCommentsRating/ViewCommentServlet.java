@@ -3,6 +3,8 @@ package CreateCommentsRating;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -26,4 +28,45 @@ public class ViewCommentServlet extends HttpServlet {
             request.getRequestDispatcher("/CommentError.jsp").forward(request, response);
         }
     }
+=======
+=======
+>>>>>>> Stashed changes
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/view-comments")
+public class ViewCommentServlet extends HttpServlet {
+    private CreateCommentRepository commentRepo;
+
+    @Override
+    public void init() throws ServletException {
+        commentRepo = new CreateCommentRepository();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            String filterType = request.getParameter("filter");
+            List<CreateComment> comments = (filterType != null) ? 
+                commentRepo.filterComments(filterType) : 
+                commentRepo.findAll();
+            
+            request.setAttribute("comments", comments);
+            request.setAttribute("totalComments", commentRepo.countAllComments());
+            request.getRequestDispatcher("/DisplayComments.jsp").forward(request, response);
+            
+        } catch (Exception e) {
+            throw new ServletException("Failed to load comments", e);
+        }
+    }
+
+    @Override
+    public void destroy() {
+        commentRepo.close();
+    }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 }
