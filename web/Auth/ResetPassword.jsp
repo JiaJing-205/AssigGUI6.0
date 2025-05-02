@@ -206,7 +206,7 @@
                                     margin:0;"/></a>
             <a href="home.jsp">Home</a>
             <a href="products.jsp">Products</a>
-            <a href="event.jsp">Events</a>
+            <a href="events">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout.jsp">Checkout</a>
             <!-- This part is for if I am an admin or a staff 
