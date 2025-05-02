@@ -106,7 +106,7 @@
             </td>
             <td>
                 <form action="searchItemServletPublic" method="get" style="display:inline;">
-                    <input type="hidden" type="text" name="search" value="<%= item.getName() %>"/>
+                    <input type="hidden" name="search" value="<%= item.getName() %>"/>
                     <input type="submit" value="View Details" />
                 </form>
             </td>

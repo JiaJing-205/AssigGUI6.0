@@ -14,16 +14,16 @@ public class searchItemPublicServlet extends HttpServlet {
 
         String searchName = request.getParameter("search");
         ItemDA itDA = new ItemDA();
-        List<Item> itemList = null;
+        Item foundItem = new Item();
 
         try {
             if (searchName != null && !searchName.trim().isEmpty()) {
-                itemList = itDA.getRecordSearchName(searchName.trim()); // Updated method
+                foundItem = itDA.getRecordSearchName(searchName.trim());
             }
-            if (itemList == null || itemList.isEmpty()) {
+            if (foundItem == null) {
                 request.setAttribute("error", "No items found.");
             } else {
-                request.setAttribute("itemList", itemList);
+                request.setAttribute("itemfound", foundItem);
             }
         } catch (SQLException e) {
             e.printStackTrace();
