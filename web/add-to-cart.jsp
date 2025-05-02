@@ -29,7 +29,7 @@
             <a href="home.jsp">Home</a>
             <a href="products.jsp">Products</a>
             <a href="event.jsp">Events</a>
-            <a href="checkout/cart.jsp">Cart</a>
+            <a href="cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
         </div>
         <div class = "content">
@@ -51,7 +51,7 @@
             <input type="submit" value="Add to cart"/>
         </form>
 
-        <a checkout/cart.jsp><button>Cart</button></a>
+        <a cart.jsp><button>Cart</button></a>
         </div>
     </body>
 </html>

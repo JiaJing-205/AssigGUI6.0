@@ -25,7 +25,7 @@
             <a href="home.jsp">Home</a>
             <a href="products.jsp">Products</a>
             <a href="event.jsp">Events</a>
-            <a href="checkout/cart.jsp">Cart</a>
+            <a href="cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
         </div>
         <div class = "content">

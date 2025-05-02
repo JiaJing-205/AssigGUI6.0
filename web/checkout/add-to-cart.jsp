@@ -27,6 +27,6 @@
             <input type="submit" value="Add to cart"/>
         </form>
 
-        <a checkout/cart.jsp><button>Cart</button></a>
+        <a cart.jsp><button>Cart</button></a>
     </body>
 </html>
