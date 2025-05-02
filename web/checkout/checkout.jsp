@@ -122,6 +122,7 @@
                             </div>
                             
                             <button type="submit" class="checkout-btn">Confirm Order</button>
+                        </form>
                     </section>
                 </div>
 
