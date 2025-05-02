@@ -114,12 +114,12 @@ public class ItemDA {
     
     //for search with name
     public Item getRecordSearchName(String name) throws SQLException {
-        String queryStr = "SELECT * FROM Item WHERE itemName LIKE?";
+        String queryStr = "SELECT * FROM Item WHERE LOWER(itemName) LIKE LOWER?";
         Item itemFind = new Item();
 
         try {
             stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, "%" + name + "%'");
+            stmt.setString(1, "%" + name.toLowerCase() + "%'");
             ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
