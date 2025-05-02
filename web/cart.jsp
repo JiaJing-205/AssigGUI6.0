@@ -33,6 +33,7 @@
             <a href="events">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
+<a href="DisplayCmment.jsp">Comments</a>"
         </div>
     <div class = "content">
         <a href="products.jsp">Back</a>
