@@ -57,6 +57,7 @@
             <a href="events">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
+<a href="DisplayComment.jsp">Comments</a>
         </div>
 
         <div class="content">

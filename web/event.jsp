@@ -2,14 +2,14 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Upcoming Events</title>
-    <link rel="stylesheet" href="styles.css" />
+    <head>
+        <title>Upcoming Events</title>
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <div id="navbar">
             <div></div>
-            <div class="search-container"><form action="searchItemServlet" method="get" style="text-align:center; margin-bottom:20px;">
+            <div class="search-container"><form action="searchItemPublicServlet" method="get" style="text-align:center; margin-bottom:20px;">
                     <input type="text" name="search" placeholder="Search item by name" required />
                     <input type="submit" value="Search" />
                 </form>
@@ -27,43 +27,44 @@
             <a href="events">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
+            <a href="DisplayComment.jsp">Comments</a>
         </div>
 
         <div class="content">
-    <h2 style="text-align: center;">Upcoming Events</h2>
-    <p class="bar"><%= request.getAttribute("heymessage") %></p>
+            <h2 style="text-align: center;">Upcoming Events</h2>
+            <p class="bar"><%= request.getAttribute("heymessage")%></p>
 
-    <%
-        List<Event> events = (List<Event>) request.getAttribute("eventList");
-        if (events == null || events.isEmpty()) {
-    %>
-        <p style="text-align:center;">No events available.</p>
-    <%
-        } else {
-    %>
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Description</th>
-            </tr>
             <%
-                for (Event event : events) {
+                List<Event> events = (List<Event>) request.getAttribute("eventList");
+                if (events == null || events.isEmpty()) {
             %>
-            <tr>
-                <td><img src="<%= event.getImageFileName() %>" alt="Event Image" class="event-image" /></td>
-                <td><%= event.getTitle() %></td>
-                <td><%= event.getDate() %></td>
-                <td><%= event.getDescription() %></td>
-            </tr>
+            <p style="text-align:center;">No events available.</p>
+            <%
+            } else {
+            %>
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+                <%
+                    for (Event event : events) {
+                %>
+                <tr>
+                    <td><img src="<%= event.getImageFileName()%>" alt="Event Image" class="event-image" /></td>
+                    <td><%= event.getTitle()%></td>
+                    <td><%= event.getDate()%></td>
+                    <td><%= event.getDescription()%></td>
+                </tr>
+                <%
+                    }
+                %>
+            </table>
             <%
                 }
             %>
-        </table>
-    <%
-        }
-    %>
         </div>
-</body>
+    </body>
 </html>

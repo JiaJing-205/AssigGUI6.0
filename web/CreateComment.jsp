@@ -87,60 +87,87 @@
                 border-radius: 4px;
                 margin-bottom: 20px;
             }
-        </style>
+        </style><link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <h1>Create New Comment</h1>
+        <div id="navbar">
+            <div>
+            </div>
 
-    <c:if test="${not empty errorMessage}">
-        <div class="error">
-            <p>${errorMessage}</p>
+            <div class="search-container"><form action="searchItemPublicServlet" method="get" style="text-align:center; margin-bottom:20px;">
+                    <input type="text" name="search" placeholder="Search item by name" required />
+                    <input type="submit" value="Search" />
+                </form>
+            </div>
+
+            <div>
+                <a class="login-btn" href="Auth/Login.jsp">Login</a>
+            </div>
         </div>
-    </c:if>
 
-    <div class="comment-form">
-        <form method="POST" action="${pageContext.request.contextPath}/create-comment">
-            <div class="form-group">
-                <label for="username">Your Name:</label>
-                <input type="text" id="username" name="username" required 
-                       placeholder="Enter your name" maxlength="50">
-            </div>
-
-            <div class="form-group">
-                <label for="comment">Your Comment:</label>
-                <textarea id="comment" name="comment"
-                          placeholder="Share your thoughts..." ></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="rating">Rating:</label>
-                <select id="rating" name="rating" required>
-                    <option value="" disabled selected>Select rating</option>
-                    <option value="1">★ (Poor)</option>
-                    <option value="2">★★ (Fair)</option>
-                    <option value="3">★★★ (Good)</option>
-                    <option value="4">★★★★ (Very Good)</option>
-                    <option value="5">★★★★★ (Excellent)</option>
-                </select>
-            </div>
-
-            <button type="submit">Submit Comment</button>
-        </form>
-
-        <div style="margin-top: 20px; text-align: center;">
-            <a href="${pageContext.request.contextPath}/view-comments" 
-               style="color: var(--primary); text-decoration: none;">
-                ← View All Comments
-            </a>
+        <div class="sidebar">
+            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
+            <a href="home.jsp">Home</a>
+            <a href="products.jsp">Products</a>
+            <a href="events">Events</a>
+            <a href="cart.jsp">Cart</a>
+            <a href="checkout/checkout.jsp">Checkout</a>
+            <a href="DisplayComment.jsp">Comments</a>
         </div>
-    </div>
 
-    <script>
-    const commentBox = document.getElementById('comment');
-    commentBox.addEventListener('input', function () {
-        this.style.height = '40px';
-        this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-    });
-    </script>
-</body>
+        <div class="content">
+            <h1>Create New Comment</h1>
+
+            <c:if test="${not empty errorMessage}">
+                <div class="error">
+                    <p>${errorMessage}</p>
+                </div>
+            </c:if>
+
+            <div class="comment-form">
+                <form method="POST" action="${pageContext.request.contextPath}/create-comment">
+                    <div class="form-group">
+                        <label for="username">Your Name:</label>
+                        <input type="text" id="username" name="username" required 
+                               placeholder="Enter your name" maxlength="50">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Your Comment:</label>
+                        <textarea id="comment" name="comment"
+                                  placeholder="Share your thoughts..." ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <select id="rating" name="rating" required>
+                            <option value="" disabled selected>Select rating</option>
+                            <option value="1">★ (Poor)</option>
+                            <option value="2">★★ (Fair)</option>
+                            <option value="3">★★★ (Good)</option>
+                            <option value="4">★★★★ (Very Good)</option>
+                            <option value="5">★★★★★ (Excellent)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Submit Comment</button>
+                </form>
+
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="${pageContext.request.contextPath}/view-comments" 
+                       style="color: var(--primary); text-decoration: none;">
+                        ← View All Comments
+                    </a>
+                </div>
+            </div>
+
+            <script>
+                const commentBox = document.getElementById('comment');
+                commentBox.addEventListener('input', function () {
+                    this.style.height = '40px';
+                    this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+                });
+            </script>
+        </div>
+    </body>
 </html>

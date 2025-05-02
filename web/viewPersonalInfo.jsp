@@ -24,16 +24,16 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>View Personal Info</title>
-<link rel="stylesheet" href="styles.css" />
+    <head>
+        <title>View Personal Info</title>
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <div id="navbar">
             <div>
             </div>
 
-            <div class="search-container"><form action="searchItemServlet" method="get" style="text-align:center; margin-bottom:20px;">
+            <div class="search-container"><form action="searchItemPublicServlet" method="get" style="text-align:center; margin-bottom:20px;">
                     <input type="text" name="search" placeholder="Search item by name" required />
                     <input type="submit" value="Search" />
                 </form>
@@ -51,36 +51,37 @@
             <a href="events">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout/checkout.jsp">Checkout</a>
+            <a href="DisplayComment.jsp">Comments</a>
         </div>
 
         <div class="content">
 
-    <h3>Personal Information</h3>
+            <h3>Personal Information</h3>
 
-<% if (error != null) { %>
-    <p style="color:red;"><%= error %></p>
-<% } else if (user != null) { %>
-    <p><strong>ID:</strong> <%= user.getId() %></p>
-    <p><strong>Name:</strong> <%= user.getName() %></p>
-    <p><strong>Password:</strong> <%= user.getPwd() %></p>
-    <p><strong>Email:</strong> <%= user.getEmail() %></p>
-    <p><strong>Phone:</strong> <%= user.getPhone() %></p>
-    <p><strong>Birthday:</strong> <%= user.getHbd() %></p>
-    <p><strong>Create Date:</strong> <%= user.getCreateDate() %></p>
-<% } %>
+            <% if (error != null) {%>
+            <p style="color:red;"><%= error%></p>
+            <% } else if (user != null) {%>
+            <p><strong>ID:</strong> <%= user.getId()%></p>
+            <p><strong>Name:</strong> <%= user.getName()%></p>
+            <p><strong>Password:</strong> <%= user.getPwd()%></p>
+            <p><strong>Email:</strong> <%= user.getEmail()%></p>
+            <p><strong>Phone:</strong> <%= user.getPhone()%></p>
+            <p><strong>Birthday:</strong> <%= user.getHbd()%></p>
+            <p><strong>Create Date:</strong> <%= user.getCreateDate()%></p>
+            <% } %>
 
-<% if (user != null) {
-       String permission = user.getPermission();
-       String backPage = "user.html"; // default
+            <% if (user != null) {
+                    String permission = user.getPermission();
+                    String backPage = "user.html"; // default
 
-       if ("Admin".equalsIgnoreCase(permission)) {
-           backPage = "admin.html";
-       } else if ("Staff".equalsIgnoreCase(permission)) {
-           backPage = "staff.html";
-       }
-%>
-    <a href="<%= backPage %>">Back</a>
-<% } %>
+                    if ("Admin".equalsIgnoreCase(permission)) {
+                        backPage = "admin.html";
+                    } else if ("Staff".equalsIgnoreCase(permission)) {
+                        backPage = "staff.html";
+                    }
+            %>
+            <a href="<%= backPage%>">Back</a>
+            <% }%>
         </div>
-</body>
+    </body>
 </html>
