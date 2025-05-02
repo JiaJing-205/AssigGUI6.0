@@ -81,7 +81,7 @@
 <%
     }
 %>
-                <div class="company-info">
+                <div class="info">
                     <h2>About Our Company</h2>
                     <p>
                         Welcome to ATIERSPORTS, your trusted source for quality sports equipment and gear.

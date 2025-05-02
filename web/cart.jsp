@@ -8,7 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cart</title>
-        <link rel="stylesheet" href="resources/cart.css"/><link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
         <div id="navbar">
@@ -35,8 +35,8 @@
             <a href="checkout/checkout.jsp">Checkout</a>
         </div>
     <div class = "content">
-        <a href="products.jsp"><button>Back</button></a>
-        <h2>Shopping Cart</h2>
+        <a href="products.jsp">Back</a>
+        <h2 class="bar">Shopping Cart</h2>
         <%!
             //Retrieve item details from cart database
             Cart cart = new Cart();
@@ -48,8 +48,8 @@
 
             //Cart section header
             if (cart.getCartItems().size() == 0) {
-                out.println("<div style=\"justify-content: center\" id=\"empty-cart-msg\">"
-                        + "<h3>Cart is empty</h3>"
+                out.println("<div class=\"info\">"
+                        + "<h2>Cart is empty</h2>"
                         + "</div>");
             } else {
                 out.println("<table>"
@@ -79,16 +79,17 @@
         %>
 
         <footer>
-            <div class="aligner">
-                <h3 style="margin-left: 10px; margin-right: 10px">Subtotal</h3>
+            <div class="info">
+                <h3 style="margin-left: 10px; margin-right: 10px">Subtotal : 
                     <%
                         double subtotal = 0;
                         for (int i = 0; i < cart.getCartItems().size(); i++) {
                             subtotal += (cart.getCartItems().get(i).getPrice() * cart.getCartItems().get(i).getQuantity());
                         }
-                        out.println("<span style=\"align-content: center; margin-left: 10px; margin-right: 10px\">RM" + String.format("%.2f", subtotal) + "</span>");
+                        out.println("RM" + String.format("%.2f", subtotal));
                     %>
-                    <a href="checkout/checkout.jsp" style="align-content: center"><button style="margin-left: 10px; margin-right: 10px">Checkout</button></a>
+                </h3>
+                    <a href="checkout/checkout.jsp" style="align-content: center">Checkout</a>
             </div>
         </footer>
     </div>
