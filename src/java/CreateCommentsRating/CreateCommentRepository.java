@@ -1,6 +1,7 @@
 package CreateCommentsRating;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -95,6 +96,8 @@ public class CreateCommentRepository {
     }
 
 =======
+=======
+>>>>>>> Stashed changes
 import javax.persistence.*;
 import java.util.*;
 import java.util.logging.*;
@@ -198,5 +201,8 @@ public class CreateCommentRepository {
             logger.info("EntityManagerFactory closed successfully");
         }
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }

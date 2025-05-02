@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 @Table(name = "COMMENTS") // Make sure this matches your actual table name
 public class CreateComment implements Serializable {
 
@@ -34,6 +35,8 @@ public class CreateComment implements Serializable {
 
     public CreateComment(String username, String comment, int rating) {
 =======
+=======
+>>>>>>> Stashed changes
 @Table(name = "comments")
 public class CreateComment implements Serializable {
     @Id
@@ -58,6 +61,9 @@ public class CreateComment implements Serializable {
     }
 
     public CreateComment(String username, String comment, short rating) {
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         this.username = username;
         this.comment = comment;
@@ -99,7 +105,11 @@ public class CreateComment implements Serializable {
 
     public void setRating(int rating) {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         this.rating = rating;
+=======
+        this.rating = (short) rating;
+>>>>>>> Stashed changes
 =======
         this.rating = (short) rating;
 >>>>>>> Stashed changes

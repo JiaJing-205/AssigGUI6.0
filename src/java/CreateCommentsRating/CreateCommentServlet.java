@@ -4,9 +4,14 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.logging.Logger;
+=======
+import java.io.IOException;
+import java.util.logging.*;
+>>>>>>> Stashed changes
 =======
 import java.io.IOException;
 import java.util.logging.*;
@@ -15,6 +20,7 @@ import java.util.logging.*;
 @WebServlet("/create-comment")
 public class CreateCommentServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(CreateCommentServlet.class.getName());
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     
     @Inject
@@ -38,6 +44,8 @@ public class CreateCommentServlet extends HttpServlet {
         }
     }
 =======
+=======
+>>>>>>> Stashed changes
     private CreateCommentRepository commentRepo;
 
     @Override
@@ -92,5 +100,8 @@ public class CreateCommentServlet extends HttpServlet {
                input.replaceAll("<", "&lt;").replaceAll(">", "&gt;") : 
                null;
     }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
