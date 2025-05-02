@@ -88,7 +88,7 @@ public class CheckoutServlet extends HttpServlet {
         cart.deleteAllCartItem();
         
         //Redirect to payment page
-        response.sendRedirect("paymentConfirmation.jsp");
+        response.sendRedirect("order.jsp");
         out.close();
     }
 
