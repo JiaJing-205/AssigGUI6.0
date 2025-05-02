@@ -24,7 +24,7 @@ public class reportTop3ItemByMonth extends HttpServlet {
             reportDA rda = new reportDA();
             List<Report> reportList = rda.getTop3ItemByMonth(month);
             request.setAttribute("reportList", reportList);
-            request.setAttribute("reportTitle", "Last 3 Items Sold in Month " + month);
+            request.setAttribute("reportTitle", "Top 3 Items Sold in Month " + month);
             request.getRequestDispatcher("displayReport.jsp").forward(request, response);
             
         } catch (Exception ex) {
