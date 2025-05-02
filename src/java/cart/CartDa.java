@@ -11,7 +11,7 @@ public class CartDa {
 
     private Connection conn;
     private PreparedStatement preparedStmt;
-    private String host = "jdbc:derby://localhost:1527/assignment";
+    private String host = "jdbc:derby://localhost:1527/Assignment";
     private String user = "nbuser";
     private String password = "nbuser";
     private String tableName = "CART";
@@ -88,6 +88,17 @@ public class CartDa {
             ex.printStackTrace();
         }
     }
+    
+    public void deleteAllRecord() {
+        String deleteStr = "DELETE FROM " + tableName;
+        try {
+            preparedStmt = conn.prepareStatement(deleteStr);
+            preparedStmt.executeUpdate();
+            System.out.println("TRACE: All record deleted.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     public void shutDown() {
         try {
@@ -101,7 +112,6 @@ public class CartDa {
 
     public static void main(String[] args) {
         CartDa cartDa = new CartDa();
-        CartItem cartItem = new CartItem();
-        cartItem = cartItem.generateCartItem("I002", 10, "001");
+        cartDa.deleteAllRecord();
     }
 }
