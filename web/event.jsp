@@ -4,28 +4,6 @@
 <html>
 <head>
     <title>Upcoming Events</title>
-    <style>
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
-            background-color: white;
-            
-        }
-        
-        h2 {
-            text-align: center;
-        }
-        img.event-image {
-            max-width: 150px;
-            height: auto;
-        }
-    </style>
     <link rel="stylesheet" href="styles.css" />
     </head>
     <body>

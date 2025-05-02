@@ -24,7 +24,7 @@ public class itemOrderServlet extends HttpServlet {
         }
 
         // forward to JSP
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/products.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/order.jsp");
         dispatcher.forward(request, response);
     }
 

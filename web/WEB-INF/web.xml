@@ -45,7 +45,7 @@
     <!-- Event Servlet -->
     <servlet>
         <servlet-name>eventstuff</servlet-name>
-        <servlet-class>home.eventstuff</servlet-class>
+        <servlet-class>home.EventServlet</servlet-class>
     </servlet>
     <!-- User Servlets -->
     <servlet>
