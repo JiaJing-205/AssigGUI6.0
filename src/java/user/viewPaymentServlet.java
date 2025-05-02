@@ -9,28 +9,26 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class viewPaymentServlet extends HttpServlet {
-
-    private UserDA usDA;
-    
     @Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userID = request.getParameter("userID"); // e.g., U001
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+        String userId = request.getParameter("userId");
 
         try {
             PaymentDA paymentDA = new PaymentDA();
-            List<Payment> payments = paymentDA.getUserPayment(userID);
-            request.setAttribute("paymentList", payments);
-            
-            String updated = request.getParameter("updated");
-            if ("true".equals(updated)) {
-                request.setAttribute("paymentUpdated", true);
-            }
+            List<Payment> paymentList = paymentDA.getUserPayment(userId);
+
+            request.setAttribute("userID", userId);
+            request.setAttribute("paymentList", paymentList);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("viewUserPayment.jsp");
+            dispatcher.forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Failed to load payments.");
+        request.setAttribute("error", "Unable to load payment records: " + e.getMessage());
+        request.getRequestDispatcher("viewUserPayment.jsp").forward(request, response);
         }
-    RequestDispatcher rd = request.getRequestDispatcher("viewUserPayment.jsp");
-    rd.forward(request, response);    }
-
+    }
 }
