@@ -179,6 +179,10 @@
         <servlet-name>AuthCheckServlet</servlet-name>
         <servlet-class>Auth.AuthCheckServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <servlet-class>Auth.ProfileServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -351,6 +355,10 @@
     <servlet-mapping>
         <servlet-name>AuthCheckServlet</servlet-name>
         <url-pattern>/AuthCheckServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/ProfileServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
