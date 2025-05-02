@@ -107,7 +107,7 @@ public class Payment implements Serializable {
         Payment.paymentIDCount = paymentIDCount;
     }
 
-   public Payment initializePayment() {
+    public Payment initializePayment() {
         String paymentID = "";
         PaymentDA paymentDA = new PaymentDA();
         ResultSet paymentRs = paymentDA.getRecordResultSet();
@@ -119,9 +119,13 @@ public class Payment implements Serializable {
             while (paymentRs.next()) {
                 dbPaymentCount++;
             }
-            paymentIDCount = dbPaymentCount + 1;
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+        
+        //Initialize count
+        if (dbPaymentCount != 0) {
+            paymentIDCount = dbPaymentCount;
         }
         
         if (paymentIDCount < 10) {
@@ -131,6 +135,7 @@ public class Payment implements Serializable {
         } else {
             paymentID = "P" + paymentIDCount;
         }
+        paymentIDCount++;
 
         Payment payment = new Payment();
         payment.setPaymentID(paymentID);
