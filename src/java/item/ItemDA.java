@@ -118,7 +118,7 @@ public class ItemDA {
 
         try {
             stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, "%" + name.toLowerCase() + "%'");
+            stmt.setString(1, "%" + name.toLowerCase() + "%");
             ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
