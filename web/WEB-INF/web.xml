@@ -195,6 +195,34 @@
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>Payment.PaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordRequestServlet</servlet-name>
+        <servlet-class>Auth.ResetPasswordRequestServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <servlet-class>Auth.ResetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordTokenVerificationServlet</servlet-name>
+        <servlet-class>Auth.ResetPasswordTokenVerificationServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignoutServlet</servlet-name>
+        <servlet-class>Auth.SignoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deletePersonalServlet</servlet-name>
+        <servlet-class>Auth.deletePersonalServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editPersonalServlet</servlet-name>
+        <servlet-class>Auth.editPersonalServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewPersonalServlet</servlet-name>
+        <servlet-class>Auth.viewPersonalServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -383,6 +411,34 @@
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/PaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordRequestServlet</servlet-name>
+        <url-pattern>/ResetPasswordRequestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordServlet</servlet-name>
+        <url-pattern>/ResetPasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordTokenVerificationServlet</servlet-name>
+        <url-pattern>/ResetPasswordTokenVerificationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignoutServlet</servlet-name>
+        <url-pattern>/SignoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deletePersonalServlet</servlet-name>
+        <url-pattern>/deletePersonalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editPersonalServlet</servlet-name>
+        <url-pattern>/editPersonalServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewPersonalServlet</servlet-name>
+        <url-pattern>/viewPersonalServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
