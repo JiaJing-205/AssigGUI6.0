@@ -4,7 +4,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import javax.inject.Inject;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -29,8 +28,6 @@ public class ViewCommentServlet extends HttpServlet {
         }
     }
 =======
-=======
->>>>>>> Stashed changes
 import java.io.IOException;
 import java.util.List;
 
@@ -65,8 +62,5 @@ public class ViewCommentServlet extends HttpServlet {
     public void destroy() {
         commentRepo.close();
     }
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 }
