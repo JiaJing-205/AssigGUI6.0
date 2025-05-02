@@ -194,6 +194,21 @@ form input[type="submit"]:hover {
     background-color: #022e32;
 }
 
+
+form input[type="reset"] {
+    background-color: #04484f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+form input[type="reset"]:hover {
+    background-color: #022e32;
+}
+
 .bar {
     background-color: #04484f;
     color: white;

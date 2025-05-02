@@ -55,13 +55,13 @@ public class CheckoutServlet extends HttpServlet {
         session.setAttribute("city", city);
         session.setAttribute("zip", zip);
         session.setAttribute("state", state);
-        
+
         //Create order
         Order order = new Order();
         List<Order> orderList = new ArrayList<Order>();
         CartItem cartItem = new CartItem();
         Payment payment = new Payment();
-        
+
         //Initialize payemnt
         payment = payment.initializePayment();
 
@@ -70,6 +70,8 @@ public class CheckoutServlet extends HttpServlet {
 
         for (int i = 0; i < cart.getCartItems().size(); i++) {
             orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
+            //Delete all items in cart
+            cart.deleteCartItem(cart.getCartItems().get(i).getID(), cart.getCartItems().get(i).getUserId());
         }
 
         //Get userId
@@ -83,10 +85,7 @@ public class CheckoutServlet extends HttpServlet {
             }
         }
         payment.finalizePayment(payment.getPaymentID(), orderList, userId);
-        
-        //Delete all items in cart
-        cart.deleteAllCartItem();
-        
+
         //Redirect to payment page
         response.sendRedirect("order.jsp");
         out.close();
