@@ -10,6 +10,10 @@ html, body {
     margin: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Navbar styling */
 #navbar {
     border-bottom: 5px solid #04484f;
