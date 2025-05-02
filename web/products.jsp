@@ -32,7 +32,9 @@
 <body>
 
 <h2>Available Items</h2>
-
+<form action="ProductsDiplayServlet" method="get">
+    <input type="submit" value="Load Items" class="load-button" />
+</form>
 <%
     List<Item> itemList = (List<Item>) request.getAttribute("allItems");
     if (itemList == null || itemList.isEmpty()) {
