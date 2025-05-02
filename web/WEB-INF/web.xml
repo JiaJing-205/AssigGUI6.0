@@ -165,7 +165,7 @@
     </servlet>
     <servlet>
         <servlet-name>searchItemServletPublic</servlet-name>
-        <servlet-class>item.searchItemServletPublic</servlet-class>
+        <servlet-class>item.searchItemPublicServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Top3ItemHome</servlet-name>

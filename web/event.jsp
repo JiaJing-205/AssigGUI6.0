@@ -30,7 +30,7 @@
         </div>
 
         <div class="content">
-    <h2>Upcoming Events</h2>
+    <h2 style="text-align: center;">Upcoming Events</h2>
     <p class="bar"><%= request.getAttribute("heymessage") %></p>
 
     <%
