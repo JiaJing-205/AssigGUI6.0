@@ -1,4 +1,5 @@
 <%@page import="java.sql.ResultSet"%>
+<%@page import="da.itemDA"%>
 <%@page import="item.Item"%>
 <%@page import="cart.Cart"%>
 <%@page import="java.util.List"%>
@@ -8,34 +9,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cart</title>
-        <link rel="stylesheet" href="resources/cart.css"/><link rel="stylesheet" href="styles.css" />
-    </head>
+        <link rel="stylesheet" href="resources/cart.css"/>
+    </head> 
     <body>
-        <div id="navbar">
-            <div>
-            </div>
-
-            <div class="search-container"><form action="SearchItemServlet" method="get" style="text-align:center; margin-bottom:20px;">
-                    <input type="text" name="search" placeholder="Search item by name" required />
-                    <input type="submit" value="Search" />
-                </form>
-            </div>
-
-            <div>
-                <a class="login-btn" href="Auth/Login.jsp">Login</a>
-            </div>
-        </div>
-
-        <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="home.jsp">Home</a>
-            <a href="order.jsp">Products</a>
-            <a href="event.jsp">Events</a>
-            <a href="checkout/cart.jsp">Cart</a>
-            <a href="checkout/checkout.jsp">Checkout</a>
-        </div>
-    <div class = "content">
-        <a href="products.jsp"><button>Back</button></a>
+        <a href="add-to-cart.jsp"><button>Back</button></a>
         <h2>Shopping Cart</h2>
         <%!
             //Retrieve item details from cart database
@@ -91,6 +68,5 @@
                     <a href="checkout/checkout.jsp" style="align-content: center"><button style="margin-left: 10px; margin-right: 10px">Checkout</button></a>
             </div>
         </footer>
-    </div>
     </body>
 </html>

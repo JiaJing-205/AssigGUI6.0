@@ -87,10 +87,6 @@
         <servlet-class>report.reportTotalItem</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>reportTop3Item</servlet-name>
-        <servlet-class>report.reportTop3Item</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>reportLast3Item</servlet-name>
         <servlet-class>report.reportLast3Item</servlet-class>
     </servlet>
@@ -168,8 +164,12 @@
         <servlet-class>cart.EditCartItemQuantityServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CheckoutServlet</servlet-name>
-        <servlet-class>cart.CheckoutServlet</servlet-class>
+        <servlet-name>searchItemServletPublic</servlet-name>
+        <servlet-class>item.searchItemServletPublic</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Top3ItemHome</servlet-name>
+        <servlet-class>home.Top3ItemHomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
@@ -252,10 +252,6 @@
         <url-pattern>/reportTotalItem</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>reportTop3Item</servlet-name>
-        <url-pattern>/reportTop3Item</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>reportLast3Item</servlet-name>
         <url-pattern>/reportLast3Item</url-pattern>
     </servlet-mapping>
@@ -333,10 +329,18 @@
         <url-pattern>/EditCartItemQuantityServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CheckoutServlet</servlet-name>
-        <url-pattern>/CheckoutServlet</url-pattern>
+        <servlet-name>searchItemServletPublic</servlet-name>
+        <url-pattern>/searchItemServletPublic</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Top3ItemHome</servlet-name>
+        <url-pattern>/Top3ItemHome</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
+    <context-param>
+        <param-name>org.jboss.weld.serializationBeanIdentifierIndexOptimization</param-name>
+        <param-value>false</param-value>
+    </context-param>
 </web-app>

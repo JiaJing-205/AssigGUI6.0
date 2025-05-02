@@ -2,47 +2,50 @@
     <head>
         <title>Order items</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
-        <div id="navbar" style="border-bottom: 5px solid #04484f;">
-            <div align="left" style="padding:0px;margin:0;float:left;">
-                <button id="toggleBtn">&#9776;</button>
-                <img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/>
+        <div id="navbar">
+            <div>
             </div>
-            <div class="search-container">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
+
+            <div class="search-container"><form action="SearchItemServlet" method="get" style="text-align:center; margin-bottom:20px;">
+                    <input type="text" name="search" placeholder="Search item by name" required />
+                    <input type="submit" value="Search" />
+                </form>
             </div>
-            <div align="right"style="height:90px;">
-                <a style="border: 5px solid #04484f;padding: 25px;border-radius: 25px;margin: 20px;text-decoration:none;color:#04484f;" href="">Login</a>
+
+            <div>
+                <a class="login-btn" href="Auth/Login.jsp">Login</a>
             </div>
         </div>
-        <div style="clear:both;"></div>
 
-        <div id="sidebar" class="sidebar">
-            <a href="#" class="closeBtn" id="closeBtn">&times;</a>
+        <div class="sidebar">
+            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
             <a href="home.jsp">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="#">Events</a>
-            <a href="#">Cart</a>
-            <a href="#">Checkout</a>
+            <a href="order.jsp">Products</a>
+            <a href="event.jsp">Events</a>
+            <a href="checkout/cart.jsp">Cart</a>
+            <a href="checkout/checkout.jsp">Checkout</a>
         </div>
-        <h3>Order items here</h3>
-        <form method="post" action="orderServlet" >
 
-            <p><label>Select item ID</label>
-                <select name="itemID">
-                    <option value = "DCO">Computer Science and Computer Mathematics</option>
-                    <option value = "IA">Information Systems Engineering</option>
-                    <option value = "IB">Business Information Systems</option>
-                </select></p>
+        <div class="content">
+            <h3>Order items here</h3>
+            <form method="post" action="orderServlet" >
 
-            <p><label>Amount</label>
-                <input type="text" name="amt" size="1" /></p>
-            
-            <p><input type="submit" value="Submit" />
-                <input type="reset" value="Reset" /></p>
-        </form>
+                <p><label>Select item ID</label>
+                    <select name="itemID">
+                        <option value = "DCO">Computer Science and Computer Mathematics</option>
+                        <option value = "IA">Information Systems Engineering</option>
+                        <option value = "IB">Business Information Systems</option>
+                    </select></p>
 
+                <p><label>Amount</label>
+                    <input type="text" name="amt" size="1" /></p>
+
+                <p><input type="submit" value="Submit" />
+                    <input type="reset" value="Reset" /></p>
+            </form>
+        </div>
     </body>
 </html>
