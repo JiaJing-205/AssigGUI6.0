@@ -183,6 +183,18 @@
         <servlet-name>ProfileServlet</servlet-name>
         <servlet-class>Auth.ProfileServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GotoLoginServlet</servlet-name>
+        <servlet-class>Auth.GotoLoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GotoSignupServlet</servlet-name>
+        <servlet-class>Auth.GotoSignupServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>Payment.PaymentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -359,6 +371,18 @@
     <servlet-mapping>
         <servlet-name>ProfileServlet</servlet-name>
         <url-pattern>/ProfileServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GotoLoginServlet</servlet-name>
+        <url-pattern>/GotoLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GotoSignupServlet</servlet-name>
+        <url-pattern>/GotoSignupServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/PaymentServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
