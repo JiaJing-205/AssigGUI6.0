@@ -34,7 +34,7 @@
 <h2>Available Items</h2>
 
 <%
-    List<Item> itemList = (List<Item>) request.getAttribute("itemList");
+    List<Item> itemList = (List<Item>) request.getAttribute("allItems");
     if (itemList == null || itemList.isEmpty()) {
 %>
     <p style="text-align:center;">No items available.</p>
@@ -61,10 +61,11 @@
                 <form action="AddToCartServlet" method="post" style="display:inline;">
                     <input type="hidden" name="itemId" value="<%= item.getID() %>" />
                     <input class="quantity" type="number" name="quantity" value="1" min="1" max="<%= item.retrieveStockFromRecord(item.getID()) %>" />
-            </td>
-            <td>
                     <input type="submit" value="Add to Cart" />
                 </form>
+            </td>
+            <td>
+                    
             </td>
         </tr>
         <%
