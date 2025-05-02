@@ -13,7 +13,7 @@
         <div id="navbar">
             <div></div>
             <div class="search-container">
-                <form action="searchItemServlet" method="get" style="text-align:center; margin-bottom:20px;">
+                <form action="searchItemServletPublic" method="get" style="text-align:center; margin-bottom:20px;">
                     <input type="text" name="search" placeholder="Search item by name" required />
                     <input type="submit" value="Search" />
                 </form>

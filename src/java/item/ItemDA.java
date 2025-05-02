@@ -111,6 +111,32 @@ public class ItemDA {
     }
         return itemList;
     }
+    
+    public List<Item> getRecordSearchName(String name) throws SQLException {
+        String queryStr = "SELECT * FROM Item WHERE itemID = ?";
+        List<Item> itemList = new ArrayList<>();
+
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, name);
+            ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Item programme = new Item(
+                rs.getString("itemID"),
+                rs.getString("itemName"),
+                rs.getString("itemCategory"),
+                rs.getFloat("itemPrice"),
+                rs.getInt("stock")
+            );
+            itemList.add(programme);
+        }
+
+    } catch (SQLException ex) {
+        throw ex;
+    }
+        return itemList;
+    }
         
     public List<Item> getAllRecordStock() throws SQLException {
         String queryStr = "SELECT * FROM Item ORDER BY stock";
