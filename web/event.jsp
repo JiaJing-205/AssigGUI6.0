@@ -32,6 +32,9 @@
         <div class="content">
     <h2>Upcoming Events</h2>
 
+<form action="EventServlet" method="get">
+    <input type="submit" value="Load Events" class="load-button" />
+</form>
     <p class="bar"><%= request.getAttribute("heymessage") %></p>
 
     <%

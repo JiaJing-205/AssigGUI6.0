@@ -175,10 +175,6 @@
         <servlet-name>CheckoutServlet</servlet-name>
         <servlet-class>cart.CheckoutServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ProductsDiplayServlet</servlet-name>
-        <servlet-class>item.ProductsDiplayServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -347,10 +343,6 @@
     <servlet-mapping>
         <servlet-name>CheckoutServlet</servlet-name>
         <url-pattern>/CheckoutServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ProductsDiplayServlet</servlet-name>
-        <url-pattern>/ProductsDiplayServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
