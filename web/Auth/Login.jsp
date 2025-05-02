@@ -202,10 +202,10 @@
         </div>
 
         <div class="sidebar">
-            <a href="../home.jsp"><img src="../Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="../home.jsp">Home</a>
+            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
+            <a href="home.jsp">Home</a>
             <a href="products.jsp">Products</a>
-            <a href="events">Events</a>
+            <a href="event.jsp">Events</a>
             <a href="cart.jsp">Cart</a>
             <a href="checkout.jsp">Checkout</a>
             <!-- This part is for if I am an admin or a staff 
