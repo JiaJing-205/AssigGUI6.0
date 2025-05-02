@@ -86,7 +86,8 @@
             <th>Category</th>
             <th>Price (RM)</th>
             <th>Quantity</th>
-            <th>Action</th>
+            <th>Buy</th>
+            <th>View More</th>
         </tr>
         <%
             for (Item item : allItems) {
@@ -100,9 +101,13 @@
                     <input type="hidden" name="itemId" value="<%= item.getID() %>" />
                     <input class="quantity" type="number" name="quantity" value="1"
                            min="1" max="<%= item.getStock() %>" />
+                    <input type="submit" value="Add to Cart" />
+                </form>
             </td>
             <td>
-                    <input type="submit" value="Add to Cart" />
+                <form action="searchItemServletPublic" method="get" style="display:inline;">
+                    <input type="text" name="search" value="<%= item.getName() %>"/>
+                    <input type="submit" value="View Details" />
                 </form>
             </td>
         </tr>

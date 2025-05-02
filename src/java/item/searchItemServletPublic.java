@@ -1,6 +1,7 @@
 package item;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -12,20 +13,20 @@ public class searchItemServletPublic extends HttpServlet {
 
         String searchName = request.getParameter("search");
         ItemDA itDA = new ItemDA();
-        Item item = null;
+        List<Item> itemList = null;
 
         try {
             if (searchName != null && !searchName.trim().isEmpty()) {
-                item = (Item) itDA.getRecordSearchName(searchName.trim());
+                itemList = itDA.getRecordSearchName(searchName.trim()); // Updated method
             }
-            if (item == null) {
-                request.setAttribute("error", "Item not found.");
+            if (itemList == null || itemList.isEmpty()) {
+                request.setAttribute("error", "No items found.");
             } else {
-                request.setAttribute("item", item);
+                request.setAttribute("itemList", itemList);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error searching for item.");
+            request.setAttribute("error", "Error searching for items.");
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/viewoneitem.jsp");
