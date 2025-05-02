@@ -20,7 +20,7 @@
             </div>
 
             <div>
-                <a class="login-btn" href="Auth/Login.jsp">Login</a>
+                <a class="login-btn" href="AuthCheckServlet">Login</a>
             </div>
         </div>
 
@@ -81,7 +81,7 @@
 <%
     }
 %>
-                <div class="info">
+                <div class="company-info">
                     <h2>About Our Company</h2>
                     <p>
                         Welcome to ATIERSPORTS, your trusted source for quality sports equipment and gear.
