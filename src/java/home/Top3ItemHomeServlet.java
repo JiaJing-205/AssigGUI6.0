@@ -18,7 +18,7 @@ public class Top3ItemHomeServlet extends HttpServlet {
             List<Report> reportList = rda.getTop3Item();
             request.setAttribute("reportList", reportList);
             request.setAttribute("reportTitle", "Top 3 Items Sold");
-            request.getRequestDispatcher("displayReport.jsp").forward(request, response);
+            request.getRequestDispatcher("home.jsp").forward(request, response);
             
         } catch (Exception ex) {
             request.setAttribute("error", "Error: " + ex.getMessage());

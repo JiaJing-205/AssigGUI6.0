@@ -156,8 +156,32 @@
                 font-weight: 600;
             }
         </style>
+        <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
+        <div id="navbar">
+            <div></div>
+            <div class="search-container"><form action="searchItemServlet" method="get" style="text-align:center; margin-bottom:20px;">
+                    <input type="text" name="search" placeholder="Search item by name" required />
+                    <input type="submit" value="Search" />
+                </form>
+            </div>
+
+            <div>
+                <a class="login-btn" href="Auth/Login.jsp">Login</a>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
+            <a href="home.jsp">Home</a>
+            <a href="products.jsp">Products</a>
+            <a href="events">Events</a>
+            <a href="cart.jsp">Cart</a>
+            <a href="checkout/checkout.jsp">Checkout</a>
+        </div>
+
+        <div class="content">
         <a class="button-return" href="../user/viewUserServlet">Return</a>
         <%
             // Get the user object from the request attribute
@@ -327,5 +351,6 @@
         <%
             }
         %>
+        </div>
     </body>
 </html>
