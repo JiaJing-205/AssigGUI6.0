@@ -15,7 +15,7 @@ public class Admin {
     }
     
     public Admin(String user_id) {
-        this.id = id;
+        this.id = 0;
         this.permission_key = permission_key_generation();
         this.user_id = user_id;
     }
@@ -50,7 +50,9 @@ public class Admin {
     public void setPermission_key(String permission_key) {
         this.permission_key = permission_key;
     }
-    
+    public static void main(String[] args) {
+        System.out.println(UUID.randomUUID().toString());
+    }
     public void setUser_id(String user_id) {
         this.user_id = user_id;
     }

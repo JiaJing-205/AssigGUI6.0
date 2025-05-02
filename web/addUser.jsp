@@ -1,11 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="domain.User" %>
-<%@ page import="da.UserDA" %>
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Edit User</title>
+        <title>Add User</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
             .input {
@@ -39,7 +36,7 @@
                 color: #fff;
             }
 
-            .form-control input:read-only,
+            .form-control input:disabled,
             .form-control input:focus,
             .form-control input:valid {
                 outline: 0;
@@ -62,7 +59,7 @@
                 transition: 0.3s cubic-bezier (0.68, -0.55, 0.265, 1.55);
             }
 
-            .form-control input:read-only+label span,
+            .form-control input:disabled+label span,
             .form-control input:focus+label span,
             .form-control input:valid+label span {
                 color: #3D3D3D;
@@ -158,19 +155,37 @@
         </style>
     </head>
     <body>
-        <a class="button-return" href="../user/viewUserServlet">Return</a>
         <%
-            // Get the user object from the request attribute
-            User editUser = (User) request.getAttribute("editUser");
-            if (editUser != null) {
+            // Store value from session
+            String error = (String) session.getAttribute("error");
+            String id = (String) session.getAttribute("id");
+            String name = (String) session.getAttribute("name");
+            String email = (String) session.getAttribute("email");
+            String phone = (String) session.getAttribute("phone");
+            String bd = (String) session.getAttribute("bd");
+            String pwd1 = (String) session.getAttribute("pwd1");
+            String pwd2 = (String) session.getAttribute("pwd2");
+            String permission = (String) session.getAttribute("permission");
+
+            // Clear session after retrieving data
+            session.removeAttribute("error");
+            session.removeAttribute("id");
+            session.removeAttribute("name");
+            session.removeAttribute("email");
+            session.removeAttribute("phone");
+            session.removeAttribute("bd");
+            session.removeAttribute("pwd1");
+            session.removeAttribute("pwd2");
+            session.removeAttribute("permission");
         %>
-        <h2>Edit User</h2>
-        <form action="editUserServlet" method="post">
+        <a class="button-return" href="./user/viewUserServlet">Return</a>
+        <h2>Add User</h2>
+        <form action="./user/addUserServlet" method="post">
             <table>
                 <tr>
                     <td>
                         <div class="form-control">
-                            <input type="text" id="lid" name="id" maxlength="20" value="<%= editUser.getId()%>" readonly>
+                            <input type="text" id="lid" name="id" maxlength="20" value="<%= id != null ? id : "" %>" required>
                             <label>
                                 <span style="transition-delay:0ms">I</span>
                                 <span style="transition-delay:50ms">D</span>
@@ -179,7 +194,7 @@
                     </td>
                     <td>
                         <div class="form-control">
-                            <input type="text" id="lname" name="name" maxlength="100" value="<%= editUser.getName()%>" required>
+                            <input type="text" id="lname" name="name" maxlength="100" value="<%= name != null ? name : "" %>" required>
                             <label>
                                 <span style="transition-delay:0ms">N</span> 
                                 <span style="transition-delay:50ms">a</span>
@@ -190,7 +205,7 @@
                     </td>
                     <td>
                         <div class="form-control">
-                            <input type="date" id="lbd" name="bd"value="<%= editUser.getHbd()%>" required>
+                            <input type="date" id="lbd" name="bd" value="<%= bd != null ? bd : "" %>" required>
                             <label>
                                 <span style="transition-delay:0ms">B</span> 
                                 <span style="transition-delay:50ms">i</span>
@@ -209,7 +224,7 @@
                 <tr>
                     <td>
                         <div class="form-control">
-                            <input type="text" id="lemail" name="email" maxlength="100" value="<%= editUser.getEmail()%>" required>
+                            <input type="text" id="lemail" name="email" maxlength="100" value="<%= email != null ? email : "" %>" required>
                             <label>
                                 <span style="transition-delay:0ms">E</span> 
                                 <span style="transition-delay:50ms">m</span>
@@ -221,7 +236,7 @@
                     </td>
                     <td>
                         <div class="form-control">
-                            <input type="text" id="lphone" name="phone" maxlength="20" value="<%= editUser.getPhone()%>"required>
+                            <input type="text" id="lphone" name="phone" maxlength="20" value="<%= phone != null ? phone : "" %>" required>
                             <label>
                                 <span style="transition-delay:0ms">P</span> 
                                 <span style="transition-delay:50ms">h</span>
@@ -243,21 +258,21 @@
                             <label style="border-bottom: 2px #000 solid;width: 100%; font-size: 18px;">Permission:</label><br><br>
                             <div class="radio-wrapper">
                                 <label class="radio-button">
-                                    <input id="User" name="permission" value="User" type="radio" <%= editUser.getPermission().equals("User") ? "checked" : ""%>>
+                                    <input id="User" name="permission" value="User" type="radio" <%= "User".equals(permission) ? "checked" : ""%>>
                                     <span class="radio-checkmark"></span>
                                     <span class="radio-label">User</span>
                                 </label>
                             </div>
                             <div class="radio-wrapper">
                                 <label class="radio-button">
-                                    <input id="Staff" name="permission" value="Staff" type="radio" <%= editUser.getPermission().equals("Staff") ? "checked" : ""%>>
+                                    <input id="Staff" name="permission" value="Staff" type="radio" <%= "Staff".equals(permission) ? "checked" : ""%>>
                                     <span class="radio-checkmark"></span>
                                     <span class="radio-label">Staff</span>
                                 </label>
                             </div>
                             <div class="radio-wrapper">
                                 <label class="radio-button">
-                                    <input id="Admin" name="permission" value="Admin" type="radio" <%= editUser.getPermission().equals("Admin") ? "checked" : ""%>>
+                                    <input id="Admin" name="permission" value="Admin" type="radio"<%= "Admin".equals(permission) ? "checked" : ""%>>
                                     <span class="radio-checkmark"></span>
                                     <span class="radio-label">Admin</span>
                                 </label>
@@ -268,7 +283,7 @@
                 <tr>
                     <td>
                         <div class="form-control">
-                            <input type="password" id="lpwd1" name="password1" maxlength="30" value="<%= editUser.getPwd()%>" required>
+                            <input type="password" id="lpwd1" name="password1" maxlength="30" value="<%= pwd1 != null ? pwd1 : "" %>" required>
                             <label>
                                 <span style="transition-delay:0ms">P</span> 
                                 <span style="transition-delay:50ms">a</span>
@@ -283,7 +298,7 @@
                     </td>
                     <td>
                         <div class="form-control">
-                            <input type="password" id="lpwd2" name="password2" maxlength="30" value="${pwd2}">
+                            <input type="password" id="lpwd2" name="password2" maxlength="30" value="<%= pwd2 != null ? pwd2 : "" %>" required>
                             <label>
                                 <span style="transition-delay:0ms">C</span> 
                                 <span style="transition-delay:50ms">o</span>
@@ -306,26 +321,13 @@
                     </td>
                 </tr>
                 <tr>
-                        <td>
-                            <button type="submit" class="button-update">Update</button>
-                        </td>
-                    </tr>
+                    <td>
+                        <button type="submit" class="button-update">Add User</button>
+                    </td>
+                </tr>
             </table>
         </form>
-        <%
-            } else {
-                out.println("<p>User not found!</p>");
-            }
-        %>
+        <p style="color:red;"><%= error != null ? error : "" %></p>
 
-        <%
-            // Show any error message if it exists
-            String error = (String) request.getAttribute("error");
-            if (error != null) {
-        %>
-        <p style="color:red;"><%= error%></p>
-        <%
-            }
-        %>
     </body>
 </html>

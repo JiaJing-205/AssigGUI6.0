@@ -164,11 +164,11 @@
                 transform: translateY(-30px);
             }
 
-            .button-newpassword {
+            .button-sendemail {
                 --bg-color: beige;
                 --main-color: black;
                 margin: 50px 50px 0 auto;
-                width: 200px;
+                width: 120px;
                 height: 40px;
                 border-radius: 5px;
                 border: 2px solid var(--main-color);
@@ -179,7 +179,7 @@
                 color: var(--font-color);
                 cursor: pointer;
             }
-            .button-newpassword:active {
+            .button-sendemail:active {
                 box-shadow: 0px 0px var(--main-color);
                 transform: translate(3px, 3px);
             }
@@ -219,60 +219,18 @@
         </div>
         <div class="content">
             <h3>Reset Password</h3>
-            <form method="post" action="ResetPasswordServlet">
+            <form method="post" action="ResetPasswordRequestServlet">
                 <table>
                     <tr>
                         <td>
                             <div class="form-control">
-                                <input type="text" id="lemail" name="email" maxlength="30" value="${email}" required>
+                                <input type="text" id="lemail" name="email" value="${email}" required>
                                 <label>
-                                    <span style="transition-delay:0ms">E</span> 
+                                    <span style="transition-delay:0ms">E</span>
                                     <span style="transition-delay:50ms">m</span>
                                     <span style="transition-delay:100ms">a</span>
                                     <span style="transition-delay:150ms">i</span>
                                     <span style="transition-delay:200ms">l</span>
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-control">
-                                <input type="password" id="lpwd1" name="password1" maxlength="20" value="${pwd1}" required>
-                                <label>
-                                    <span style="transition-delay:0ms">P</span> 
-                                    <span style="transition-delay:50ms">a</span>
-                                    <span style="transition-delay:100ms">s</span>
-                                    <span style="transition-delay:150ms">s</span>
-                                    <span style="transition-delay:200ms">w</span>
-                                    <span style="transition-delay:250ms">o</span>
-                                    <span style="transition-delay:300ms">r</span>
-                                    <span style="transition-delay:350ms">d</span>
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-control">
-                                <input type="password" id="lpwd2" name="password2" maxlength="20" value="${pwd2}" required>
-                                <label>
-                                    <span style="transition-delay:0ms">C</span> 
-                                    <span style="transition-delay:50ms">o</span>
-                                    <span style="transition-delay:100ms">n</span>
-                                    <span style="transition-delay:150ms">f</span>
-                                    <span style="transition-delay:200ms">i</span>
-                                    <span style="transition-delay:250ms">r</span>
-                                    <span style="transition-delay:300ms">m</span>
-                                    <span style="transition-delay:350ms"></span>
-                                    <span style="transition-delay:400ms">P</span>
-                                    <span style="transition-delay:450ms">a</span>
-                                    <span style="transition-delay:500ms">s</span>
-                                    <span style="transition-delay:550ms">s</span>
-                                    <span style="transition-delay:600ms">w</span>
-                                    <span style="transition-delay:650ms">o</span>
-                                    <span style="transition-delay:700ms">r</span>
-                                    <span style="transition-delay:750ms">d</span>
                                 </label>
                             </div>
                         </td>
@@ -286,7 +244,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <button type="submit" class="button-newpassword">Submit new password</button>
+                            <button type="submit" class="button-sendemail">Send Token</button>
                         </td>
                     </tr>
                 </table>
