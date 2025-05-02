@@ -105,13 +105,9 @@ public class Order implements Serializable {
             while (orderRs.next()) {
                 dbOrderCount++;
             }
+            orderIDCount = dbOrderCount + 1;
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
-        
-        //Initialize count
-        if (dbOrderCount != 0) {
-            orderIDCount = dbOrderCount;
         }
         
         if (orderIDCount < 10) {
@@ -121,7 +117,6 @@ public class Order implements Serializable {
         } else {
             orderID = "O" + orderIDCount;
         }
-        orderIDCount++;
 
         Order order = new Order();
         order.setOrderID(orderID);

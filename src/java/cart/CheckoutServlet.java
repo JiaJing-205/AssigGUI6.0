@@ -84,7 +84,8 @@ public class CheckoutServlet extends HttpServlet {
         }
         payment.finalizePayment(payment.getPaymentID(), orderList, userId);
         
-        
+        //Delete all items in cart
+        cart.deleteAllCartItem();
         
         //Redirect to payment page
         response.sendRedirect("CheckoutTestServlet");

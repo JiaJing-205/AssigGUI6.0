@@ -131,6 +131,11 @@ public class Cart {
             ex.printStackTrace();
         }
     }
+    
+    public void deleteAllCartItem() {
+        CartDa cartDa = new CartDa();
+        cartDa.deleteAllRecord();
+    }
 
     public static void main(String args[]) {
         CartDa cartDa = new CartDa();
