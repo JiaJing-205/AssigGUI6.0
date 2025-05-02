@@ -18,7 +18,7 @@ public class searchItemPublicServlet extends HttpServlet {
 
         try {
             if (searchName != null && !searchName.trim().isEmpty()) {
-                foundItem = itDA.getRecordSearchName(searchName.trim());
+                foundItem = itDA.getRecordSearchName(searchName);
             }
             if (foundItem == null) {
                 request.setAttribute("error", "No items found.");
