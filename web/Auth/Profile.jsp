@@ -81,11 +81,11 @@
                     <th>My Account</th>
                     <td><form action="viewPersonalServlet" method="get"><button type="submit" class="redirect">View Personal Info</button></form></td>
                     <td><form action="itemOrderServlet" method="POST"><button type="submit" class="redirect">Order</button></form></td>
-                    <td><form action="SignoutServlet" method="POST"><button type="submit" class="redirect">Sign Out</button></form></td>
                     <td><form action="viewPaymentServlet" method="get">
                             <input type="hidden" name="userID" value="${userId}" />
                             <input type="submit" value="View My Payments" />
                         </form></td>
+                    <td><form action="SignoutServlet" method="POST"><button type="submit" class="redirect">Sign Out</button></form></td>
                 </tr>
                 <tr>
                     <td>
