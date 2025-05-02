@@ -35,7 +35,7 @@
             <a href="checkout/checkout.jsp">Checkout</a>
         </div>
     <div class = "content">
-        <a href="products.jsp"><button>Back</button></a>
+        <a href="order.jsp"><button>Back</button></a>
         <h2>Shopping Cart</h2>
         <%!
             //Retrieve item details from cart database
