@@ -19,7 +19,7 @@
                 </form>
             </div>
             <div>
-                <a class="login-btn" href="../Auth/AuthCheckServlet">Login</a>
+                <a class="login-btn" href="Auth/Login.jsp">Login</a>
             </div>
         </div>
 
