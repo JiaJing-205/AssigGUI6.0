@@ -1,4 +1,4 @@
-    package payment;
+    package Payment;
 
 import da.PaymentDA;
 import domain.Payment;

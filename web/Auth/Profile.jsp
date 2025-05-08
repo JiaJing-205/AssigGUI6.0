@@ -155,12 +155,12 @@
         </div>
 
         <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="home.jsp">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="event.jsp">Events</a>
-            <a href="cart.jsp">Cart</a>
-            <a href="checkout.jsp">Checkout</a>
+            <a href="../home.jsp"><img src="../Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
+            <a href="../home.jsp">Home</a>
+            <a href="../products.jsp">Products</a>
+            <a href="../event.jsp">Events</a>
+            <a href="../cart.jsp">Cart</a>
+            <a href="../checkout/checkout.jsp">Checkout</a>
             <!-- This part is for if I am an admin or a staff 
             if Admin :
             <a href="Product Details">Order products</a>
@@ -204,26 +204,23 @@
                 </tr>
                 <tr>
                     <th>Item Management</th>
-                    <td><a class="redirect" href="addItem.html">Add item</a></td>
-                    <td><a class="redirect" href="viewItemServlet">View all item</a></td>
-                    <td><a class="redirect" href="editItem.jsp">Edit item</a></td>
-                    <td><a class="redirect" href="removeItem.html">Remove item</a></td>
+                    <td><a class="redirect" href="../viewItemServlet">Manage all items</a></td>
                 </tr>
                 <% }%>
                 <tr>
                     <td colspan="5"><h3>User Privilege</h3></td>     
                 </tr>
-                
                 <tr>
                     <!-- Common User Features -->
                     <th>My Account</th>
                     <td><form action="../Auth/viewPersonalServlet" method="get"><button type="submit" class="redirect">View Personal Info</button></form></td>
                     <td><form action="itemOrderServlet" method="POST"><button type="submit" class="redirect">Order</button></form></td>
                     <td><form action="SignoutServlet" method="POST"><button type="submit" class="redirect">Sign Out</button></form></td>
-                    <td><form action="viewPaymentServlet" method="get">
-                    <input type="hidden" name="userID" value="${userId}" />
+                    <td><form action="../viewPaymentServlet" method="get">
+                    <input type="hidden" name="userId" value="U001" />
                     <input type="submit" value="View My Payments" />
-                        </form></td>
+                    </form>
+                    </td>
                 </tr>
                 <tr>
                     <td>
