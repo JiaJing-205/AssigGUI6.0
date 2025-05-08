@@ -190,6 +190,18 @@
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>Payment.PaymentServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ResetPasswordRequestServlet</servlet-name>
+        <servlet-class>Auth.ResetPasswordRequestServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewPersonalServlet</servlet-name>
+        <servlet-class>Auth.viewPersonalServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewPersonalServlet</servlet-name>
+        <url-pattern>/Auth/viewPersonalServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddToCartServlet</servlet-name>
         <url-pattern>/AddToCartServlet</url-pattern>
@@ -370,6 +382,10 @@
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/PaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordRequestServlet</servlet-name>
+        <url-pattern>/Auth/ResetPasswordRequest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
