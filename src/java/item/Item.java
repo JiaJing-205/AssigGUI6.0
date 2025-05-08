@@ -113,6 +113,7 @@ public class Item implements Serializable {
         }
     }
     
+    //Added by Yizhe
     public void revertStock(String itemId, int itemQuantity) {
         Item item = new Item();
         int oldStock = item.retrieveStockFromRecord(itemId);

@@ -38,6 +38,7 @@ public class Cart {
             while (cartRs.next()) {
                 if (cartRs.getString("ITEMID").equals(cartItem.getID()) && cartRs.getString("USER_ID").equals(cartItem.getUserId())) {
                     int newQuantity = cartRs.getInt("QUANTITY") + cartItem.getQuantity();
+                    item.reduceItemStock(cartItem.getID(), cartItem.getQuantity());
                     cartItem.setQuantity(newQuantity);
                     cartDa.updateRecord(cartItem);
                     itemFound = true;
@@ -45,6 +46,7 @@ public class Cart {
             }
             if (itemFound == false) {
                 cartDa.addRecord(cartItem);
+                item.reduceItemStock(cartItem.getID(), cartItem.getQuantity());
             }
 
         } catch (SQLException ex) {
@@ -94,6 +96,7 @@ public class Cart {
             while (cartRs.next()) {
                 if (cartRs.getString("ITEMID").equals(itemId) && cartRs.getString("USER_ID").equals(userId)) {
                     cartDa.deleteRecord(itemId, userId);
+                    item.revertStock(itemId, cartRs.getInt("QUANTITY"));
                 }
             }
         } catch (SQLException ex) {
@@ -116,13 +119,14 @@ public class Cart {
             if (quantity > 0) {
                 while (cartRs.next()) {
                     if (cartRs.getString("ITEMID").equals(itemId) && cartRs.getString("USER_ID").equals(userId)) {
+                        item.revertStock(itemId, cartRs.getInt("QUANTITY"));
                         cartItem.setID(cartRs.getString("ITEMID"));
                         cartItem.setName(cartRs.getString("ITEMNAME"));
                         cartItem.setCategory(cartRs.getString("ITEMCATEGORY"));
                         cartItem.setPrice(cartRs.getDouble("ITEMPRICE"));
                         cartItem.setQuantity(quantity);
                         cartItem.setUserId(userId);
-
+                        item.reduceItemStock(itemId, cartItem.getQuantity());
                     }
                 }
             }
