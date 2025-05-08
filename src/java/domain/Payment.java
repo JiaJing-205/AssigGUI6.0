@@ -125,7 +125,7 @@ public class Payment implements Serializable {
         
         //Initialize count
         if (dbPaymentCount != 0) {
-            paymentIDCount = dbPaymentCount;
+            paymentIDCount = dbPaymentCount + 1;
         }
         
         if (paymentIDCount < 10) {
@@ -135,7 +135,6 @@ public class Payment implements Serializable {
         } else {
             paymentID = "P" + paymentIDCount;
         }
-        paymentIDCount++;
 
         Payment payment = new Payment();
         payment.setPaymentID(paymentID);

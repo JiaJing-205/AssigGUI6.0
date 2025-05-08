@@ -128,7 +128,7 @@ public void setItemCategory(String itemCategory) {
         
         //Initialize count
         if (dbOrderCount != 0) {
-            orderIDCount = dbOrderCount;
+            orderIDCount = dbOrderCount + 1;
         }
         
         if (orderIDCount < 10) {
@@ -138,7 +138,6 @@ public void setItemCategory(String itemCategory) {
         } else {
             orderID = "O" + orderIDCount;
         }
-        orderIDCount++;
 
         Order order = new Order();
         order.setOrderID(orderID);
@@ -147,7 +146,6 @@ public void setItemCategory(String itemCategory) {
         order.setPrice((cartItem.getPrice() * cartItem.getQuantity()));
         order.setOrderDate(LocalDate.now().toString());
         order.setPaymentID(paymentID);
-        item.reduceItemStock(order.getItemID(), order.getQuantity());
 
         //Add order into order database
         orderDA.createRecord(order);
@@ -158,10 +156,9 @@ public void setItemCategory(String itemCategory) {
         Order order = new Order();
         Cart cart = new Cart();
         cart = cart.generateCart();
-
+        
         for (int i = 0; i < cart.getCartItems().size(); i++) {
-            order.createOrder(cart.getCartItems().get(i), "P001");
+            order.createOrder(cart.getCartItems().get(i), "P002");
         }
     }
-
 }

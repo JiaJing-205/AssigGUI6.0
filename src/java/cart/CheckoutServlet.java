@@ -1,7 +1,5 @@
 package cart;
 
-import cart.Cart;
-import cart.CartItem;
 import domain.Order;
 import domain.Payment;
 import java.io.IOException;
@@ -70,9 +68,10 @@ public class CheckoutServlet extends HttpServlet {
 
         for (int i = 0; i < cart.getCartItems().size(); i++) {
             orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
-            //Delete all items in cart
-            cart.deleteCartItem(cart.getCartItems().get(i).getID(), cart.getCartItems().get(i).getUserId());
         }
+        
+        //Delete all items in cart
+        cart.deleteAllCartItem();
 
         //Get userId
         Cookie[] userIdCookies = request.getCookies();
