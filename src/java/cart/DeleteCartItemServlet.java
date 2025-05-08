@@ -1,11 +1,7 @@
 package cart;
 
-import cart.Cart;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +21,7 @@ public class DeleteCartItemServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/plain");
         PrintWriter out = response.getWriter();
-
+        
         //Get userId
         Cookie[] userIdCookies = request.getCookies();
         String userId = "";
@@ -41,8 +37,9 @@ public class DeleteCartItemServlet extends HttpServlet {
         Cart cart = new Cart();
 
         cart.deleteCartItem(itemId, userId);
-
+        
         response.sendRedirect("cart.jsp");
+        //out.println("Item deleted");
         out.close();
     }
 

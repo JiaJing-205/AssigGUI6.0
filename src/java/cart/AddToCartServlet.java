@@ -1,7 +1,5 @@
 package cart;
 
-import cart.CartItem;
-import cart.Cart;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -51,8 +49,10 @@ public class AddToCartServlet extends HttpServlet {
         //Add to cart database
         Cart cart = new Cart();
         cart.addToCart(cartItem);
+        
 
         response.sendRedirect("products.jsp");
+        //out.println("Item added to cart");
         out.close();
     }
 
