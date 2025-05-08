@@ -12,7 +12,7 @@ public class GotoSignupServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+        request.getRequestDispatcher("Auth/SignUp.jsp").forward(request, response);
     }
 
 }

@@ -42,6 +42,7 @@
     if (i != null) {
 %>
         <h3>Edit Item</h3>
+        <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
         <form method="post" action="editItemServlet">
         <p>ID: <input type="text" name="id" value="<%= i.getID() %>" readonly /></p>
         <p>Name: <input type="text" name="name" value="<%= i.getName() %>" /></p>

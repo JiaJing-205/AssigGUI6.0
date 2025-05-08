@@ -59,7 +59,7 @@
         </div>
 
         <div class="content">
-
+            <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
             <h2 style="text-align:center;">All Items</h2>
             <a href="addItem.jsp">Add item</a><br>
 
@@ -100,7 +100,7 @@
                 <% } %>
             </table>
             <% }%>
-            <a href="staff.html">Return</a><br>
+            <a href="Auth/viewPersonalInfo">Return</a><br>
 
             </body>
             </html>

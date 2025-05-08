@@ -61,6 +61,7 @@
         </div>
 
         <div class="content">
+            <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
             <h2 style="text-align:center;">Order Items</h2>
 
             <div class="item-container">
