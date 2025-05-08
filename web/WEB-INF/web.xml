@@ -98,6 +98,10 @@
         <servlet-class>report.reportTotalItemByMonth</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>reportTop3Item</servlet-name>
+        <servlet-class>report.reportTop3Item</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>reportTop3ItemByMonth</servlet-name>
         <servlet-class>report.reportTop3ItemByMonth</servlet-class>
     </servlet>
@@ -293,6 +297,10 @@
     <servlet-mapping>
         <servlet-name>reportTop3ItemByMonth</servlet-name>
         <url-pattern>/reportTop3ItemByMonth</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reportTop3Item</servlet-name>
+        <url-pattern>/reportTop3Item</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>reportLast3ItemByMonth</servlet-name>
