@@ -87,7 +87,7 @@
                 border-radius: 4px;
                 margin-bottom: 20px;
             }
-        </style><link rel="stylesheet" href="styles.css" />
+        </style><link rel="stylesheet" href="z-styles.css" />
     </head>
     <body>
         <div id="navbar">

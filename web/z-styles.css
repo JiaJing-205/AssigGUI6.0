@@ -1,0 +1,257 @@
+/* Reset & General Layout */
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+body > div {
+    font-size: 22px;
+    margin: 20px 0 10px 0;
+    color: #04484f;
+    font-weight: bold;
+}
+
+/* Headings */
+h1, .content h1 {
+    color: #04484f;
+    margin-top: 30px;
+}
+
+.info h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Links */
+a,
+.sidebar a,
+.content a,
+.login-btn {
+    text-decoration: none;
+    color: #04484f;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+a {
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+a:hover {
+    background-color: #e0f7fa;
+    border-radius: 5px;
+}
+
+.sidebar a {
+    padding: 10px 20px;
+    width: 77.5%;
+    font-size: 20px;
+}
+
+.sidebar a:hover {
+    border: 2px solid #04484f;
+    border-radius: 5px;
+}
+
+.content a, .content button {
+    background-color: white;
+    border: 2px solid #04484f;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 200px;
+    text-align: center;
+    border-radius: 0;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.content a:hover,
+.content button:hover {
+    background-color: #04484f;
+    color: white;
+}
+
+/* Navbar */
+#navbar {
+    border-bottom: 5px solid #04484f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 17%;
+    background-color: #ffffff;
+    border-right: 5px solid #04484f;
+    padding-top: 10px;
+    z-index: 1000;
+}
+
+/* Content */
+.content {
+    margin-left: 17%;
+    padding-left: 2%;
+    min-height: calc(100vh - 70px);
+    height: 100%;
+    background: url('Images/bg.png') center / cover repeat fixed;
+}
+
+.innersec {
+    padding-left: 3%;
+}
+
+/* Buttons */
+.login-btn,
+form input[type="submit"],
+form input[type="reset"] {
+    background-color: #04484f;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.login-btn {
+    border: 5px solid #04484f;
+    padding: 15px 25px;
+}
+
+.login-btn:hover,
+form input[type="submit"]:hover,
+form input[type="reset"]:hover {
+    background-color: #03353a;
+    color: white;
+}
+
+/* Search */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid #333;
+    border-radius: 25px;
+    padding: 5px 15px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    flex: 1;
+    padding: 10px;
+}
+
+.search-container button {
+    background-color: #04484f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.search-container button:hover {
+    background-color: #03353a;
+}
+
+/* Forms */
+form {
+    margin-top: 20px;
+}
+
+.form-control {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.form-control label {
+    min-width: 140px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.form-control input {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Informational Section */
+.info {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+}
+
+.content p {
+    font-size: 18px;
+}
+
+/* Bar */
+.bar {
+    background-color: #04484f;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    width: 100%;
+}
+
+/* Table */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: white;
+}
+
+/* Images */
+img.event-image {
+    max-width: 150px;
+    height: auto;
+}

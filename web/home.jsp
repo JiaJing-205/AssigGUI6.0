@@ -7,32 +7,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>ATIERSPORTS</title>
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="z-styles.css" />
     </head>
     <body>
-        <div id="navbar">
-            <div></div>
-            <div class="search-container">
-                <form action="searchItemServletPublic" method="get" style="text-align:center; margin-bottom:20px;">
-                    <input type="text" name="search" placeholder="Search item by name" required />
-                    <input type="submit" value="Search" />
-                </form>
-            </div>
-            <div>
-                <a class="login-btn" href="Auth/Login.jsp">Login</a>
-            </div>
-        </div>
-
-        <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="home.jsp">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="event.jsp">Events</a>
-            <a href="cart.jsp">Cart</a>
-            <a href="checkout/checkout.jsp">Checkout</a>
-<a href="DisplayComment.jsp">Comments</a>
-        </div>
-
+        <%@ include file="z-navbar.jsp" %>
+        <%@ include file="z-sidebar.jsp" %>
         <div class="content">
             <p class="bar">Top Items Sold</p>
 

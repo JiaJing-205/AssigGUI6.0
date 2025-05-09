@@ -4,61 +4,11 @@
 <html>
     <head>
         <title>Order Items</title>
-        <style>
-            .item-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-                justify-content: center;
-                padding: 20px;
-            }
-
-            .item-card {
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                padding: 15px;
-                width: 250px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-                background-color: #f9f9f9;
-            }
-
-            .item-card h3 {
-                margin-top: 0;
-                color: #333;
-            }
-
-            .item-card p {
-                margin: 5px 0;
-                color: #555;
-            }
-        </style><link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="z-styles.css" />
     </head>
     <body>
-        <div id="navbar">
-            <div>
-            </div>
-
-            <div class="search-container">
-                <form action="searchItemServlet" method="get" style="text-align:center; margin-bottom:20px;">
-                    <input type="text" name="search" placeholder="Search item by name" required />
-                    <input type="submit" value="Search" />
-                </form>
-            </div>
-
-            <div>
-                <a class="login-btn" href="Auth/Login.jsp">Login</a>
-            </div>
-        </div>
-
-        <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="home.jsp">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="events">Events</a>
-            <a href="cart.jsp">Cart</a>
-            <a href="checkout/checkout.jsp">Checkout</a>
-<a href="DisplayComment.jsp">Comments</a>
-        </div>
+        <%@ include file="z-navbar.jsp" %>
+        <%@ include file="z-sidebar.jsp" %>
 
         <div class="content">
             <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
@@ -77,11 +27,15 @@
                     <p><strong>Price:</strong> RM <%= it.getPrice()%></p>
                     <p><strong>Stock:</strong> <%= it.getStock()%></p>
 
-                    <p><label>Amount</label>
-                        <input type="text" name="amt" size="1" /></p>
-
-                    <p><input type="submit" value="Add to cart" />
-                        <input type="reset" value="Reset" /></p>
+                    <form action="AddToCartServlet" method="post">
+                        <label>Amount</label>
+                        <input type="text" name="amt" size="1" required />
+                        <input type="hidden" name="itemId" value="<%= it.getID()%>" />
+                        <p>
+                            <input type="submit" value="Add to cart" />
+                            <input type="reset" value="Reset" />
+                        </p>
+                    </form>
                 </div>
                 <%
                     }

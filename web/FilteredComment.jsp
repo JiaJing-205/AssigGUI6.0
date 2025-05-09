@@ -178,7 +178,7 @@
                 color: white;
             }
         </style>
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="z-styles.css" />
     </head>
     <body>
         <div id="navbar">

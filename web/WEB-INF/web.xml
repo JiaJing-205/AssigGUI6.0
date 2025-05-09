@@ -202,6 +202,14 @@
         <servlet-name>viewPersonalServlet</servlet-name>
         <servlet-class>Auth.viewPersonalServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GotoSignupServlet</servlet-name>
+        <servlet-class>Auth.GotoSignupServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GotoLoginServlet</servlet-name>
+        <servlet-class>Auth.GotoLoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
         <url-pattern>/Auth/viewPersonalServlet</url-pattern>
@@ -394,6 +402,14 @@
     <servlet-mapping>
         <servlet-name>ResetPasswordRequestServlet</servlet-name>
         <url-pattern>/Auth/ResetPasswordRequest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GotoSignupServlet</servlet-name>
+        <url-pattern>/GotoSignupServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GotoLoginServlet</servlet-name>
+        <url-pattern>/GotoLoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

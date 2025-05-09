@@ -6,7 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Comments</title>
-        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="z-styles.css" />
     </head>
     <body>
         <div id="navbar">

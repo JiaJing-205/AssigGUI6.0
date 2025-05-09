@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Checkout Page</title>
-        <link rel="stylesheet" href="../styles.css" />
+        <link rel="stylesheet" href="z-styles.css" />
         <%!
             Cart cart = new Cart();
 
@@ -20,30 +20,8 @@
         %>
     </head>
     <body>
-        <div id="navbar">
-            <div></div>
-            <div class="search-container">
-                <form action="searchItemServletPublic" method="get" style="text-align:center; margin-bottom:20px;">
-                    <input type="text" name="search" placeholder="Search item by name" required />
-                    <input type="submit" value="Search" />
-                </form>
-            </div>
-            <div>
-                <a class="login-btn" href="../Auth/AuthCheckServlet">Login</a>
-            </div>
-        </div>
-
-        <div class="sidebar">
-            <a href="../home.jsp"><img src="../Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="../home.jsp">Home</a>
-            <a href="../products.jsp">Products</a>
-            <a href="../event.jsp">Events</a>
-            <a href="../cart.jsp">Cart</a>
-            <a href="checkout.jsp">Checkout</a>
-            <a href="../DisplayComment.jsp">Comments</a>
-        </div>
-
-        <!-- ... Existing imports and HTML start ... -->
+        <%@ include file="z-navbar.jsp" %>
+        <%@ include file="z-sidebar.jsp" %>
         <div class="content">
             <div class="container">
 
@@ -69,12 +47,13 @@
                                 </div>
                             </div>
                             <% } %>
-                            <a href="../cart.jsp">Edit Items</a>
+                            <a href="cart.jsp">Edit Items</a>
                         </section>
 
                         <section class="customer-info info">
                             <h2>Shipping Information</h2>
-                            <form action="../CheckoutServlet" method="POST">
+                            <form action="CheckoutServlet" method="POST">
+                                
                                 <%
                                     Cookie[] userIdCookies = request.getCookies();
                                     String userId = "";
@@ -91,11 +70,11 @@
                                     if (userId == null || userId.equals("")) {
                                 %>
                                 <div class="form-control">
-                                    <label for="first-name">First Name</label>
+                                    <label for="first-name">First Name*</label>
                                     <input type="text" id="first-name" name="firstName" required>
                                 </div>
                                 <div class="form-control">
-                                    <label for="last-name">Last Name</label>
+                                    <label for="last-name">Last Name*</label>
                                     <input type="text" id="last-name" name="lastName" required>
                                 </div>
                                 <% } else {
@@ -108,22 +87,22 @@
                                 <% } %>
 
                                 <div class="form-control">
-                                    <label for="address">Address</label>
+                                    <label for="address">Address *</label>
                                     <input type="text" id="address" name="address" required>
                                 </div>
 
                                 <div class="form-control">
-                                    <label for="city">City</label>
+                                    <label for="city">City *</label>
                                     <input type="text" id="city" name="city" required>
                                 </div>
 
                                 <div class="form-control">
-                                    <label for="zip">ZIP Code</label>
+                                    <label for="zip">ZIP Code *</label>
                                     <input type="text" id="zip" name="zip" required>
                                 </div>
 
                                 <div class="form-control">
-                                    <label for="state">State</label>
+                                    <label for="state">State *</label>
                                     <select id="state" name="state" required>
                                         <option value="">Select State</option>
                                         <option value="Perlis">Perlis</option>
