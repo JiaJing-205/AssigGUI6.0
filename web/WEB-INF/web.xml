@@ -413,10 +413,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResetPasswordRequestServlet</servlet-name>
-        <url-pattern>/ResetPasswordRequest</url-pattern>
+        <url-pattern>/ResetPasswordRequestServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SignoutServlet</servlet-name>
+        <servlet-mapping>
+    <servlet-name>SignoutServlet</servlet-name>
         <url-pattern>/SignoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
