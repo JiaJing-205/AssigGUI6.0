@@ -15,7 +15,7 @@
 
             UserDA userDA = new UserDA();
             User user = new User();
-            
+
             UserShippingDetailsDA userShippingDetailsDA = new UserShippingDetailsDA();
             UserShippingDetails userShippingDetails = new UserShippingDetails();
 
@@ -57,7 +57,7 @@
 
                         <section class="customer-info info">
                             <h2>Shipping Information</h2>
-                            <form action="CheckoutServlet" method="POST">
+                            <form action="PaymentServlet2" method="POST">
                                 <%
                                     Cookie[] userIdCookies = request.getCookies();
                                     String userId = "";
@@ -69,6 +69,16 @@
                                         }
                                     } else {
                                         userId = "";
+                                    }
+
+                                    subtotal = 0.0;
+                                    for (int i = 0; i < cart.getCartItems().size(); i++) {
+                                        subtotal += cart.getCartItems().get(i).getPrice() * cart.getCartItems().get(i).getQuantity();
+                                    }
+
+                                    if (subtotal <= 0.0) {
+                                        shippingFee = 0.0;
+                                        shippingFeeTax = shippingFee * 0.06;
                                     }
 
                                     if (userId == null || userId.equals("")) {
@@ -116,12 +126,37 @@
                                         <option value="Kuala Lumpur">Kuala Lumpur</option>
                                         <option value="Putrajaya">Putrajaya</option>
                                     </select>
-                                    </select>
                                 </div>
-                                <% } else {
-                                    user = userDA.retrieveRecord(userId);
-                                    userShippingDetails = userShippingDetailsDA.retrieveRecord(userId);
-                                %>
+
+                                <label for="paymentType">Select Payment Method:</label>
+                                <select name="paymentType" id="paymentType" onchange="displayPaymentFields()" required>
+                                    <option value="">Select Payment Method</option>
+                                    <option value="creditCard">Credit Card</option>
+                                    <option value="tng">TNG</option>
+                                    <option value="cash">Cash</option>
+                                </select>
+
+                                <div id="creditCardFields" class="payment-fields" style="display:none;">
+                                    <h3>Credit Card Payment</h3>
+                                    <label for="cardNumber">Card Number:</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number">
+
+                                    <label for="expiryDate">Expiry Date:</label>
+                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+
+                                    <label for="cvv">CVV:</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV">
+                                </div>
+                                
+                                <input type="hidden" name="amountPaid" value="<%= String.format("%.2f", (subtotal + shippingFee + shippingFeeTax))%>"/>
+                                <input type="submit" value="Submit Payment">
+                            </form>
+
+                            <% } else {
+                                user = userDA.retrieveRecord(userId);
+                                userShippingDetails = userShippingDetailsDA.retrieveRecord(userId);
+                            %>
+                            <form action="CheckoutServlet" method="POST">
                                 <div class="form-control">
                                     <label for="name">Full Name</label>
                                     <input type="text" id="name" name="name" value="<%= user.getName()%>" readonly="readonly">
@@ -144,10 +179,11 @@
                                     <label for="state">State</label>
                                     <input type="text" id="state" name="state" value="<%= userShippingDetails.getState()%>" readonly="readonly">
                                 </div>
-                                <% } %>
-
-                                <button type="submit" class="checkout-btn">Confirm Order</button>
+                                <input type="hidden" name="amountPaid" value="<%= String.format("%.2f", (subtotal + shippingFee + shippingFeeTax))%>"/>
+                                <button style="margin-top: 10px" type="submit" class="checkout-btn">Confirm Order</button>
                             </form>
+                            <% }%>
+
                         </section>
                     </div>
 
@@ -155,18 +191,6 @@
                     <div class="right-column" style="flex: 1;">
                         <section class="checkout-summary info">
                             <h2 class="summary-title">Order Summary</h2>
-                            <%
-                                subtotal = 0.0;
-                                for (int i = 0; i < cart.getCartItems().size(); i++) {
-                                    subtotal += cart.getCartItems().get(i).getPrice() * cart.getCartItems().get(i).getQuantity();
-                                }
-
-                                if (subtotal <= 0.0) {
-                                    shippingFee = 0.0;
-                                    shippingFeeTax = shippingFee * 0.06;
-                                }
-                            %>
-
                             <div class="form-control">
                                 <label>Subtotal:</label>
                                 <span>RM<%= String.format("%.2f", subtotal)%></span>
@@ -188,6 +212,17 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            function displayPaymentFields() {
+                var paymentType = document.getElementById('paymentType').value;
+                document.getElementById('creditCardFields').style.display = 'none';
+
+                if (paymentType == 'creditCard') {
+                    document.getElementById('creditCardFields').style.display = 'block';
+                }
+            }
+        </script>
 
     </body>
 </html>

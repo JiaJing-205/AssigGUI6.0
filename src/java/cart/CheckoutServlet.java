@@ -28,14 +28,18 @@ public class CheckoutServlet extends HttpServlet {
         String city = "";
         String zip = "";
         String state = "";
+        String amountPaid = "";
+        String paymentType = "";
 
-        if (name == null) {
+        if (name == null || name.equals("")) {
             firstName = request.getParameter("firstName");
             lastName = request.getParameter("lastName");
             address = request.getParameter("address");
             city = request.getParameter("city");
             zip = request.getParameter("zip");
             state = request.getParameter("state");
+            amountPaid = request.getParameter("amountPaid");
+            paymentType = request.getParameter("paymentType");
 
             //Combine first name and last name into a single string
             name = firstName + " " + lastName;
@@ -44,6 +48,7 @@ public class CheckoutServlet extends HttpServlet {
             city = request.getParameter("city");
             zip = request.getParameter("zip");
             state = request.getParameter("state");
+            amountPaid = request.getParameter("amountPaid");
         }
 
         //Create and store information in session
@@ -53,6 +58,8 @@ public class CheckoutServlet extends HttpServlet {
         session.setAttribute("city", city);
         session.setAttribute("zip", zip);
         session.setAttribute("state", state);
+        session.setAttribute("amountPaid", amountPaid);
+        session.setAttribute("paymentType", paymentType);
 
         //Create order
         Order order = new Order();
@@ -85,8 +92,9 @@ public class CheckoutServlet extends HttpServlet {
         }
         payment.finalizePayment(payment.getPaymentID(), orderList, userId);
 
-        //Redirect to payment page
+        //Redirect to order or payment page
         response.sendRedirect("order.jsp");
+        
         out.close();
     }
 
