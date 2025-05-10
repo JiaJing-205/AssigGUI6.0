@@ -13,7 +13,7 @@
             <h2 class="info">Sign Up</h2>
 
             <section class="info">
-                <form method="post" action="Auth/SignupServlet">
+                <form method="post" action="SignupServlet">
                     <div class="form-control">
                         <label for="id">ID *:</label>
                         <input type="text" id="id" name="id" maxlength="20" value="${id}" required />

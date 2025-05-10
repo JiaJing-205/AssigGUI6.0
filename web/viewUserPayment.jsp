@@ -121,7 +121,7 @@
             </div>
 
             <div style="text-align:center;">
-                <a href="Profile.jsp">Back to Home</a>
+                <a href="ProfileServlet">Back to Home</a>
             </div>
 
             <script>
