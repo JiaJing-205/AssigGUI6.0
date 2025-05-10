@@ -1,3 +1,5 @@
+<%@page import="domain.UserShippingDetails"%>
+<%@page import="da.UserShippingDetailsDA"%>
 <%@page import="domain.User"%>
 <%@page import="da.UserDA"%>
 <%@page import="cart.Cart"%>
@@ -13,6 +15,9 @@
 
             UserDA userDA = new UserDA();
             User user = new User();
+            
+            UserShippingDetailsDA userShippingDetailsDA = new UserShippingDetailsDA();
+            UserShippingDetails userShippingDetails = new UserShippingDetails();
 
             double subtotal = 0.0;
             double shippingFee = 5.0;
@@ -53,7 +58,6 @@
                         <section class="customer-info info">
                             <h2>Shipping Information</h2>
                             <form action="CheckoutServlet" method="POST">
-                                
                                 <%
                                     Cookie[] userIdCookies = request.getCookies();
                                     String userId = "";
@@ -64,7 +68,7 @@
                                             }
                                         }
                                     } else {
-                                        userId = null;
+                                        userId = "";
                                     }
 
                                     if (userId == null || userId.equals("")) {
@@ -77,15 +81,6 @@
                                     <label for="last-name">Last Name*</label>
                                     <input type="text" id="last-name" name="lastName" required>
                                 </div>
-                                <% } else {
-                                    user = userDA.retrieveRecord(userId);
-                                %>
-                                <div class="form-control">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" value="<%= user.getName()%>" readonly>
-                                </div>
-                                <% } %>
-
                                 <div class="form-control">
                                     <label for="address">Address *</label>
                                     <input type="text" id="address" name="address" required>
@@ -123,6 +118,33 @@
                                     </select>
                                     </select>
                                 </div>
+                                <% } else {
+                                    user = userDA.retrieveRecord(userId);
+                                    userShippingDetails = userShippingDetailsDA.retrieveRecord(userId);
+                                %>
+                                <div class="form-control">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" value="<%= user.getName()%>" readonly="readonly">
+                                </div>
+                                <div class="form-control">
+                                    <label for="address">Address</label>
+                                    <input type="text" id="address" name="address" value="<%= userShippingDetails.getAddress()%>" readonly="readonly">
+                                </div>
+
+                                <div class="form-control">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" name="city" value="<%= userShippingDetails.getCity()%>" readonly="readonly">
+                                </div>
+
+                                <div class="form-control">
+                                    <label for="zip">ZIP Code</label>
+                                    <input type="text" id="zip" name="zip" value="<%= userShippingDetails.getZipCode()%>" readonly="readonly">
+                                </div>
+                                <div class="form-control">
+                                    <label for="state">State</label>
+                                    <input type="text" id="state" name="state" value="<%= userShippingDetails.getState()%>" readonly="readonly">
+                                </div>
+                                <% } %>
 
                                 <button type="submit" class="checkout-btn">Confirm Order</button>
                             </form>
