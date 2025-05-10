@@ -13,7 +13,7 @@
         <%@ include file="z-navbar.jsp" %>
         <%@ include file="z-sidebar.jsp" %>
         <div class="content">
-        <a class="button-return" href="../user/viewUserServlet">Return</a>
+        <a class="button-return" href="ProfileServlet">Return</a>
         <%
             // Get the user object from the request attribute
             User editUser = (User) request.getAttribute("editUser");
