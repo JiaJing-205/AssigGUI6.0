@@ -116,7 +116,6 @@
                                         <option value="Kuala Lumpur">Kuala Lumpur</option>
                                         <option value="Putrajaya">Putrajaya</option>
                                     </select>
-                                    </select>
                                 </div>
                                 <% } else {
                                     user = userDA.retrieveRecord(userId);

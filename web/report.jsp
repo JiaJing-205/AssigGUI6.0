@@ -81,7 +81,5 @@
                     <button type="submit">Least 3 items sold</button>
                 </form>      
             </div>
-            <a href="admin.html">Return Back</a>
-
     </body>
 </html>
