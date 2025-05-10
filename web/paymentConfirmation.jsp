@@ -37,7 +37,7 @@
     <button class="btn" onclick="generateReceipt()">Download Receipt</button>
 
     <div class="footer">
-        Thank you for your purchase! For help, contact atiersportssupport@gmail.com
+        Thank you for your purchase! For help, contact support@example.com
     </div>
 </div>
 </body>
