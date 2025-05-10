@@ -412,7 +412,7 @@
         <url-pattern>/ResetPasswordRequest</url-pattern>
     </servlet-mapping>
         <servlet-mapping>
-    Mservlet-name>SignoutServlet</servlet-name>
+    <servlet-name>SignoutServlet</servlet-name>
         <url-pattern>/SignoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
