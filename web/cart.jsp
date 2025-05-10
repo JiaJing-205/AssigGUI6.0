@@ -67,7 +67,13 @@
                             out.println("RM" + String.format("%.2f", subtotal));
                         %>
                     </h3>
+                    <%
+                        if (cart.getCartItems().size() != 0) {
+                    %>
                     <a href="checkout.jsp" style="align-content: center">Checkout</a>
+                    <%
+                        }
+                    %>
                 </div>
             </footer>
         </div>
