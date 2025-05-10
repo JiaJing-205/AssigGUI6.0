@@ -77,7 +77,7 @@
                 <% } %>
             </table>
             <% }%>
-            <a href="ProfileServlet">Return</a><br>
+            <a href="Auth/viewPersonalInfo">Return</a><br>
 
             </body>
             </html>

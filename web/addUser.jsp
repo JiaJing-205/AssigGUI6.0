@@ -33,11 +33,11 @@
                 session.removeAttribute("permission");
             %>
 
-            <a class="button-return" href="viewUserServlet">Return</a>
+            <a class="button-return" href="user/viewUserServlet">Return</a>
             <h2 class="info">Add User</h2>
 
             <section class="info">
-                <form action="addUserServlet" method="post">
+                <form action="user/addUserServlet" method="post">
                     <div class="form-control">
                         <label for="lid">ID *:</label>
                         <input type="text" id="lid" name="id" maxlength="20" value="<%= id != null ? id : ""%>" required>

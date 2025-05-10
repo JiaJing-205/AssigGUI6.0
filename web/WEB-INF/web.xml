@@ -200,7 +200,7 @@
     </servlet>
     <servlet>
         <servlet-name>SignoutServlet</servlet-name>
-        <servlet-class>Auth.SignoutServlet</servlet-class>
+        <servlet-class>SignoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>viewPersonalServlet</servlet-name>
@@ -409,10 +409,10 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResetPasswordRequestServlet</servlet-name>
-        <url-pattern>/ResetPasswordRequestServlet</url-pattern>
+        <url-pattern>/ResetPasswordRequest</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
-    <servlet-name>SignoutServlet</servlet-name>
+    <servlet-mapping>
+        <servlet-name>SignoutServlet</servlet-name>
         <url-pattern>/SignoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
