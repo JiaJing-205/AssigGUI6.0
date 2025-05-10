@@ -200,7 +200,7 @@
     </servlet>
     <servlet>
         <servlet-name>SignoutServlet</servlet-name>
-        <servlet-class>SignoutServlet</servlet-class>
+        <servlet-class>Auth.SignoutServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>viewPersonalServlet</servlet-name>
@@ -335,6 +335,10 @@
         <url-pattern>/reportCategory</url-pattern>
     </servlet-mapping>
     <!-- Session Configuration -->
+    <servlet>
+        <servlet-name>itemOrderServlet</servlet-name>
+        <servlet-class>item.itemOrderServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignupServlet</servlet-name>
         <url-pattern>/SignupServlet</url-pattern>
@@ -426,6 +430,10 @@
     <servlet-mapping>
         <servlet-name>updatePaymentStatusServlet</servlet-name>
         <url-pattern>/updatePaymentStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>itemOrderServlet</servlet-name>
+        <url-pattern>/itemOrderServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
