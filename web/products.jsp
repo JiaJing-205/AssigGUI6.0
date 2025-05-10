@@ -10,7 +10,6 @@
         <%@ include file="z-navbar.jsp" %>
         <%@ include file="z-sidebar.jsp" %>
         <div class="content">
-        </head>
         <body>
 
             <h2>Product Catalog</h2>

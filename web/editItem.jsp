@@ -48,7 +48,7 @@
             <%
                 }
             %>
-            <a href="staff.html">Return</a><br>
+            <a href="ProfileServlet">Return</a><br>
         </div>
 
     </body>
