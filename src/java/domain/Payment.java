@@ -171,33 +171,6 @@ public class Payment implements Serializable {
         paymentDA.createRecord(payment);
     }
     
-    public void guestFinalizePayment(String paymentID, List<Order> orders, String userId, String paymentMethod, String paymentDate) {
-        double totalPrice = 0.0;
-        String paymentStatus = "Paid";
-        
-        if (userId == null || userId.equals("")) {
-            userId = "Guest";
-        }
-        
-        //Loop through order list and get total price
-        for (int i = 0; i < orders.size(); i++) {
-            totalPrice += orders.get(i).getPrice();
-        }
-
-        Payment payment = new Payment();
-        payment.setPaymentID(paymentID);
-        payment.setOrders(orders);
-        payment.setTotalPrice(totalPrice);
-        payment.setPaymentMethod(paymentMethod);
-        payment.setPaymentStatus(paymentStatus);
-        payment.setPaymentDate(paymentDate);
-        payment.setUserID(userId);
-
-        //Add payment record into database
-        PaymentDA paymentDA = new PaymentDA();
-        paymentDA.createRecord(payment);
-    }
-    
     public static void main(String args[]) {
         Order order = new Order();
         OrderDA orderDA = new OrderDA();

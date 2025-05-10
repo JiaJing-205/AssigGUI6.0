@@ -14,7 +14,7 @@
             <h2 class="info">Login</h2>
 
             <section class="info">
-                <form method="post" action="LoginServlet">
+                <form method="post" action="Auth/LoginServlet">
                     <div class="form-control">
                         <label for="lid">ID *:</label>
                         <input type="text" id="lid" name="id" maxlength="20" value="${id}" required>
