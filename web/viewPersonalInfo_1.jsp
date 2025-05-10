@@ -160,7 +160,7 @@
 
         <a class="button-return" href="../Auth/ProfileServlet">Return</a>
         <h2>Personal Info</h2>
-        <form action="../Auth/editPersonalServlet" method="post">
+        <form action="editPersonalServlet" method="post">
             <table>
                 <tr>
                     <td>
