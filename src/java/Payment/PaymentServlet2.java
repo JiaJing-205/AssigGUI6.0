@@ -7,6 +7,7 @@ import domain.Order;
 import domain.Payment;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -27,8 +28,9 @@ public class PaymentServlet2 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String paymentType;
-        String amountPaid;
+        String paymentType = "";
+        String amountPaid = "";
+        String paymentDate = "";
         String cardNumber = request.getParameter("cardNumber");
         String expiryDate = request.getParameter("expiryDate");
         String cvv = request.getParameter("cvv");
@@ -38,6 +40,7 @@ public class PaymentServlet2 extends HttpServlet {
 
         amountPaid = request.getParameter("amountPaid");
         paymentType = request.getParameter("paymentType");
+        paymentDate = LocalDate.now().toString();
         
         //Create order
         Order order = new Order();
@@ -67,7 +70,7 @@ public class PaymentServlet2 extends HttpServlet {
                 }
             }
         }
-        payment.finalizePayment(payment.getPaymentID(), orderList, userId);
+        payment.guestFinalizePayment(payment.getPaymentID(), orderList, userId, paymentType, paymentDate);
 
         // Processing based on payment type
         if ("creditCard".equals(paymentType)) {
@@ -84,8 +87,7 @@ public class PaymentServlet2 extends HttpServlet {
         // Set other payment details
         payment.setTotalPrice(Double.parseDouble(amountPaid));
         payment.setPaymentStatus("Paid"); // Assume paid for now
-        // Insert payment details into the database
-        paymentDA.createRecord(payment);
+        payment.setPaymentDate(paymentDate);
 
         // Forward to payment confirmation page
         request.setAttribute("payment", payment);

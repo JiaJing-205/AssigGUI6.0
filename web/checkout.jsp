@@ -128,7 +128,7 @@
                                     </select>
                                 </div>
 
-                                <label for="paymentType">Select Payment Method:</label>
+                                <label for="paymentType">Select Payment Method *</label>
                                 <select name="paymentType" id="paymentType" onchange="displayPaymentFields()" required>
                                     <option value="">Select Payment Method</option>
                                     <option value="creditCard">Credit Card</option>
@@ -138,14 +138,14 @@
 
                                 <div id="creditCardFields" class="payment-fields" style="display:none;">
                                     <h3>Credit Card Payment</h3>
-                                    <label for="cardNumber">Card Number:</label>
-                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number">
+                                    <label for="cardNumber">Card Number *</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
 
-                                    <label for="expiryDate">Expiry Date:</label>
-                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
+                                    <label for="expiryDate">Expiry Date *</label>
+                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
 
-                                    <label for="cvv">CVV:</label>
-                                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV">
+                                    <label for="cvv">CVV *</label>
+                                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
                                 </div>
                                 
                                 <input type="hidden" name="amountPaid" value="<%= String.format("%.2f", (subtotal + shippingFee + shippingFeeTax))%>"/>
