@@ -388,10 +388,6 @@
         <url-pattern>/Auth/ProfileServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/Auth/LoginServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/PaymentServlet</url-pattern>
     </servlet-mapping>
@@ -410,6 +406,10 @@
     <servlet-mapping>
         <servlet-name>updatePaymentStatusServlet</servlet-name>
         <url-pattern>/updatePaymentStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
