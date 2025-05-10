@@ -23,7 +23,7 @@
             %>
                 <h3>Admin Privilege</h3>
                 <ul>
-                    <li><a href="user/viewUserServlet">Manage all users</a></li>
+                    <li><a href="viewUserServlet">Manage all users</a></li>
                     <li><a href="report.jsp">Enter Report Page</a></li>
                 </ul>
             <% } %>
@@ -33,21 +33,21 @@
             %>
                 <h3>Staff Privilege</h3>
                 <ul>
-                    <li><a href="item/viewItemServlet">Manage all items</a></li>
+                    <li><a href="viewItemServlet">Manage all items</a></li>
                 </ul>
             <% }%>
 
             <h3>User Privilege</h3>
-            <form action="Auth/viewPersonalServlet" method="get">
+            <form action="viewPersonalServlet" method="get">
                 <button type="submit">View Personal Info</button>
             </form>
-            <form action="item/itemOrderServlet" method="post">
+            <form action="itemOrderServlet" method="post">
                 <button type="submit">Order</button>
             </form>
-            <form action="Auth/SignoutServlet" method="post">
+            <form action="SignoutServlet" method="post">
                 <button type="submit">Sign Out</button>
             </form>
-            <form action="user/viewPaymentServlet" method="get">
+            <form action="viewPaymentServlet" method="get">
                 <button type="submit">View My Payments</button>
             </form>
 

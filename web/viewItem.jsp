@@ -36,7 +36,7 @@
         <%@ include file="z-navbar.jsp" %>
         <%@ include file="z-sidebar.jsp" %>
         <div class="content">
-            <a class="button" href="/Assignment_Login/Auth/ProfileServlet">Return</a>
+            <a class="button" href="ProfileServlet">Return</a>
             <h2 style="text-align:center;">All Items</h2>
             <a href="addItem.jsp">Add item</a><br>
 
