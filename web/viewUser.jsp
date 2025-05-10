@@ -45,15 +45,7 @@
                     <%
                         List<User> userList = (List<User>) request.getAttribute("allUsers");
                         String userId = null;
-                        Cookie[] cookies = request.getCookies();
-                        if (cookies != null) {
-                            for (Cookie cookie : cookies) {
-                                if ("userId".equals(cookie.getName())) {
-                                    userId = cookie.getValue();
-                                    break;
-                                }
-                            }
-                        }
+
 
                         if (userList != null && !userList.isEmpty()) {
                             for (User u : userList) {
@@ -98,5 +90,4 @@
             </div>
         </div>
     </body>
-    >>>>>>> Stashed changes
 </html>

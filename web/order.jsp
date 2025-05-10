@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="item.Item" %>
+<%@ page import="item.*" %>
 <!DOCTYPE html>
 <html>
     <head>

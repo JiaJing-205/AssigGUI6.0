@@ -53,7 +53,7 @@ public class viewPersonalServlet extends HttpServlet {
             request.setAttribute("phone", user.getPhone());
             request.setAttribute("bd", user.getHbd());
             request.setAttribute("pwd", user.getPwd());
-            request.getRequestDispatcher("../Auth/viewPersonalInfo.jsp").forward(request, response);
+            request.getRequestDispatcher("viewPersonalInfo.jsp").forward(request, response);
 
         } catch (Exception ex) {
             ex.printStackTrace();
