@@ -158,7 +158,7 @@
     </head>
     <body>
 
-        <a class="button-return" href="../Auth/ProfileServlet">Return</a>
+        <a class="button-return" href="ProfileServlet">Return</a>
         <h2>Personal Info</h2>
         <form action="editPersonalServlet" method="post">
             <table>

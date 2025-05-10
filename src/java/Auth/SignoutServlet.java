@@ -30,6 +30,6 @@ public class SignoutServlet extends HttpServlet {
                 response.addCookie(cookie);
             }
         }
-        response.sendRedirect("/Assignment_Login/home.jsp");
+        response.sendRedirect("home.jsp");
     }
 }

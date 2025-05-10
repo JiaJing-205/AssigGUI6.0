@@ -92,7 +92,7 @@ public class editPersonalServlet extends HttpServlet {
             request.setAttribute("bd", hbd);
             request.setAttribute("password1", password);
             request.setAttribute("password2", confirmPassword);
-            request.getRequestDispatcher("../Auth/viewPersonalInfo.jsp").forward(request, response);
+            request.getRequestDispatcher("viewPersonalInfo_1.jsp").forward(request, response);
         }
         System.out.println("HERE2");
 

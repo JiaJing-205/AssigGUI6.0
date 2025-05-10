@@ -30,6 +30,10 @@
         <servlet-class>item.removeItemServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>editPersonalServlet</servlet-name>
+        <servlet-class>Auth.editPersonalServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>editItemServlet</servlet-name>
         <servlet-class>item.editItemServlet</servlet-class>
     </servlet>
@@ -249,6 +253,10 @@
     <servlet-mapping>
         <servlet-name>getItemServlet</servlet-name>
         <url-pattern>/getItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editPersonalServlet</servlet-name>
+        <url-pattern>/editPersonalServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ItemOrderServlet</servlet-name>
