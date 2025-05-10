@@ -5,22 +5,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create New Comment</title>
         <style>
-            :root {
-                --primary: #3498db;
-                --danger: #e74c3c;
-                --dark: #2c3e50;
-            }
-
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                line-height: 1.6;
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 20px;
-                color: #333;
-                background-color: #f5f5f5;
-            }
-
             h1 {
                 color: var(--dark);
                 border-bottom: 2px solid var(--primary);
