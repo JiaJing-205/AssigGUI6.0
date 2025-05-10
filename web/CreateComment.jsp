@@ -5,6 +5,62 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create New Comment</title>
         <link rel="stylesheet" href="z-styles.css" />
+        
+        <style>
+        .comment-form {
+                background: white;
+                padding: 25px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                margin-bottom: 30px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                color: var(--dark);
+            }
+
+            input[type="text"],
+            textarea,
+            select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 16px;
+                transition: border 0.3s;
+                box-sizing: border-box;
+            }
+
+            textarea {
+                height: 40px;
+                max-height: 120px;
+                overflow-y: hidden;
+                resize: none;
+            }
+
+            button {
+                background: var(--primary);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background 0.3s;
+            }
+
+            button:hover {
+                background: #2980b9;
+            }
+        </style>
+        
     </head>
     <body>
         <%@ include file="z-navbar.jsp" %>
