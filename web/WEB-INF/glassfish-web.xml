@@ -22,5 +22,9 @@
     <property name="keepgenerated" value="true">
       <description>Keep a copy of the generated servlet class' java code.</description>
     </property>
+    
+    <jpa-enabled>true</jpa-enabled>
+    <property name="persistence-unit-ref" value="true"/>
+    
   </jsp-config>
 </glassfish-web-app>
