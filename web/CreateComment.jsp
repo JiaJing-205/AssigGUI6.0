@@ -4,101 +4,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create New Comment</title>
-        <style>
-            h1 {
-                color: var(--dark);
-                border-bottom: 2px solid var(--primary);
-                padding-bottom: 10px;
-            }
-
-            .comment-form {
-                background: white;
-                padding: 25px;
-                border-radius: 8px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                margin-bottom: 30px;
-            }
-
-            .form-group {
-                margin-bottom: 20px;
-            }
-
-            label {
-                display: block;
-                margin-bottom: 8px;
-                font-weight: 600;
-                color: var(--dark);
-            }
-
-            input[type="text"],
-            textarea,
-            select {
-                width: 100%;
-                padding: 10px;
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                font-size: 16px;
-                transition: border 0.3s;
-                box-sizing: border-box;
-            }
-
-            textarea {
-                height: 40px;
-                max-height: 120px;
-                overflow-y: hidden;
-                resize: none;
-            }
-
-            button {
-                background: var(--primary);
-                color: white;
-                border: none;
-                padding: 12px 20px;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 16px;
-                transition: background 0.3s;
-            }
-
-            button:hover {
-                background: #2980b9;
-            }
-
-            .error {
-                color: var(--danger);
-                padding: 10px;
-                background: #fdecea;
-                border-radius: 4px;
-                margin-bottom: 20px;
-            }
-        </style><link rel="stylesheet" href="z-styles.css" />
+        <link rel="stylesheet" href="z-styles.css" />
     </head>
     <body>
-        <div id="navbar">
-            <div>
-            </div>
-
-            <div class="search-container"><form action="searchItemPublicServlet" method="get" style="text-align:center; margin-bottom:20px;">
-                    <input type="text" name="search" placeholder="Search item by name" required />
-                    <input type="submit" value="Search" />
-                </form>
-            </div>
-
-            <div>
-                <a class="login-btn" href="Auth/Login.jsp">Login</a>
-            </div>
-        </div>
-
-        <div class="sidebar">
-            <a href="home.jsp"><img src="Images/logohorizon.png" height="90" width ="230" alt="alt" style="padding:0;margin:0;"/></a>
-            <a href="home.jsp">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="events">Events</a>
-            <a href="cart.jsp">Cart</a>
-            <a href="checkout/checkout.jsp">Checkout</a>
-            <a href="DisplayComment.jsp">Comments</a>
-        </div>
-
+        <%@ include file="z-navbar.jsp" %>
+        <%@ include file="z-sidebar.jsp" %>
         <div class="content">
             <h1>Create New Comment</h1>
 
