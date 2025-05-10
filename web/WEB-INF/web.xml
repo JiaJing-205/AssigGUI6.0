@@ -151,10 +151,6 @@
         <servlet-class>user.viewPaymentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>updatePaymentStatusServlet</servlet-name>
-        <servlet-class>user.updatePaymentStatusServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>viewPersonalInfo</servlet-name>
         <servlet-class>user.viewPersonalInfo</servlet-class>
     </servlet>
@@ -209,6 +205,10 @@
     <servlet>
         <servlet-name>GotoLoginServlet</servlet-name>
         <servlet-class>Auth.GotoLoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updatePaymentStatusServlet</servlet-name>
+        <servlet-class>user.updatePaymentStatusServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
@@ -356,10 +356,6 @@
         <url-pattern>/viewPaymentServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>updatePaymentStatusServlet</servlet-name>
-        <url-pattern>/updatePaymentStatusServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>viewPersonalInfo</servlet-name>
         <url-pattern>/viewPersonalInfo</url-pattern>
     </servlet-mapping>
@@ -410,6 +406,10 @@
     <servlet-mapping>
         <servlet-name>GotoLoginServlet</servlet-name>
         <url-pattern>/GotoLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatePaymentStatusServlet</servlet-name>
+        <url-pattern>/updatePaymentStatusServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

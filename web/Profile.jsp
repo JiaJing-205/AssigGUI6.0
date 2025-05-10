@@ -48,7 +48,6 @@
                 <button type="submit">Sign Out</button>
             </form>
             <form action="user/viewPaymentServlet" method="get">
-                <input type="hidden" name="userId" value="U001" />
                 <button type="submit">View My Payments</button>
             </form>
 

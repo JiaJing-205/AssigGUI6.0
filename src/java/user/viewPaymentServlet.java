@@ -13,8 +13,27 @@ public class viewPaymentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
-        String userId = request.getParameter("userId");
+                Cookie[] cookies = request.getCookies();
+        String userId = null;
+        String userPermission = null;
 
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("userId".equals(cookie.getName())) {
+                    userId = cookie.getValue();
+                } else if ("userPermission".equals(cookie.getName())) {
+                    userPermission = cookie.getValue();
+                }
+            }
+        }
+
+        if (userId == null) {
+            request.setAttribute("error", "User not logged in.");
+            request.getRequestDispatcher("ProfileServlet").forward(request, response);
+            return;
+        }
+
+        
         try {
             PaymentDA paymentDA = new PaymentDA();
             List<Payment> paymentList = paymentDA.getUserPayment(userId);

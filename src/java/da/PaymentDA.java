@@ -180,4 +180,15 @@ public List<Payment> getUserPayment(String userID) throws SQLException {
     return payments;
 }
 
+    public boolean updatePaymentStatus(String paymentID, String paymentMethod) throws SQLException {
+        String updateSQL = "UPDATE Payment SET paymentStatus = 'Paid', paymentMethod = ? WHERE paymentID = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(updateSQL)) {
+            stmt.setString(1, paymentMethod);
+            stmt.setString(2, paymentID);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        }
+    }
+    
 }
