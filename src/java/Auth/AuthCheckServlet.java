@@ -22,7 +22,7 @@ public class AuthCheckServlet extends HttpServlet {
         if (isAuthenticated) {
             response.sendRedirect("ProfileServlet");
         } else {
-            response.sendRedirect("./Auth/Login.jsp");
+            response.sendRedirect("Login.jsp");
         }
     }
     
