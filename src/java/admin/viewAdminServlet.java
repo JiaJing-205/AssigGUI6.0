@@ -40,7 +40,7 @@ public class viewAdminServlet extends HttpServlet {
 
         // forward to JSP
         request.setAttribute("userRole", "Admin");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/viewUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("viewUser.jsp");
         dispatcher.forward(request, response);
     }
 }

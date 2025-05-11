@@ -40,7 +40,7 @@ public class viewStaffServlet extends HttpServlet {
 
         // forward to JSP
         request.setAttribute("userRole", "Staff");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/viewUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("viewUser.jsp");
         dispatcher.forward(request, response);
     }
 }

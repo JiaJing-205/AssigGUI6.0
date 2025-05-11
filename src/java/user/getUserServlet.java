@@ -32,7 +32,7 @@ public class getUserServlet extends HttpServlet {
             
             if (editUser != null) {
                 request.setAttribute("editUser", editUser);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/editUser.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("editUser.jsp");
                 dispatcher.forward(request, response); 
             } else {
                 request.setAttribute("error", "User not found.");
