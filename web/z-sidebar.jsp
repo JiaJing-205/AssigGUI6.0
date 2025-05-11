@@ -8,6 +8,5 @@
     <a href="products.jsp">Products</a>
     <a href="eventstuff">Events</a>
     <a href="cart.jsp">Cart</a>
-    <a href="checkout.jsp">Checkout</a>
     <a href="DisplayComment.jsp">Comments</a>
 </div>

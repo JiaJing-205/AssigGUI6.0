@@ -8,6 +8,138 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Filtered Comments</title>
         <link rel="stylesheet" href="z-styles.css" />
+
+        <style>
+            .filter-container {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .filter-dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .filter-button:hover {
+                background: #2980b9;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: white;
+                min-width: 200px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+
+            .filter-dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a {
+                color: var(--dark);
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1;
+            }
+
+            .dropdown-header {
+                padding: 12px 16px;
+                font-weight: bold;
+                background-color: var(--light);
+                color: var(--dark);
+                border-bottom: 1px solid #ddd;
+            }
+            .comment {
+                background: white;
+                padding: 20px;
+                margin-bottom: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .comment-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .username {
+                font-weight: bold;
+                color: var(--dark);
+                font-size: 18px;
+            }
+
+            .rating {
+                color: #f39c12;
+                font-weight: bold;
+            }
+
+            .stars {
+                color: #f1c40f;
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+
+            .comment-date {
+                color: #7f8c8d;
+                font-size: 14px;
+                margin-top: 5px;
+            }
+
+            .create-new {
+                display: inline-block;
+                background: var(--success);
+                color: white;
+                text-decoration: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+            .create-new:hover {
+                background: #27ae60;
+            }
+
+            .refresh {
+                display: inline-block;
+                background: var(--primary);
+                color: white;
+                text-decoration: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+            .refresh:hover {
+                background: #2980b9;
+            }
+
+            .empty-message {
+                text-align: center;
+                padding: 30px;
+                color: #7f8c8d;
+                font-style: italic;
+            }
+
+            .active-filter {
+                background-color: var(--success);
+                color: white;
+            }
+
+        </style>
+
     </head>
     <body>
         <%@ include file="z-navbar.jsp" %>
