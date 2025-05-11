@@ -86,7 +86,7 @@ public class CheckoutServlet extends HttpServlet {
         payment.finalizePayment(payment.getPaymentID(), orderList, userId);
 
         //Redirect to payment page
-        response.sendRedirect("order.jsp");
+        response.sendRedirect("viewPaymentServlet");
         out.close();
     }
 

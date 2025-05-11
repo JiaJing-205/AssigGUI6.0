@@ -179,10 +179,6 @@
         <servlet-class>home.Top3ItemHomeServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CheckoutServlet</servlet-name>
-        <servlet-class>cart.CheckoutServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AuthCheckServlet</servlet-name>
         <servlet-class>Auth.AuthCheckServlet</servlet-class>
     </servlet>
@@ -225,6 +221,10 @@
     <servlet>
         <servlet-name>GenerateReceiptServlet</servlet-name>
         <servlet-class>Payment.GenerateReceiptServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <servlet-class>cart.CheckoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
@@ -404,10 +404,6 @@
         <url-pattern>/Top3ItemHome</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CheckoutServlet</servlet-name>
-        <url-pattern>/CheckoutServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AuthCheckServlet</servlet-name>
         <url-pattern>/AuthCheckServlet</url-pattern>
     </servlet-mapping>
@@ -450,6 +446,10 @@
     <servlet-mapping>
         <servlet-name>GenerateReceiptServlet</servlet-name>
         <url-pattern>/GenerateReceiptServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckoutServlet</servlet-name>
+        <url-pattern>/CheckoutServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
