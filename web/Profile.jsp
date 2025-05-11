@@ -41,9 +41,6 @@
             <form action="viewPersonalServlet" method="get">
                 <button type="submit">View Personal Info</button>
             </form>
-            <form action="itemOrderServlet" method="post">
-                <button type="submit">Order</button>
-            </form>
             <form action="SignoutServlet" method="post">
                 <button type="submit">Sign Out</button>
             </form>

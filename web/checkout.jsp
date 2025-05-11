@@ -5,7 +5,7 @@
 <%@page import="cart.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Checkout Page</title>
@@ -218,11 +218,11 @@
                 var paymentType = document.getElementById('paymentType').value;
                 document.getElementById('creditCardFields').style.display = 'none';
 
-                if (paymentType == 'creditCard') {
+                if (paymentType === 'creditCard') {
                     document.getElementById('creditCardFields').style.display = 'block';
                 }
             }
         </script>
 
     </body>
-</html>
+

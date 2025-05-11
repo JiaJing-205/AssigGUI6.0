@@ -3,6 +3,7 @@ package item;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -13,10 +14,10 @@ public class itemOrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //List<Item> itemList = new ArrayList<>();
+        List<Item> itemList = new ArrayList<>();
         try {
             ItemDA itDA = new ItemDA(); // initialize DAO
-            List<Item> itemList = itDA.getAllRecord(); // get all records
+            itemList = itDA.getAllRecord(); // get all records
             request.setAttribute("allItems", itemList); // set attribute
         } catch (Exception ex) {
             ex.printStackTrace();
