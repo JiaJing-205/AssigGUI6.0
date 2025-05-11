@@ -88,7 +88,7 @@ public class SignupServlet extends HttpServlet {
             request.setAttribute("pwd1", password);
             request.setAttribute("pwd2", confirmPassword);
 
-            request.getRequestDispatcher("SignupServlet").forward(request, response);
+            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
         }
         //Store sql, store cookie, and go to profile page
         user = new User(id, username, email, phone, bd, password);
