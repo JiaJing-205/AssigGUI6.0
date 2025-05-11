@@ -13,7 +13,7 @@ public class viewPaymentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
-                Cookie[] cookies = request.getCookies();
+        Cookie[] cookies = request.getCookies();
         String userId = null;
         String userPermission = null;
 
