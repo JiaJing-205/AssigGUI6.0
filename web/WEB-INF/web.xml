@@ -222,6 +222,10 @@
         <servlet-name>updatePaymentStatusServlet</servlet-name>
         <servlet-class>user.updatePaymentStatusServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GenerateReceiptServlet</servlet-name>
+        <servlet-class>Payment.GenerateReceiptServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
         <url-pattern>/viewPersonalServlet</url-pattern>
@@ -423,8 +427,8 @@
         <servlet-name>ResetPasswordRequestServlet</servlet-name>
         <url-pattern>/ResetPasswordRequestServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
-    <servlet-name>SignoutServlet</servlet-name>
+    <servlet-mapping>
+        <servlet-name>SignoutServlet</servlet-name>
         <url-pattern>/SignoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -442,6 +446,10 @@
     <servlet-mapping>
         <servlet-name>itemOrderServlet</servlet-name>
         <url-pattern>/itemOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerateReceiptServlet</servlet-name>
+        <url-pattern>/GenerateReceiptServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
