@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.time.YearMonth" %>
+<%@ page import="domain.*" %>
+<%@ page import="da.*" %>
+<%@ page import="Payment.*" %>
+
 <%
     YearMonth now = YearMonth.now();
     String minMonth = now.toString(); // Format: YYYY-MM
@@ -108,7 +112,7 @@
 
             <div id="tngFields" class="qr-section">
                 <p><strong>Scan QR Code to Pay</strong></p>
-                <img src="resources/tng_qr.png" alt="TNG QR Code" />
+                <img src="Images/tngQRCode.jpg" alt="TNG QR Code" />
                 <label for="tngScreenshot">Upload Payment Screenshot<span class="required">*</span></label>
                 <input type="file" name="tngScreenshot" id="tngScreenshot" accept="image/*" required />
             </div>
