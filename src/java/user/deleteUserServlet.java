@@ -29,12 +29,12 @@ public class deleteUserServlet extends HttpServlet {
             usDA.deleteProfileRecord(id);
             out.println("<script type='text/javascript'>");
             out.println("alert('User \"" + id + "\" has been deleted successfully.');");
-            out.println("window.location.href = '/viewUserServlet';");
+            out.println("window.location.href = 'viewUserServlet';");
             out.println("</script>");
         } catch (Exception ex) {
             out.println(ex);
         }
 
-        response.sendRedirect("/viewUserServlet");
+        response.sendRedirect("viewUserServlet");
     }
 }

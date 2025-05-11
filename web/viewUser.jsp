@@ -44,7 +44,7 @@
                     </tr>
                     <%
                         List<User> userList = (List<User>) request.getAttribute("allUsers");
-                        String userId = null;
+                        String userId = (String) request.getAttribute("userID");
 
 
                         if (userList != null && !userList.isEmpty()) {
