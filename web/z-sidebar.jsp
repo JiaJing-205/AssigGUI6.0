@@ -8,5 +8,5 @@
     <a href="products.jsp">Products</a>
     <a href="eventstuff">Events</a>
     <a href="cart.jsp">Cart</a>
-    <a href="DisplayComment.jsp">Comments</a>
+    <a href="view-comments">Comments</a>
 </div>

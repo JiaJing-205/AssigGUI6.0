@@ -10,6 +10,12 @@
         <link rel="stylesheet" href="z-styles.css" />
 
         <style>
+            .filter-button.active-filter {
+                background-color: var(--success);
+                color: #04484f;
+                background-color: white;
+            }
+
             .filter-container {
                 display: flex;
                 gap: 10px;
@@ -178,6 +184,10 @@
                         <a href="filter-comments?type=star1" class="${param.type eq 'star1' ? 'active-filter' : ''}">★ (1 Star)</a>
                     </div>
                 </div>
+                    
+                <a href="${pageContext.request.contextPath}/CreateComment.jsp" class="create-new">
+                    + Create New Comment
+                </a>
 
                 <a href="${pageContext.request.contextPath}/view-comments" class="refresh">
                     🌐 Show All Comments

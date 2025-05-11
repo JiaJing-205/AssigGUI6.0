@@ -5,9 +5,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create New Comment</title>
         <link rel="stylesheet" href="z-styles.css" />
-        
+
         <style>
-        .comment-form {
+            #commentSubmissionForm {
                 background: white;
                 padding: 25px;
                 border-radius: 8px;
@@ -15,20 +15,20 @@
                 margin-bottom: 30px;
             }
 
-            .form-group {
+            #commentSubmissionForm .form-group {
                 margin-bottom: 20px;
             }
 
-            label {
+            #commentSubmissionForm label {
                 display: block;
                 margin-bottom: 8px;
                 font-weight: 600;
                 color: var(--dark);
             }
 
-            input[type="text"],
-            textarea,
-            select {
+            #commentSubmissionForm input[type="text"],
+            #commentSubmissionForm textarea,
+            #commentSubmissionForm select {
                 width: 100%;
                 padding: 10px;
                 border: 1px solid #ddd;
@@ -38,17 +38,17 @@
                 box-sizing: border-box;
             }
 
-            textarea {
+            #commentSubmissionForm textarea {
                 height: 40px;
                 max-height: 120px;
                 overflow-y: hidden;
                 resize: none;
             }
 
-            button {
-                background: var(--primary);
-                color: white;
-                border: none;
+            #commentSubmissionForm button {
+                background: white;
+                color: #04484f;
+                border: 2px solid #04484f;
                 padding: 12px 20px;
                 border-radius: 4px;
                 cursor: pointer;
@@ -56,11 +56,13 @@
                 transition: background 0.3s;
             }
 
-            button:hover {
-                background: #2980b9;
+            #commentSubmissionForm button:hover,
+            a:hover{
+                background: #04484f;
+                color: white;
             }
         </style>
-        
+
     </head>
     <body>
         <%@ include file="z-navbar.jsp" %>
@@ -75,7 +77,7 @@
             </c:if>
 
             <div class="comment-form">
-                <form method="POST" action="${pageContext.request.contextPath}/create-comment">
+                <form id="commentSubmissionForm" method="POST" action="${pageContext.request.contextPath}/create-comment">
                     <div class="form-group">
                         <label for="username">Your Name:</label>
                         <input type="text" id="username" name="username" required 
@@ -105,7 +107,7 @@
 
                 <div style="margin-top: 20px; text-align: center;">
                     <a href="${pageContext.request.contextPath}/view-comments" 
-                       style="color: var(--primary); text-decoration: none;">
+                       style="text-decoration: none;">
                         ← View All Comments
                     </a>
                 </div>
