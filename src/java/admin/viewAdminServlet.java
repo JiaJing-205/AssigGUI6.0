@@ -16,13 +16,14 @@ public class viewAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String userId=null;
         try {
             UserDA userDA = new UserDA();
             AdminDA adminDA = new AdminDA();
             List<User> userList = userDA.getAllRecords();
             List<Admin> adminList = adminDA.getAllRecords();
             List<User> adminUserList = new ArrayList<>();
+            request.setAttribute("userID", userId);
 
             // Loop through each user and staff to find matches
             for (User user : userList) {

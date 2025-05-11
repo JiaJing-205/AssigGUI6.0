@@ -65,16 +65,12 @@
                             </form>
                         </td>
                         <td>
-                            <%
-                                if (userId != null && !userId.equals(u.getId())) {
-                            %>
+
                             <form action="deleteUserServlet" method="post" onsubmit="return confirm('Are you sure?');">
                                 <input type="hidden" name="id" value="<%= u.getId()%>" />
                                 <input type="submit" class="button-small" value="Delete" />
                             </form>
-                            <%
-                                }
-                            %>
+
                         </td>
                     </tr>
                     <%

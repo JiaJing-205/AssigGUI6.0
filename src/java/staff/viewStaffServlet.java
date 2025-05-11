@@ -16,13 +16,14 @@ public class viewStaffServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String userId = null;
         try {
             UserDA userDA = new UserDA();
             StaffDA staffDA = new StaffDA();
             List<User> userList = userDA.getAllRecords();
             List<Staff> staffList = staffDA.getAllRecords();
             List<User> staffUserList = new ArrayList<>();
+            request.setAttribute("userID", userId);
 
             // Loop through each user and staff to find matches
             for (User user : userList) {
