@@ -226,6 +226,26 @@
         <servlet-name>CheckoutServlet</servlet-name>
         <servlet-class>cart.CheckoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editShippingServlet</servlet-name>
+        <servlet-class>Auth.editShippingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>viewShippingServlet</servlet-name>
+        <servlet-class>Auth.viewShippingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addShippingServlet</servlet-name>
+        <servlet-class>Auth.addShippingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchItemPublicListServlet</servlet-name>
+        <servlet-class>item.searchItemPublicListServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ItemListServlet</servlet-name>
+        <servlet-class>item.ItemListServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
         <url-pattern>/viewPersonalServlet</url-pattern>
@@ -450,6 +470,26 @@
     <servlet-mapping>
         <servlet-name>CheckoutServlet</servlet-name>
         <url-pattern>/CheckoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editShippingServlet</servlet-name>
+        <url-pattern>/editShippingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewShippingServlet</servlet-name>
+        <url-pattern>/viewShippingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addShippingServlet</servlet-name>
+        <url-pattern>/addShippingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchItemPublicListServlet</servlet-name>
+        <url-pattern>/searchItemPublicListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemListServlet</servlet-name>
+        <url-pattern>/ItemListServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

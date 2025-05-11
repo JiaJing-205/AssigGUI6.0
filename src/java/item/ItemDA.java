@@ -137,6 +137,35 @@ public class ItemDA {
     }
         return itemFind;
     }
+     
+     public List<Item> getRecordSearchNameList(String name) throws SQLException {
+        String queryStr = "SELECT * FROM Item WHERE itemName LIKE?";
+        Item itemFind = new Item();
+        List<Item> itemList = new ArrayList<>();
+
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, "%" + name + "%");
+            ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Item itemDet = new Item(
+                rs.getString("itemID"),
+                rs.getString("itemName"),
+                rs.getString("itemCategory"),
+                rs.getFloat("itemPrice"),
+                rs.getInt("stock")
+            );
+            itemFind = itemDet;
+            itemList.add(itemDet);
+        }
+
+    } catch (SQLException ex) {
+        throw ex;
+    }
+        return itemList;
+    }
+        
         
     public List<Item> getAllRecordStock() throws SQLException {
         String queryStr = "SELECT * FROM Item ORDER BY stock";
