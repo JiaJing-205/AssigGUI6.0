@@ -6,7 +6,9 @@
 <%
     List<Payment> paymentList = (List<Payment>) request.getAttribute("paymentList");
     Boolean paymentUpdated = (Boolean) request.getAttribute("paymentUpdated");
-    if (paymentUpdated == null) paymentUpdated = false;
+    if (paymentUpdated == null) {
+        paymentUpdated = false;
+    }
     String userID = (String) request.getAttribute("userID");
 %>
 
@@ -45,40 +47,31 @@
                 String updatedParam = request.getParameter("updated");
                 boolean paymentUpdatedBool = "true".equalsIgnoreCase(updatedParam);
             %>
-            <div id="successPopup" class="success-popup" style="<%= paymentUpdatedBool ? "display:block;" : "display:none;" %>">
+            <div id="successPopup" class="success-popup" style="<%= paymentUpdatedBool ? "display:block;" : "display:none;"%>">
                 <p>Updated to Paid!</p>
             </div>
+
             <h1 style="text-align:center;">Payment & Order Details</h1>
 
             <%
                 if (paymentList != null && !paymentList.isEmpty()) {
                     for (Payment p : paymentList) {
             %>
-            <h2>Payment ID: <%= p.getPaymentID() %></h2>
-            <p>Total Price: RM <%= p.getTotalPrice() %><br>
-                Payment Method: <%= p.getPaymentMethod() %><br>
+            <h2>Payment ID: <%= p.getPaymentID()%></h2>
+            <p>Total Price: RM <%= p.getTotalPrice()%><br>
+                Payment Method: <%= p.getPaymentMethod()%><br>
                 Payment Status: 
-                <span style="color: <%= p.getPaymentStatus().equals("Paid") ? "green" : "red" %>;">
-                    <%= p.getPaymentStatus() %>
+                <span style="color: <%= p.getPaymentStatus().equals("Paid") ? "green" : "red"%>;">
+                    <%= p.getPaymentStatus()%>
                 </span><br>
 
-                <% if (p.getPaymentStatus().equals("Pending")) { %>
-                <!-- Button to show the payment method form -->
-                <button onclick="togglePaymentForm('<%= p.getPaymentID() %>')">Select Payment Method</button>
-                <% } %>
-
-                <!-- Payment Method Form (Initially hidden) -->
-            <form id="paymentForm-<%= p.getPaymentID() %>" action="updatePaymentStatusServlet" method="post" style="display: none;">
-                <input type="hidden" name="paymentID" value="<%= p.getPaymentID() %>" />
-                <input type="hidden" name="userID" value="<%= p.getUserID() %>" />
-                <label for="paymentMethod">Select Payment Method:</label>
-                <select name="paymentMethod">
-                    <option value="TNG">TNG</option>
-                    <option value="Card">Card</option>
-                    <option value="Cash">Cash</option>
-                </select>
-                <button type="submit">Confirm Payment</button>
+                <% if (p.getPaymentStatus().equals("Pending")) {%>
+            <form action="paymentForm.jsp" method="get" style="display:inline;">
+                <input type="hidden" name="paymentID" value="<%= p.getPaymentID()%>" />
+                <input type="hidden" name="userID" value="<%= p.getUserID()%>" />
+                <button type="submit">Select Payment Method</button>
             </form>
+            <% } %>
 
             <!-- Orders Table -->
             <table>
@@ -94,49 +87,36 @@
                     for (Order o : p.getOrders()) {
                 %>
                 <tr>
-                    <td><%= o.getOrderID() %></td>
-                    <td><%= o.getItemName() %></td>
-                    <td><%= o.getItemCategory() %></td>
-                    <td>RM <%= o.getPrice() %></td>
-                    <td><%= o.getQuantity() %></td>
-                    <td><%= o.getOrderDate() %></td>
+                    <td><%= o.getOrderID()%></td>
+                    <td><%= o.getItemName()%></td>
+                    <td><%= o.getItemCategory()%></td>
+                    <td>RM <%= o.getPrice()%></td>
+                    <td><%= o.getQuantity()%></td>
+                    <td><%= o.getOrderDate()%></td>
                 </tr>
                 <%
                     }
                 %>
             </table>
-
-            <%
-                    }
-                } else {
-            %>
-            <p style="text-align:center; color:red;">No payment records found.</p>
+            <hr>
             <%
                 }
+            } else {
             %>
-
-            <!-- Success Popup -->
-            <div id="successPopup" class="success-popup">
-                <p>Updated to Paid!</p>
-            </div>
+            <p style="text-align:center; color:red;">No payment records found.</p>
+            <% } %>
 
             <div style="text-align:center;">
                 <a href="ProfileServlet">Back to Home</a>
             </div>
 
-            <script>
-                function togglePaymentForm(paymentID) {
-                    var form = document.getElementById("paymentForm-" + paymentID);
-                    form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
-                }
-            </script>
             <% if (paymentUpdatedBool) { %>
             <script>
                 setTimeout(() => {
                     document.getElementById("successPopup").style.display = "none";
                 }, 3000);
             </script>
-            <% } %>
+            <% }%>
         </div>
     </body>
-    </html>
+</html>
