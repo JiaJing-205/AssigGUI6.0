@@ -20,7 +20,7 @@
                 <section class="form-section info" style="padding: 20px;">
                     <form method="post" action="addItemServlet">
                         <div class="form-control">
-                            <label for="id">ID *:</label>
+                            <label for="id">ID <span style="color: red;">*</span></label>
                             <input type="text" name="id" id="id" value="<%= request.getAttribute("id") != null ? request.getAttribute("id") : ""%>" />
                             <span style="color:red;">
                                 <%= request.getAttribute("error") != null ? request.getAttribute("error") : ""%>
@@ -28,12 +28,12 @@
                         </div>
 
                         <div class="form-control">
-                            <label for="name">Name *:</label>
+                            <label for="name">Name <span style="color: red;">*</span></label>
                             <input type="text" name="name" id="name" value="<%= request.getAttribute("name") != null ? request.getAttribute("name") : ""%>" />
                         </div>
 
                         <div class="form-control">
-                            <label for="category">Category *:</label>
+                            <label for="category">Category <span style="color: red;">*</span></label>
                             <select name="category" id="category">
                                 <option value="Badminton" <%= "Badminton".equals(request.getAttribute("category")) ? "selected" : ""%>>Badminton</option>
                                 <option value="Table Tennis" <%= "Table Tennis".equals(request.getAttribute("category")) ? "selected" : ""%>>Table Tennis</option>
@@ -42,12 +42,12 @@
                         </div>
 
                         <div class="form-control">
-                            <label for="price">Price *:</label>
+                            <label for="price">Price <span style="color: red;">*</span></label>
                             <input type="text" name="price" id="price" value="<%= request.getAttribute("price") != null ? request.getAttribute("price") : ""%>" />
                         </div>
 
                         <div class="form-control">
-                            <label for="stock">Stock *:</label>
+                            <label for="stock">Stock <span style="color: red;">*</span></label>
                             <input type="text" name="stock" id="stock" value="<%= request.getAttribute("stock") != null ? request.getAttribute("stock") : ""%>" />
                         </div>
 

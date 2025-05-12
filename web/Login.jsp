@@ -16,12 +16,12 @@
             <section class="info">
                 <form method="post" action="LoginServlet">
                     <div class="form-control">
-                        <label for="lid">ID *:</label>
+                        <label for="lid">ID <span style="color: red;">*</span></label>
                         <input type="text" id="lid" name="id" maxlength="20" value="${id}" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lpwd">Password *:</label>
+                        <label for="lpwd">Password <span style="color: red;">*</span></label>
                         <input type="password" id="lpwd" name="pwd" maxlength="100" value="${pwd}" required>
                     </div>
 

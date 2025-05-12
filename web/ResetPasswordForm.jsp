@@ -15,7 +15,7 @@
             <section class="info">
                 <form method="post" action="ResetPasswordRequestServlet">
                     <div class="form-control">
-                        <label for="email">Email *:</label>
+                        <label for="email">Email <span style="color: red;">*</span></label>
                         <input type="text" id="email" name="email" value="${email}" required />
                     </div>
 

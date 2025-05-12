@@ -15,22 +15,22 @@
             <section class="info">
                 <form method="post" action="SignupServlet">
                     <div class="form-control">
-                        <label for="id">ID *:</label>
+                        <label for="id">ID <span style="color: red;">*</span></label>
                         <input type="text" id="id" name="id" maxlength="20" value="${id}" required />
                     </div>
 
                     <div class="form-control">
-                        <label for="name">Name *:</label>
+                        <label for="name">Name <span style="color: red;">*</span></label>
                         <input type="text" id="name" name="name" maxlength="100" value="${name}" required />
                     </div>
 
                     <div class="form-control">
-                        <label for="bd">Birth Date *:</label>
+                        <label for="bd">Birth Date <span style="color: red;">*</span></label>
                         <input type="date" id="bd" name="bd" value="${bd}" required />
                     </div>
 
                     <div class="form-control">
-                        <label for="email">Email *:</label>
+                        <label for="email">Email <span style="color: red;">*</span></label>
                         <input type="text" id="email" name="email" maxlength="100" value="${email}" required />
                     </div>
 
@@ -40,12 +40,12 @@
                     </div>
 
                     <div class="form-control">
-                        <label for="pwd1">Password *:</label>
+                        <label for="pwd1">Password <span style="color: red;">*</span></label>
                         <input type="password" id="pwd1" name="password1" maxlength="30" value="${pwd1}" required />
                     </div>
 
                     <div class="form-control">
-                        <label for="pwd2">Confirm Password *:</label>
+                        <label for="pwd2">Confirm Password <span style="color: red;">*</span></label>
                         <input type="password" id="pwd2" name="password2" maxlength="30" value="${pwd2}" required />
                     </div>
 

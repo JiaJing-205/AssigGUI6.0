@@ -15,17 +15,17 @@
                 <form action="ResetPasswordServlet" method="post">
 
                     <div class="form-control">
-                        <label for="lemail">Email *:</label>
+                        <label for="lemail">Email <span style="color: red;">*</span></label>
                         <input type="text" id="lemail" name="email" value="${email}" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lpwd1">New Password *:</label>
+                        <label for="lpwd1">New Password <span style="color: red;">*</span></label>
                         <input type="password" id="lpwd1" name="password1" value="${pwd1}" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lpwd2">Confirm Password *:</label>
+                        <label for="lpwd2">Confirm Password <span style="color: red;">*</span></label>
                         <input type="password" id="lpwd2" name="password2" value="${pwd2}" required>
                     </div>
 

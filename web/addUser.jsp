@@ -39,44 +39,44 @@
             <section class="info">
                 <form action="addUserServlet" method="post">
                     <div class="form-control">
-                        <label for="lid">ID *:</label>
+                        <label for="lid">ID <span style="color: red;">*</span></label>
                         <input type="text" id="lid" name="id" maxlength="20" value="<%= id != null ? id : ""%>" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lname">Name *:</label>
+                        <label for="lname">Name <span style="color: red;">*</span></label>
                         <input type="text" id="lname" name="name" maxlength="100" value="<%= name != null ? name : ""%>" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lbd">Birth Date *:</label>
+                        <label for="lbd">Birth Date <span style="color: red;">*</span></label>
                         <input type="date" id="lbd" name="bd" value="<%= bd != null ? bd : ""%>" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lemail">Email *:</label>
+                        <label for="lemail">Email <span style="color: red;">*</span></label>
                         <input type="text" id="lemail" name="email" maxlength="100" value="<%= email != null ? email : ""%>" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lphone">Phone *:</label>
+                        <label for="lphone">Phone <span style="color: red;">*</span></label>
                         <input type="text" id="lphone" name="phone" maxlength="20" value="<%= phone != null ? phone : ""%>" required>
                     </div>
 
                     <div class="form-control">
-                        <label>Permission *:</label>
+                        <label>Permission <span style="color: red;">*</span></label>
                         <label><input type="radio" name="permission" value="User" <%= "User".equals(permission) ? "checked" : "" %>> User</label>
                         <label><input type="radio" name="permission" value="Staff" <%= "Staff".equals(permission) ? "checked" : "" %>> Staff</label>
                         <label><input type="radio" name="permission" value="Admin" <%= "Admin".equals(permission) ? "checked" : "" %>> Admin</label>
                     </div>
 
                     <div class="form-control">
-                        <label for="lpwd1">Password *:</label>
+                        <label for="lpwd1">Password <span style="color: red;">*</span></label>
                         <input type="password" id="lpwd1" name="password1" maxlength="30" value="<%= pwd1 != null ? pwd1 : ""%>" required>
                     </div>
 
                     <div class="form-control">
-                        <label for="lpwd2">Confirm Password *:</label>
+                        <label for="lpwd2">Confirm Password <span style="color: red;">*</span></label>
                         <input type="password" id="lpwd2" name="password2" maxlength="30" value="<%= pwd2 != null ? pwd2 : ""%>" required>
                     </div>
 
