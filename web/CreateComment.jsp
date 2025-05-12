@@ -61,6 +61,10 @@
                 background: #04484f;
                 color: white;
             }
+
+            .required-asterisk {
+                color: red;
+            }
         </style>
 
     </head>
@@ -79,19 +83,19 @@
             <div class="comment-form">
                 <form id="commentSubmissionForm" method="POST" action="${pageContext.request.contextPath}/create-comment">
                     <div class="form-group">
-                        <label for="username">Your Name:</label>
+                        <label for="username">Your Name: <span class="required-asterisk">*</span></label>
                         <input type="text" id="username" name="username" required 
                                placeholder="Enter your name" maxlength="50">
                     </div>
 
                     <div class="form-group">
-                        <label for="comment">Your Comment:</label>
+                        <label for="comment">Your Comment: </label>
                         <textarea id="comment" name="comment"
                                   placeholder="Share your thoughts..." ></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="rating">Rating:</label>
+                        <label for="rating">Rating: <span class="required-asterisk">*</span></label>
                         <select id="rating" name="rating" required>
                             <option value="" disabled selected>Select rating</option>
                             <option value="1">★ (Poor)</option>
