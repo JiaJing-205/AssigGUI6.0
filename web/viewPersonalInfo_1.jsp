@@ -62,6 +62,7 @@
                     </form>
 
                     <form action="deletePersonalServlet" method="post">
+                        <input type="text" id="lid" name="id" maxlength="20" value="${id}" readonly hidden>
                         <button type="submit" class="button-update">Delete Profile</button>
                     </form>
 
