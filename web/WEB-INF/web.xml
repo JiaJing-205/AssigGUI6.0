@@ -22,10 +22,6 @@
         <servlet-class>item.viewItemServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PaymentServlet2</servlet-name>
-        <servlet-class>Payment.PaymentServlet2</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>removeItemServlet</servlet-name>
         <servlet-class>item.removeItemServlet</servlet-class>
     </servlet>
@@ -163,14 +159,6 @@
         <servlet-class>user.viewPersonalInfo</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DeleteCartItemServlet</servlet-name>
-        <servlet-class>cart.DeleteCartItemServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>EditCartItemQuantityServlet</servlet-name>
-        <servlet-class>cart.EditCartItemQuantityServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>searchItemServletPublic</servlet-name>
         <servlet-class>item.searchItemPublicServlet</servlet-class>
     </servlet>
@@ -246,6 +234,18 @@
         <servlet-name>ItemListServlet</servlet-name>
         <servlet-class>item.ItemListServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteCartItemServlet</servlet-name>
+        <servlet-class>cart.DeleteCartItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCartItemQuantityServlet</servlet-name>
+        <servlet-class>cart.EditCartItemQuantityServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet2</servlet-name>
+        <servlet-class>Payment.PaymentServlet2</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
         <url-pattern>/viewPersonalServlet</url-pattern>
@@ -289,10 +289,6 @@
     <servlet-mapping>
         <servlet-name>sortItemServlet</servlet-name>
         <url-pattern>/sortItemServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PaymentServlet2</servlet-name>
-        <url-pattern>/PaymentServlet2</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>searchItemServlet</servlet-name>
@@ -408,14 +404,6 @@
         <url-pattern>/viewPersonalInfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DeleteCartItemServlet</servlet-name>
-        <url-pattern>/DeleteCartItemServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditCartItemQuantityServlet</servlet-name>
-        <url-pattern>/EditCartItemQuantityServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>searchItemServletPublic</servlet-name>
         <url-pattern>/searchItemServletPublic</url-pattern>
     </servlet-mapping>
@@ -490,6 +478,18 @@
     <servlet-mapping>
         <servlet-name>ItemListServlet</servlet-name>
         <url-pattern>/ItemListServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCartItemServlet</servlet-name>
+        <url-pattern>/DeleteCartItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCartItemQuantityServlet</servlet-name>
+        <url-pattern>/EditCartItemQuantityServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet2</servlet-name>
+        <url-pattern>/PaymentServlet2</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

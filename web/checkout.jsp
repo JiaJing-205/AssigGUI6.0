@@ -132,24 +132,25 @@
                                 <select name="paymentType" id="paymentType" onchange="displayPaymentFields()" required>
                                     <option value="">Select Payment Method</option>
                                     <option value="creditCard">Credit Card</option>
-                                    <option value="tng">TNG</option>
+                                    <option value="tng">Touch 'n Go</option>
                                     <option value="cash">Cash</option>
                                 </select>
-
+                                
+                                
                                 <div id="creditCardFields" class="payment-fields" style="display:none;">
                                     <h3>Credit Card Payment</h3>
                                     <label for="cardNumber">Card Number *</label>
-                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
+                                    <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number">
 
                                     <label for="expiryDate">Expiry Date *</label>
-                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
 
                                     <label for="cvv">CVV *</label>
-                                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
+                                    <input type="text" id="cvv" name="cvv" placeholder="Enter CVV">
                                 </div>
 
                                 <input type="hidden" name="amountPaid" value="<%= String.format("%.2f", (subtotal + shippingFee + shippingFeeTax))%>"/>
-                                <input type="submit" value="Submit Payment">
+                                <input style="margin-top: 10px" type="submit" value="Submit Payment">
                             </form>
 
                             <% } else {
@@ -220,6 +221,13 @@
 
                 if (paymentType == 'creditCard') {
                     document.getElementById('creditCardFields').style.display = 'block';
+                    document.getElementById('cardNumber').required = 'required';
+                    document.getElementById('expiryDate').required = 'required';
+                    document.getElementById('cvv').required = 'required';
+                } else {
+                    document.getElementById('cardNumber').required = '';
+                    document.getElementById('expiryDate').required = '';
+                    document.getElementById('cvv').required = '';
                 }
             }
         </script>

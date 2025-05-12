@@ -41,7 +41,7 @@ public class PaymentServlet2 extends HttpServlet {
         amountPaid = request.getParameter("amountPaid");
         paymentType = request.getParameter("paymentType");
         paymentDate = LocalDate.now().toString();
-        
+
         //Create order
         Order order = new Order();
         List<Order> orderList = new ArrayList<Order>();
@@ -56,7 +56,7 @@ public class PaymentServlet2 extends HttpServlet {
         for (int i = 0; i < cart.getCartItems().size(); i++) {
             orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
         }
-        
+
         //Delete all items in cart
         cart.deleteAllCartItem();
 
@@ -71,15 +71,16 @@ public class PaymentServlet2 extends HttpServlet {
             }
         }
         payment.guestFinalizePayment(payment.getPaymentID(), orderList, userId, paymentType, paymentDate);
-
+        
+        
         // Processing based on payment type
-        if ("creditCard".equals(paymentType)) {
+        if (paymentType.equals("creditCard")) {
             payment.setPaymentMethod("Credit Card");
             // Credit card processing logic here
-        } else if ("tng".equals(paymentType)) {
+        } else if (paymentType.equals("tng")) {
             payment.setPaymentMethod("TNG");
             // TNG QR Code processing
-        } else if ("cash".equals(paymentType)) {
+        } else if (paymentType.equals("cash")) {
             payment.setPaymentMethod("Cash");
             // Cash processing logic here
         }
