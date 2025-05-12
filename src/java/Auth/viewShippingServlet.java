@@ -45,6 +45,7 @@ public class viewShippingServlet extends HttpServlet {
 
             // If no shipping details found, show error
             if(!shippingDA.doesShippingRecordExist(userId)) {
+            request.setAttribute("userId", userId);
             request.getRequestDispatcher("addShippingInfo.jsp").forward(request, response);
             System.out.println("Adding");
             return;

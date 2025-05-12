@@ -3,7 +3,7 @@
 <%@ page import="item.*" %>
 
 <%
-    Item item = (Item) request.getAttribute("foundItem");
+    Item item = (Item) request.getAttribute("itemfound");
     String error = (String) request.getAttribute("error");
 %>
 

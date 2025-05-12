@@ -246,6 +246,10 @@
         <servlet-name>PaymentServlet2</servlet-name>
         <servlet-class>Payment.PaymentServlet2</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteShippingServlet</servlet-name>
+        <servlet-class>Auth.deleteShippingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
         <url-pattern>/viewPersonalServlet</url-pattern>
@@ -490,6 +494,10 @@
     <servlet-mapping>
         <servlet-name>PaymentServlet2</servlet-name>
         <url-pattern>/PaymentServlet2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteShippingServlet</servlet-name>
+        <url-pattern>/deleteShippingServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

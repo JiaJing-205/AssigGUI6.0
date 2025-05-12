@@ -49,34 +49,45 @@ public class UserShippingDetailsDA {
                     userShippingDetails.setState(rs.getString("STATE"));
                 }
             }
-            
+
             return userShippingDetails;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
-    
-    public boolean doesShippingRecordExist(String userId) {
-    try {
-        String query = "SELECT 1 FROM " + tableName + " WHERE USERID = ?";
-        preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setString(1, userId);
-        ResultSet rs = preparedStmt.executeQuery();
 
-        if (rs.next()) {
-            System.out.println("TRACE: Shipping record exists for USERID = " + userId);
-            return true;
-        } else {
-            System.out.println("TRACE: No shipping record found for USERID = " + userId);
-            return false;
+    public void deleteRecord(String userId) {
+        try {
+            String sql = "DELETE FROM " + tableName + " WHERE USERID = ?";
+            preparedStmt = conn.prepareStatement(sql);
+            preparedStmt.setString(1, userId);
+            preparedStmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-
-    } catch (SQLException ex) {
-        ex.printStackTrace();
     }
-    return false;
-}
+
+    public boolean doesShippingRecordExist(String userId) {
+        try {
+            String query = "SELECT 1 FROM " + tableName + " WHERE USERID = ?";
+            preparedStmt = conn.prepareStatement(query);
+            preparedStmt.setString(1, userId);
+            ResultSet rs = preparedStmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("TRACE: Shipping record exists for USERID = " + userId);
+                return true;
+            } else {
+                System.out.println("TRACE: No shipping record found for USERID = " + userId);
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 
     public void createShippingRecord(UserShippingDetails details) {
         try {
