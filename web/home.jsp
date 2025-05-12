@@ -1,3 +1,7 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="item.ItemDA"%>
+<%@page import="item.Item"%>
+<%@page import="da.OrderDA"%>
 <%@ page import="java.util.List" %>
 <%@ page import="report.Report" %>
 <%@ page import="report.reportDA" %>
@@ -14,62 +18,53 @@
         <%@ include file="z-sidebar.jsp" %>
         <div class="content">
             <p class="bar">Top Items Sold</p>
+          <%
+    List<Item> topItems = null;
 
-            <%
-                List<Report> reportList = null;
-                try {
-                    reportDA rda = new reportDA();
-                    reportList = rda.getTop3Item();
-                } catch (Exception ex) {
-                    out.println("<p style='color:red; text-align:center;'>Error loading report: " + ex.getMessage() + "</p>");
-                }
-            %>
+    try {
+        OrderDA oda = new OrderDA();  // Retrieves top 3 items with details
+        topItems = oda.getTop3ItemsByQuantity(); // Get the list of items with all details
+    } catch (Exception ex) {
+        out.println("<p style='color:red; text-align:center;'>Error loading items: " + ex.getMessage() + "</p>");
+    }
+%>
 
-            <%
-                if (reportList != null && !reportList.isEmpty()) {
-                    Report sample = reportList.get(0);
+<% if (topItems != null && !topItems.isEmpty()) { %>
+    <h3 style="text-align: center;">Top 3 Best-Selling Items</h3>
+    <table border="1" style="margin: auto; text-align: center;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price (RM)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% 
+            // Traditional for loop to iterate through the topItems list
+            for (int i = 0; i < topItems.size(); i++) {
+                Item item = topItems.get(i); 
             %>
-            <table>
-                <thead>
-                    <tr>
-                        <%
-                            if (sample.getItemID() != null) {
-                        %>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price (RM)</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (Report r : reportList) {%>
-                    <tr>
-                        <td><%= r.getItemName()%></td>
-                        <td><%= r.getItemCategory()%></td>
-                        <td>RM <%= String.format("%.2f", r.getItemPrice())%></td>
-                        <td>
-                            <form action="AddToCartServlet" method="post" style="display:inline;">
-                                <input type="hidden" name="itemId" value="<%= r.getItemID()%>" />
-                                Quantity :
-                                <input class="quantity" type="number" name="quantity" value="1" min="1" />
-                                <input type="submit" value="Add to cart" />
-                            </form>
-                        </td>
-                    </tr>
-                    <% } %>
-                </tbody>
-            </table>
-            <%
-                }
-            %>
-            <%
-            } else {
-            %>
-            <p style="text-align: center;">No records found</p>
-            <%
-                }
-            %>
-
+            <tr>
+                <td><%= item.getName() %></td>
+                <td><%= item.getCategory() %></td>
+                <td>RM <%= String.format("%.2f", item.getPrice()) %></td>
+                <td>
+                    <form action="AddToCartServlet" method="post" style="display:inline;">
+                        <input type="hidden" name="itemId" value="<%= item.getID() %>" />
+                        Quantity:
+                        <input class="quantity" type="number" name="quantity" value="1" min="1" max="<%= item.getStock() %>" />
+                        <input type="submit" value="Add to cart" />
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+<% } else { %>
+    <p style="text-align: center;">No top-selling items found.</p>
+<% } %>
             <div class="info">
                 <h2>About Our Company</h2>
                 <p>

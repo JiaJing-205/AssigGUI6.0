@@ -2,11 +2,14 @@ package da;
 
 //import domain.Order;
 import domain.Order;
+import item.Item;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDA {
 
@@ -121,4 +124,31 @@ public class OrderDA {
 
         }
     }
+
+    public List<Item> getTop3ItemsByQuantity() throws SQLException {
+        List<Item> topItems = new ArrayList<>();
+        String query = "SELECT I.itemID, I.itemName, I.itemCategory, I.itemPrice, I.stock, SUM(O.quantity) AS totalQty "
+                + "FROM " + tableName +" O "
+                + "JOIN Item I ON O.itemID = I.itemID "
+                + "GROUP BY I.itemID, I.itemName, I.itemCategory, I.itemPrice, I.stock "
+                + "ORDER BY totalQty DESC "
+                + "FETCH FIRST 3 ROWS ONLY";
+
+        try (PreparedStatement stmt = conn.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                // Create an Item object and populate it with the result
+                Item item = new Item(
+                        rs.getString("itemID"),
+                        rs.getString("itemName"),
+                        rs.getString("itemCategory"),
+                        rs.getFloat("itemPrice"),
+                        rs.getInt("stock")
+                );
+                topItems.add(item);
+            }
+        }
+
+        return topItems;
+    }
+
 }
