@@ -29,61 +29,57 @@
                 </div>
             </div>
 
-            <div class="content">
-                <h2 style="text-align:center;">All ${userRole != null ? userRole : 'Users'}</h2>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Birthday</th>
-                        <th>Password</th>
-                        <th>Create Date</th>
-                        <th colspan="2">Options</th>
-                    </tr>
-                    <%
-                        List<User> userList = (List<User>) request.getAttribute("allUsers");
-                        String userId = (String) request.getAttribute("userID");
+            <h2 style="text-align:center;">All ${userRole != null ? userRole : 'Users'}</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Birthday</th>
+                    <th>Password</th>
+                    <th>Create Date</th>
+                    <th colspan="2">Options</th>
+                </tr>
+                <%
+                    List<User> userList = (List<User>) request.getAttribute("allUsers");
+                    String userId = (String) request.getAttribute("userID");
 
+                    if (userList != null && !userList.isEmpty()) {
+                        for (User u : userList) {
+                %>
+                <tr>
+                    <td><%= u.getId()%></td>
+                    <td><%= u.getName()%></td>
+                    <td><%= u.getEmail()%></td>
+                    <td><%= u.getPhone()%></td>
+                    <td><%= u.getHbd()%></td>
+                    <td><%= u.getPwd()%></td>
+                    <td><%= u.getCreateDate()%></td>
+                    <td>
+                        <form action="getUserServlet" method="get">
+                            <input type="hidden" name="id" value="<%= u.getId()%>" />
+                            <input type="submit" class="button-small" value="Edit" />
+                        </form>
+                    </td>
+                    <td>
 
-                        if (userList != null && !userList.isEmpty()) {
-                            for (User u : userList) {
-                    %>
-                    <tr>
-                        <td><%= u.getId()%></td>
-                        <td><%= u.getName()%></td>
-                        <td><%= u.getEmail()%></td>
-                        <td><%= u.getPhone()%></td>
-                        <td><%= u.getHbd()%></td>
-                        <td><%= u.getPwd()%></td>
-                        <td><%= u.getCreateDate()%></td>
-                        <td>
-                            <form action="getUserServlet" method="get">
-                                <input type="hidden" name="id" value="<%= u.getId()%>" />
-                                <input type="submit" class="button-small" value="Edit" />
-                            </form>
-                        </td>
-                        <td>
+                        <form action="deleteUserServlet" method="post" onsubmit="return confirm('Are you sure?');">
+                            <input type="hidden" name="id" value="<%= u.getId()%>" />
+                            <input type="submit" class="button-small" value="Delete" />
+                        </form>
 
-                            <form action="deleteUserServlet" method="post" onsubmit="return confirm('Are you sure?');">
-                                <input type="hidden" name="id" value="<%= u.getId()%>" />
-                                <input type="submit" class="button-small" value="Delete" />
-                            </form>
-
-                        </td>
-                    </tr>
-                    <%
-                        }
-                    } else {
-                    %>
-                    <tr>
-                        <td colspan="9" style="text-align:center; color:red;">No records</td>
-                    </tr>
-                    <% }%>
-                </table>
-
-            </div>
+                    </td>
+                </tr>
+                <%
+                    }
+                } else {
+                %>
+                <tr>
+                    <td colspan="9" style="text-align:center; color:red;">No records</td>
+                </tr>
+                <% }%>
+            </table>
         </div>
-    </body>
+</body>
 </html>
