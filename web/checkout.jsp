@@ -9,6 +9,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Checkout Page</title>
+        <style>
+            .required-asterisk {
+                color: red;
+            }
+        </style>
         <link rel="stylesheet" href="z-styles.css" />
         <%!
             Cart cart = new Cart();
@@ -52,7 +57,7 @@
                                         }
                                     }
                                 }
-                                
+
                                 cart = cart.generateCart(userId);
                                 for (int i = 0; i < cart.getCartItems().size(); i++) {
                             %>
@@ -84,30 +89,35 @@
                             %>
                             <form action="PaymentServlet2" method="POST">
                                 <div class="form-control">
-                                    <label for="first-name">First Name*</label>
+                                    <label for="first-name">First Name <span class="required-asterisk">*</span>
+                                    </label>
                                     <input type="text" id="first-name" name="firstName" required>
                                 </div>
                                 <div class="form-control">
-                                    <label for="last-name">Last Name*</label>
+                                    <label for="last-name">Last Name <span class="required-asterisk">*</span>
+                                    </label>
                                     <input type="text" id="last-name" name="lastName" required>
                                 </div>
                                 <div class="form-control">
-                                    <label for="address">Address *</label>
+                                    <label for="address">Address <span class="required-asterisk">*</span>
+                                    </label>
                                     <input type="text" id="address" name="address" required>
                                 </div>
 
                                 <div class="form-control">
-                                    <label for="city">City *</label>
+                                    <label for="city">City <span class="required-asterisk">*</span></label>
                                     <input type="text" id="city" name="city" required>
                                 </div>
 
                                 <div class="form-control">
-                                    <label for="zip">ZIP Code *</label>
+                                    <label for="zip">ZIP Code <span class="required-asterisk">*</span>
+                                    </label>
                                     <input type="text" id="zip" name="zip" required>
                                 </div>
 
                                 <div class="form-control">
-                                    <label for="state">State *</label>
+                                    <label for="state">State <span class="required-asterisk">*</span>
+                                    </label>
                                     <select id="state" name="state" required>
                                         <option value="">Select State</option>
                                         <option value="Perlis">Perlis</option>
@@ -128,7 +138,8 @@
                                     </select>
                                 </div>
 
-                                <label for="paymentType">Select Payment Method *</label>
+                                <label for="paymentType">Select Payment Method <span class="required-asterisk">*</span>
+                                </label>
                                 <select name="paymentType" id="paymentType" onchange="displayPaymentFields()" required>
                                     <option value="">Select Payment Method</option>
                                     <option value="creditCard">Credit Card</option>
@@ -139,13 +150,16 @@
 
                                 <div id="creditCardFields" class="payment-fields" style="display:none;">
                                     <h3>Credit Card Payment</h3>
-                                    <label for="cardNumber">Card Number *</label>
+                                    <label for="cardNumber">Card Number <span class="required-asterisk">*</span>
+                                    </label>
                                     <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number">
 
-                                    <label for="expiryDate">Expiry Date *</label>
+                                    <label for="expiryDate">Expiry Date <span class="required-asterisk">*</span>
+                                    </label>
                                     <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY">
 
-                                    <label for="cvv">CVV *</label>
+                                    <label for="cvv">CVV <span class="required-asterisk">*</span>
+                                    </label>
                                     <input type="text" id="cvv" name="cvv" placeholder="Enter CVV">
                                 </div>
 
