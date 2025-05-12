@@ -136,7 +136,6 @@ public class OrderDA {
 
         try (PreparedStatement stmt = conn.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                // Create an Item object and populate it with the result
                 Item item = new Item(
                         rs.getString("itemID"),
                         rs.getString("itemName"),
