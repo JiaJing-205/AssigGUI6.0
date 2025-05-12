@@ -138,26 +138,25 @@ public class ItemDA {
         return itemFind;
     }
      
-     public List<Item> getRecordSearchNameList(String name) throws SQLException {
-        String queryStr = "SELECT * FROM Item WHERE itemName LIKE?";
-        Item itemFind = new Item();
+     public List<Item> getRecordSearchNameList(String itemname) throws SQLException {
+        String queryStr = "SELECT * FROM Item WHERE LOWER(itemName) LIKE?";
         List<Item> itemList = new ArrayList<>();
 
         try {
             stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, "%" + name + "%");
+            stmt.setString(1, "%" + itemname.toLowerCase() + "%");
             ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            Item itemDet = new Item(
+            System.out.println("Adding");
+            Item itemFound = new Item(
                 rs.getString("itemID"),
                 rs.getString("itemName"),
                 rs.getString("itemCategory"),
                 rs.getFloat("itemPrice"),
                 rs.getInt("stock")
             );
-            itemFind = itemDet;
-            itemList.add(itemDet);
+            itemList.add(itemFound);
         }
 
     } catch (SQLException ex) {

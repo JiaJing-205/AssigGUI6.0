@@ -250,6 +250,10 @@
         <servlet-name>deleteShippingServlet</servlet-name>
         <servlet-class>Auth.deleteShippingServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>showAllItemServlet</servlet-name>
+        <servlet-class>item.showAllItemServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>viewPersonalServlet</servlet-name>
         <url-pattern>/viewPersonalServlet</url-pattern>
@@ -498,6 +502,10 @@
     <servlet-mapping>
         <servlet-name>deleteShippingServlet</servlet-name>
         <url-pattern>/deleteShippingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showAllItemServlet</servlet-name>
+        <url-pattern>/showAllItemServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

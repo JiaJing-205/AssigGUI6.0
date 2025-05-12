@@ -12,26 +12,20 @@ public class searchItemPublicListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String searchName = request.getParameter("searchmore");
         ItemDA itDA = new ItemDA();
-        List<Item> itemList = new ArrayList<>();
 
         try {
             if (searchName != null && !searchName.isEmpty()) {
-            itemList = itDA.getRecordSearchNameList(searchName);
-            }
-            if (itemList == null) {
-                request.setAttribute("error", "No items found.");
+                List<Item> itemList = itDA.getRecordSearchNameList(searchName);
+                request.setAttribute("itemList", itemList);
+                request.getRequestDispatcher("products.jsp").forward(request, response);
             } else {
-                request.setAttribute("itemfound", itemList);
+                request.setAttribute("error", "No items found.");
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "Error finding item");
+            System.out.println("ShowAllItemServletGoBoom");
         }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/viewoneitem.jsp");
-        dispatcher.forward(request, response);
     }
 }
