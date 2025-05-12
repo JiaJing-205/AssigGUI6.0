@@ -1,159 +1,109 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="java.time.YearMonth" %>
+<%@ page import="da.PaymentDA" %>
+<%@ page import="domain.Payment" %>
+
 <%
-    YearMonth now = YearMonth.now();
-    String minMonth = now.toString(); // Format: YYYY-MM
+    String paymentID = request.getParameter("paymentID");
+    String userID = request.getParameter("userID");
+    Payment payment = null;
+
+    if (paymentID != null) {
+        PaymentDA paymentDA = new PaymentDA();
+        payment = paymentDA.retrieveRecord(paymentID);
+    }
 %>
+
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Make a Payment</title>
+        <title>Finalize Payment</title>
         <style>
-            body {
-                font-family: 'Segoe UI', sans-serif;
-                background: #f0f4f8;
-                padding: 40px;
-            }
-            .payment-form {
-                max-width: 550px;
-                margin: auto;
-                background: #fff;
-                padding: 35px;
-                border-radius: 12px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            }
-            h2 {
-                text-align: center;
-                margin-bottom: 25px;
-                color: #333;
-            }
-            label {
+            label, select, input {
+                margin: 5px;
                 display: block;
-                margin-top: 15px;
-                font-weight: bold;
             }
-            .required {
-                color: red;
-            }
-            input[type="text"], input[type="month"], input[type="file"], select {
-                width: 100%;
-                padding: 10px;
-                margin-top: 6px;
+            form {
                 border: 1px solid #ccc;
-                border-radius: 6px;
-                font-size: 14px;
+                padding: 15px;
+                margin-bottom: 30px;
             }
-            .qr-section {
-                display: none;
-                margin-top: 20px;
-                text-align: center;
-            }
-            .qr-section img {
-                width: 180px;
-                height: auto;
-                margin-bottom: 15px;
-            }
-            button {
-                margin-top: 25px;
-                width: 100%;
-                background-color: #007bff;
-                color: white;
-                padding: 14px;
-                border: none;
-                border-radius: 8px;
-                font-size: 16px;
-                cursor: pointer;
-            }
-            button:hover {
-                background-color: #0056b3;
+            .payment-details {
+                margin-top: 10px;
             }
         </style>
         <script>
-            function handlePaymentTypeChange() {
-                const type = document.getElementById('paymentType').value;
+            function togglePaymentFields() {
+                const method = document.getElementById("paymentMethod").value;
+                document.getElementById("cardDetails").style.display = "none";
+                document.getElementById("tngDetails").style.display = "none";
 
-                const creditFields = document.getElementById('creditCardFields');
-                const tngFields = document.getElementById('tngFields');
-
-                // Get individual inputs
-                const cardNumber = document.getElementById('cardNumber');
-                const expiryDate = document.getElementById('expiryDate');
-                const cvv = document.getElementById('cvv');
-                const tngScreenshot = document.getElementById('tngScreenshot');
-
-                // Show/hide field groups
-                creditFields.style.display = (type === 'creditCard') ? 'block' : 'none';
-                tngFields.style.display = (type === 'tng') ? 'block' : 'none';
-
-                // Set required attributes based on selected type
-                if (type === 'creditCard') {
-                    cardNumber.required = true;
-                    expiryDate.required = true;
-                    cvv.required = true;
-
-                    tngScreenshot.required = false;
-                    tngScreenshot.value = ''; // clear file input
-                } else if (type === 'tng') {
-                    cardNumber.required = false;
-                    expiryDate.required = false;
-                    cvv.required = false;
-
-                    cardNumber.value = '';
-                    expiryDate.value = '';
-                    cvv.value = '';
-
-                    tngScreenshot.required = true;
-                } else {
-                    // Cash: nothing is required except the payment type
-                    cardNumber.required = false;
-                    expiryDate.required = false;
-                    cvv.required = false;
-                    tngScreenshot.required = false;
-
-                    cardNumber.value = '';
-                    expiryDate.value = '';
-                    cvv.value = '';
-                    tngScreenshot.value = '';
+                if (method === "Card") {
+                    document.getElementById("cardDetails").style.display = "block";
+                } else if (method === "TNG") {
+                    document.getElementById("tngDetails").style.display = "block";
                 }
             }
-        </script>
 
+            function enforceDigitsOnly(field) {
+                field.value = field.value.replace(/\D/g, '');
+            }
+        </script>
     </head>
     <body>
-        <div class="payment-form">
-            <h2>Payment Form</h2>
-            <form action="PaymentServlet" method="post" enctype="multipart/form-data">
-                <label for="paymentType">Payment Type<span class="required">*</span></label>
-                <select name="paymentMethod" id="paymentType" onchange="handlePaymentTypeChange()" required>
-                    <option value="">-- Select --</option>
-                    <option value="creditCard">Credit Card</option>
-                    <option value="tng">Touch 'n Go</option>
-                    <option value="cash">Cash</option>
-                </select>
+        <h1>Payment Finalization</h1>
 
-                <div id="creditCardFields" style="display:none;">
-                    <label for="cardNumber">Card Number<span class="required">*</span></label>
-                    <input type="text" name="cardNumber" id="cardNumber" maxlength="19" required oninput="formatCardNumber(this)" />
+        <%
+            if (payment != null && "Pending".equals(payment.getPaymentStatus())) {
+        %>
+        <form action="updatePaymentStatusServlet" method="post">
+            <h3>Payment ID: <%= payment.getPaymentID()%></h3>
+            <p>Total: RM <%= payment.getTotalPrice()%></p>
 
-                    <label for="expiryDate">Expiry Date<span class="required">*</span></label>
-                    <input type="month" name="expiryDate" id="expiryDate" required min="<%= minMonth%>" />
+            <input type="hidden" name="paymentID" value="<%= payment.getPaymentID()%>" />
+            <input type="hidden" name="userID" value="<%= payment.getUserID()%>" />
 
-                    <label for="cvv">CVV<span class="required">*</span></label>
-                    <input type="text" name="cvv" id="cvv" maxlength="3" required oninput="formatCVV(this)" />
-                </div>
+            <label for="paymentMethod">Payment Method: <span style="color:red;">*</span></label>
+            <select name="paymentMethod" id="paymentMethod" onchange="togglePaymentFields()" required>
+                <option value="">--Select--</option>
+                <option value="TNG">TNG</option>
+                <option value="Card">Card</option>
+                <option value="Cash">Cash</option>
+            </select>
 
-                <div id="tngFields" class="qr-section">
-                    <p><strong>Scan QR Code to Pay</strong></p>
-                    <img src="resources/tng_qr.png" alt="TNG QR Code" />
-                    <label for="tngScreenshot">Upload Payment Screenshot<span class="required">*</span></label>
-                    <input type="file" name="tngScreenshot" id="tngScreenshot" accept="image/*" required />
-                </div>
+            <!-- TNG QR Details -->
+            <div id="tngDetails" class="payment-details" style="display: none;">
+                <label>TNG Card Number: <span style="color:red;">*</span></label>
+                <input type="text" name="tngCardNumber" placeholder="Enter TNG Card Number" />
+                <label>Scan QR to Pay:</label><br>
+                <img src="images/tng-qr-placeholder.png" alt="TNG QR Code" width="200" height="200" />
+            </div>
 
-                <button type="submit">Submit Payment</button>
-            </form>
-        </div>
+            <!-- Card Details -->
+            <div id="cardDetails" class="payment-details" style="display: none;">
+                <label>Card Number: <span style="color:red;">*</span></label>
+                <input type="text" name="cardNumber" maxlength="16" placeholder="16-digit Card Number" oninput="enforceDigitsOnly(this)" />
+                <label>Expiry Date: <span style="color:red;">*</span></label>
+                <input type="month" name="expiryDate" />
+                <label>CVV: <span style="color:red;">*</span></label>
+                <input type="text" name="cvv" maxlength="3" placeholder="3-digit CVV" oninput="enforceDigitsOnly(this)" />
+            </div>
 
-        <script>
-            window.onload = handlePaymentTypeChange;
-        </script>
+            <label for="paymentDate">Payment Date: <span style="color:red;">*</span></label>
+            <input type="date" name="paymentDate" required />
+
+            <button type="submit">Confirm Payment</button>
+        </form>
+        <%
+        } else if (payment != null) {
+        %>
+        <p style="color:red;">This payment is already finalized.</p>
+        <%
+        } else {
+        %>
+        <p style="color:red;">No such payment found.</p>
+        <%
+            }
+        %>
+
+        <a href="viewPaymentServlet?userID=<%= userID%>">Back to Payment List</a>
     </body>
 </html>
