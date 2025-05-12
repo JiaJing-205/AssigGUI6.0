@@ -38,14 +38,37 @@
                     </div>
 
                     <div class="form-control">
-                        <label for="state">State:</label>
-                        <input type="text" id="state" name="state" maxlength="100" value="${state}">
+                        <label for="state">State :</label>
+                        <select id="state" name="state" required>
+                            <option value="">Select State</option>
+                            <option value="Perlis" <%= "Perlis".equals(request.getAttribute("state")) ? "selected" : ""%>>Perlis</option>
+                            <option value="Kedah" <%= "Kedah".equals(request.getAttribute("state")) ? "selected" : ""%>>Kedah</option>
+                            <option value="Penang" <%= "Penang".equals(request.getAttribute("state")) ? "selected" : ""%>>Penang</option>
+                            <option value="Kelantan" <%= "Kelantan".equals(request.getAttribute("state")) ? "selected" : ""%>>Kelantan</option>
+                            <option value="Terengganu" <%= "Terengganu".equals(request.getAttribute("state")) ? "selected" : ""%>>Terengganu</option>
+                            <option value="Perak" <%= "Perak".equals(request.getAttribute("state")) ? "selected" : ""%>>Perak</option>
+                            <option value="Negeri Sembilan" <%= "Negeri Sembilan".equals(request.getAttribute("state")) ? "selected" : ""%>>Negeri Sembilan</option>
+                            <option value="Malacca" <%= "Malacca".equals(request.getAttribute("state")) ? "selected" : ""%>>Malacca</option>
+                            <option value="Johor" <%= "Johor".equals(request.getAttribute("state")) ? "selected" : ""%>>Johor</option>
+                            <option value="Pahang" <%= "Pahang".equals(request.getAttribute("state")) ? "selected" : ""%>>Pahang</option>
+                            <option value="Sarawak" <%= "Sarawak".equals(request.getAttribute("state")) ? "selected" : ""%>>Sarawak</option>
+                            <option value="Selangor" <%= "Selangor".equals(request.getAttribute("state")) ? "selected" : ""%>>Selangor</option>
+                            <option value="Labuan" <%= "Labuan".equals(request.getAttribute("state")) ? "selected" : ""%>>Labuan</option>
+                            <option value="Kuala Lumpur" <%= "Kuala Lumpur".equals(request.getAttribute("state")) ? "selected" : ""%>>Kuala Lumpur</option>
+                            <option value="Putrajaya" <%= "Putrajaya".equals(request.getAttribute("state")) ? "selected" : ""%>>Putrajaya</option>
+                        </select>
+
                     </div>
+
 
                     <div class="form-control">
                         <button type="submit" class="button-update">Update Shipping Info</button>
                     </div>
                 </form>
+                <form action="deleteShippingServlet" method="post">
+                    <button type="submit" class="button-update">Delete Shipping Info</button>
+                </form>
+
 
                 <div class="form-control" style="color:red;">
                     ${error}
