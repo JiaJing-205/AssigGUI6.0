@@ -54,24 +54,30 @@ public class Cart {
         }
     }
 
-    public Cart generateCart() {
+    public Cart generateCart(String userId) {
         //Get item details from cart database
         CartDa cartDa = new CartDa();
         ResultSet cartRs = cartDa.retrieveRecord();
         List<CartItem> cartItems = new ArrayList<CartItem>();
         CartItem cartItem;
+        
+        if (userId == null || userId.equals("")) {
+            userId = "Guest";
+        }
 
         //Loop through cart database
         try {
             while (cartRs.next()) {
-                cartItem = new CartItem();
-                cartItem.setID(cartRs.getString("ITEMID"));
-                cartItem.setName(cartRs.getString("ITEMNAME"));
-                cartItem.setCategory(cartRs.getString("ITEMCATEGORY"));
-                cartItem.setPrice(cartRs.getDouble("ITEMPRICE"));
-                cartItem.setQuantity(cartRs.getInt("QUANTITY"));
-                cartItem.setUserId(cartRs.getString("USER_ID"));
-                cartItems.add(cartItem);
+                if (cartRs.getString("USER_ID").equals(userId)) {
+                    cartItem = new CartItem();
+                    cartItem.setID(cartRs.getString("ITEMID"));
+                    cartItem.setName(cartRs.getString("ITEMNAME"));
+                    cartItem.setCategory(cartRs.getString("ITEMCATEGORY"));
+                    cartItem.setPrice(cartRs.getDouble("ITEMPRICE"));
+                    cartItem.setQuantity(cartRs.getInt("QUANTITY"));
+                    cartItem.setUserId(cartRs.getString("USER_ID"));
+                    cartItems.add(cartItem);
+                }
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -135,7 +141,7 @@ public class Cart {
             ex.printStackTrace();
         }
     }
-    
+
     public void deleteAllCartItem() {
         CartDa cartDa = new CartDa();
         cartDa.deleteAllRecord();

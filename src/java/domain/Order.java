@@ -153,12 +153,5 @@ public void setItemCategory(String itemCategory) {
     }
 
     public static void main(String args[]) {
-        Order order = new Order();
-        Cart cart = new Cart();
-        cart = cart.generateCart();
-        
-        for (int i = 0; i < cart.getCartItems().size(); i++) {
-            order.createOrder(cart.getCartItems().get(i), "P002");
-        }
     }
 }

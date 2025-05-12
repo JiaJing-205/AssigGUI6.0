@@ -41,25 +41,7 @@ public class PaymentServlet2 extends HttpServlet {
         amountPaid = request.getParameter("amountPaid");
         paymentType = request.getParameter("paymentType");
         paymentDate = LocalDate.now().toString();
-
-        //Create order
-        Order order = new Order();
-        List<Order> orderList = new ArrayList<Order>();
-        CartItem cartItem = new CartItem();
-
-        //Initialize payemnt
-        payment = payment.initializePayment();
-
-        Cart cart = new Cart();
-        cart = cart.generateCart();
-
-        for (int i = 0; i < cart.getCartItems().size(); i++) {
-            orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
-        }
-
-        //Delete all items in cart
-        cart.deleteAllCartItem();
-
+        
         //Get userId
         Cookie[] userIdCookies = request.getCookies();
         String userId = "";
@@ -70,6 +52,25 @@ public class PaymentServlet2 extends HttpServlet {
                 }
             }
         }
+
+        //Create order
+        Order order = new Order();
+        List<Order> orderList = new ArrayList<Order>();
+        CartItem cartItem = new CartItem();
+
+        //Initialize payemnt
+        payment = payment.initializePayment();
+
+        Cart cart = new Cart();
+        cart = cart.generateCart(userId);
+
+        for (int i = 0; i < cart.getCartItems().size(); i++) {
+            orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
+        }
+
+        //Delete all items in cart
+        cart.deleteAllCartItem();
+        
         payment.guestFinalizePayment(payment.getPaymentID(), orderList, userId, paymentType, paymentDate);
         
         

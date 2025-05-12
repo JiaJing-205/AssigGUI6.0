@@ -53,6 +53,17 @@ public class CheckoutServlet extends HttpServlet {
         session.setAttribute("city", city);
         session.setAttribute("zip", zip);
         session.setAttribute("state", state);
+        
+        //Get userId
+        Cookie[] userIdCookies = request.getCookies();
+        String userId = "";
+        if (userIdCookies != null) {
+            for (Cookie cookie : userIdCookies) {
+                if (cookie.getName().equals("userId")) {
+                    userId = cookie.getValue();
+                }
+            }
+        }
 
         //Create order
         Order order = new Order();
@@ -64,7 +75,7 @@ public class CheckoutServlet extends HttpServlet {
         payment = payment.initializePayment();
 
         Cart cart = new Cart();
-        cart = cart.generateCart();
+        cart = cart.generateCart(userId);
 
         for (int i = 0; i < cart.getCartItems().size(); i++) {
             orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
@@ -72,17 +83,7 @@ public class CheckoutServlet extends HttpServlet {
         
         //Delete all items in cart
         cart.deleteAllCartItem();
-
-        //Get userId
-        Cookie[] userIdCookies = request.getCookies();
-        String userId = "";
-        if (userIdCookies != null) {
-            for (Cookie cookie : userIdCookies) {
-                if (cookie.getName().equals("userId")) {
-                    userId = cookie.getValue();
-                }
-            }
-        }
+       
         payment.finalizePayment(payment.getPaymentID(), orderList, userId);
 
         //Redirect to payment page

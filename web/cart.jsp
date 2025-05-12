@@ -22,7 +22,23 @@
             %>
 
             <%
-                cart = cart.generateCart();
+                //Get userId
+                Cookie[] userIdCookies = request.getCookies();
+                String userId = "";
+                
+                if (userIdCookies != null) {
+                    for (Cookie cookie : userIdCookies) {
+                        if (cookie.getName().equals("userId")) {
+                            userId = cookie.getValue();
+                        }
+                    }
+                }
+                
+                if (userId == null || userId.equals("")) {
+                    userId = "Guest";
+                }
+                
+                cart = cart.generateCart(userId);
 
                 //Cart section header
                 if (cart.getCartItems().size() == 0) {
