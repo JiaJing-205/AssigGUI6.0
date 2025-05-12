@@ -80,7 +80,7 @@
                 </tr>
                 <% }%>
             </table>
-            <a href="addUserServlet">Add User</a>
+            <a href="adduser.jsp">Add User</a>
         </div>
 </body>
 </html>
