@@ -41,7 +41,23 @@
                         <section class="cart-items info">
                             <h2>Your Items</h2>
                             <%
-                                cart = cart.generateCart();
+                                //Get userId
+                                Cookie[] userIdCookies = request.getCookies();
+                                String userId = "";
+
+                                if (userIdCookies != null) {
+                                    for (Cookie cookie : userIdCookies) {
+                                        if (cookie.getName().equals("userId")) {
+                                            userId = cookie.getValue();
+                                        }
+                                    }
+                                }
+
+                                if (userId == null || userId.equals("")) {
+                                    userId = "Guest";
+                                }
+                                
+                                cart = cart.generateCart(userId);
                                 for (int i = 0; i < cart.getCartItems().size(); i++) {
                             %>
                             <div class="cart-item" style="margin-bottom: 10px;">
@@ -135,8 +151,8 @@
                                     <option value="tng">Touch 'n Go</option>
                                     <option value="cash">Cash</option>
                                 </select>
-                                
-                                
+
+
                                 <div id="creditCardFields" class="payment-fields" style="display:none;">
                                     <h3>Credit Card Payment</h3>
                                     <label for="cardNumber">Card Number *</label>
