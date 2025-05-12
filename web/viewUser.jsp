@@ -80,6 +80,7 @@
                 </tr>
                 <% }%>
             </table>
+            <a href="addUserServlet">Add User</a>
         </div>
 </body>
 </html>

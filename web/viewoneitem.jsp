@@ -49,7 +49,7 @@
                     </tr>
                 </table>
                 <% }%>
-                <a href="products.jsp">Return</a><br>
+                <a href="showAllItemServlet">Return</a><br>
         </div>
     </body>
 </html>
