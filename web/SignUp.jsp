@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-control">
-                        <label for="phone">Phone Number * (+60XXXXXXXXX):</label>
+                        <label for="phone">Phone Number <span style="color: red;">*</span> (+60XXXXXXXXX):</label>
                         <input type="text" id="phone" name="phone" maxlength="20" value="${phone}" required />
                     </div>
 
