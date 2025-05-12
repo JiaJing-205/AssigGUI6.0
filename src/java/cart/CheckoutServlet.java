@@ -79,10 +79,8 @@ public class CheckoutServlet extends HttpServlet {
 
         for (int i = 0; i < cart.getCartItems().size(); i++) {
             orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
+            cart.deleteCartItem(cart.getCartItems().get(i).getID(), userId);
         }
-        
-        //Delete all items in cart
-        cart.deleteAllCartItem();
        
         payment.finalizePayment(payment.getPaymentID(), orderList, userId);
 

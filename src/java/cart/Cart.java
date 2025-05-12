@@ -101,7 +101,7 @@ public class Cart {
         try {
             while (cartRs.next()) {
                 if (cartRs.getString("ITEMID").equals(itemId) && cartRs.getString("USER_ID").equals(userId)) {
-                    cartDa.deleteRecord(itemId, userId);
+                    cartDa.deleteUserRecord(userId);
                     item.revertStock(itemId, cartRs.getInt("QUANTITY"));
                 }
             }

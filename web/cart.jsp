@@ -34,10 +34,6 @@
                     }
                 }
                 
-                if (userId == null || userId.equals("")) {
-                    userId = "Guest";
-                }
-                
                 cart = cart.generateCart(userId);
 
                 //Cart section header

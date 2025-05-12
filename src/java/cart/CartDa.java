@@ -89,6 +89,18 @@ public class CartDa {
         }
     }
     
+    public void deleteUserRecord(String userId) {
+        String deleteStr = "DELETE FROM " + tableName + " WHERE USER_ID = ?";
+        try {
+            preparedStmt = conn.prepareStatement(deleteStr);
+            preparedStmt.setString(1, userId);
+            preparedStmt.executeUpdate();
+            System.out.println("TRACE: Record deleted.");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     public void deleteAllRecord() {
         String deleteStr = "DELETE FROM " + tableName;
         try {
@@ -112,6 +124,5 @@ public class CartDa {
 
     public static void main(String[] args) {
         CartDa cartDa = new CartDa();
-        cartDa.deleteAllRecord();
     }
 }

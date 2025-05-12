@@ -52,10 +52,6 @@
                                         }
                                     }
                                 }
-
-                                if (userId == null || userId.equals("")) {
-                                    userId = "Guest";
-                                }
                                 
                                 cart = cart.generateCart(userId);
                                 for (int i = 0; i < cart.getCartItems().size(); i++) {
@@ -74,18 +70,6 @@
                         <section class="customer-info info">
                             <h2>Shipping Information</h2>
                             <%
-                                Cookie[] userIdCookies = request.getCookies();
-                                String userId = "";
-                                if (userIdCookies != null) {
-                                    for (Cookie cookie : userIdCookies) {
-                                        if (cookie.getName().equals("userId")) {
-                                            userId = cookie.getValue();
-                                        }
-                                    }
-                                } else {
-                                    userId = "";
-                                }
-
                                 subtotal = 0.0;
                                 for (int i = 0; i < cart.getCartItems().size(); i++) {
                                     subtotal += cart.getCartItems().get(i).getPrice() * cart.getCartItems().get(i).getQuantity();

@@ -122,6 +122,10 @@
     <div class="print-btn">
         <button onclick="window.print()">Print Receipt</button>
     </div>
+    
+    <div class="print-btn">
+        <a href="home.jsp"><button>Back to Home</button></a>
+    </div>
 </div>
 
 </body>

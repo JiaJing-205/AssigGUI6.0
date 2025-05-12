@@ -66,10 +66,8 @@ public class PaymentServlet2 extends HttpServlet {
 
         for (int i = 0; i < cart.getCartItems().size(); i++) {
             orderList.add(order.createOrder(cart.getCartItems().get(i), payment.getPaymentID()));
+            cart.deleteCartItem(cart.getCartItems().get(i).getID(), userId);
         }
-
-        //Delete all items in cart
-        cart.deleteAllCartItem();
         
         payment.guestFinalizePayment(payment.getPaymentID(), orderList, userId, paymentType, paymentDate);
         
@@ -84,6 +82,10 @@ public class PaymentServlet2 extends HttpServlet {
         } else if (paymentType.equals("cash")) {
             payment.setPaymentMethod("Cash");
             // Cash processing logic here
+        }
+        
+        if (userId == null || userId.equals("")) {
+            payment.setUserID("Guest");
         }
 
         // Set other payment details
